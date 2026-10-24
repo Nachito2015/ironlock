@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinetic Shield | IronLock V1.0</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            /* Fondo cambiado a blanco */
+            color: #1a1c29;
+            /* Texto general oscuro para que contraste con el blanco */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Selector de idioma flotante */
+        .lang-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ffffff;
+            border: 1px solid #cccccc;
+            color: #333333;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-family: inherit;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .lang-selector:hover {
+            border-color: #d130eb;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            background: #ffffff;
+            /* Encabezado blanco */
+            border-bottom: 1px solid #eeeeee;
+            position: relative;
+        }
+
+        .logo {
+            width: 130px;
+            height: auto;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 15px rgba(209, 48, 235, 0.3));
+            /* Sombra suavizada para el fondo blanco */
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .slogan {
+            color: #d130eb;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin: 0 0 10px 0;
+            color: #1a1c29;
+        }
+
+        /* Título principal oscuro */
+        h1 span {
+            color: #4a54e1;
+        }
+
+        .hero-text {
+            font-size: 1.2em;
+            color: #555555;
+            /* Texto secundario gris oscuro */
+            max-width: 650px;
+            margin: 0 auto 40px auto;
+        }
+
+        .cta-button {
+            background: linear-gradient(90deg, #d130eb 0%, #4a54e1 100%);
+            color: white;
+            text-decoration: none;
+            padding: 18px 40px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(209, 48, 235, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(209, 48, 235, 0.5);
+        }
+
+        section {
+            padding: 70px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #1a1c29;
+        }
+
+        /* Títulos de sección oscuros */
+        .section-title span {
+            color: #d130eb;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Las tarjetas se mantienen oscuras como pediste */
+        .card {
+            background-color: #1a1c29;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #2a2d42;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s;
+        }
+
+        .card:hover {
+            border-color: #4a54e1;
+        }
+
+        .card h3 {
+            color: #4a54e1;
+            margin-top: 0;
+            font-size: 1.3em;
+        }
+
+        .card p {
+            color: #a0a5b5;
+            margin-bottom: 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Los recuadros de FAQ también se mantienen oscuros */
+        .faq-item {
+            background-color: #1a1c29;
+            border: 1px solid #2a2d42;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 20px;
+        }
+
+        .faq-item h4 {
+            margin: 0 0 10px 0;
+            color: #ffffff;
+            font-size: 1.1em;
+        }
+
+        .faq-item p {
+            margin: 0;
+            color: #a0a5b5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid #eeeeee;
+            color: #888888;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <select class="lang-selector" id="langSwitch" onchange="changeLanguage()">
+            <option value="es">🇪🇸 Español</option>
+            <option value="en">🇺🇸 English</option>
+        </select>
+
+        <img src="logo_kinetic_shield.png" alt="Kinetic Shield Logo" class="logo">
+        <span class="slogan" data-i18n="slogan">Tu privacidad ante todo. Seguridad 100% Offline.</span>
+        <h1>Kinetic <span>Shield</span></h1>
+        <p class="hero-text" data-i18n="hero">IronLock V1.0 es la bóveda digital definitiva para Windows. Sin conexiones
+            a internet, sin suscripciones, sin registros ocultos. Bloquea, cifra y destruye tus archivos con seguridad
+            de grado militar operando exclusivamente en tu hardware.</p>
+        <a href="#" class="cta-button" data-i18n="cta">Obtener Licencia de por Vida - $15 USD</a>
+    </header>
+
+    <section>
+        <!-- El signo de interrogación ahora está dentro de la etiqueta <span> para que herede el color -->
+        <h2 class="section-title"><span data-i18n="why_title1">¿Por qué elegir</span> <span>IronLock?</span></h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3 data-i18n="why_1_title">Aislamiento Total (Zero-Cloud)</h3>
+                <p data-i18n="why_1_desc">A diferencia de la competencia, IronLock no se conecta a internet. No hay
+                    "copias automáticas en la nube" que puedan ser hackeadas, ni telemetría. Tus datos nunca abandonan
+                    tu disco duro.</p>
+            </div>
+            <div class="card">
+                <h3 data-i18n="why_2_title">Pago Único. Sin Suscripciones.</h3>
+                <p data-i18n="why_2_desc">La seguridad no debería ser un alquiler mensual. Paga $15 dólares una sola vez
+                    y obtén una licencia de por vida para la versión Instalable y la versión Portable. Fin de la
+                    historia.</p>
+            </div>
+            <div class="card">
+                <h3 data-i18n="why_3_title">Implementación Transparente</h3>
+                <p data-i18n="why_3_desc">Sin controladores de kernel invasivos que ralentizan tu PC. IronLock utiliza
+                    cifrado AES-256 y permisos nativos de Windows para garantizar protección irrompible sin dañar tu
+                    sistema operativo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title"><span data-i18n="feat_title1">Potentes funciones de</span> <span>seguridad</span></h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3 data-i18n="feat_1_title">Carpetas Protegidas</h3>
+                <p data-i18n="feat_1_desc">Bloquea y oculta carpetas enteras en tu equipo. Ni el Explorador de Windows
+                    ni otros programas podrán acceder a ellas sin tu contraseña maestra.</p>
+            </div>
+            <div class="card">
+                <h3 data-i18n="feat_2_title">Bóvedas Cifradas</h3>
+                <p data-i18n="feat_2_desc">Crea contenedores blindados con encriptación AES-256-GCM. Al mover un archivo
+                    a la bóveda, el original se destruye de forma segura automáticamente.</p>
+            </div>
+            <div class="card">
+                <h3 data-i18n="feat_3_title">Modo Portable (USB)</h3>
+                <p data-i18n="feat_3_desc">Lleva tus archivos cifrados a donde vayas. Ejecuta IronLock directamente
+                    desde un pendrive sin instalar nada y sin dejar rastros en la computadora anfitriona.</p>
+            </div>
+            <div class="card">
+                <h3 data-i18n="feat_4_title">Destrucción Segura</h3>
+                <p data-i18n="feat_4_desc">Elimina archivos de forma permanente e irrecuperable. Nuestro algoritmo
+                    sobrescribe tus datos, imposibilitando su recuperación incluso con software forense.</p>
+            </div>
+            <div class="card">
+                <h3 data-i18n="feat_5_title">Bóveda Señuelo</h3>
+                <p data-i18n="feat_5_desc">Protección contra coacciones físicas. Configura una contraseña falsa que abre
+                    una bóveda de utilería con datos inocuos, manteniendo tus verdaderos secretos ocultos.</p>
+            </div>
+            <div class="card">
+                <h3 data-i18n="feat_6_title">Cartera de Credenciales</h3>
+                <p data-i18n="feat_6_desc">Gestiona y protege tus contraseñas, tarjetas bancarias y notas secretas
+                    directamente dentro de tu bóveda cifrada, aisladas de los gestores tradicionales.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title"><span data-i18n="faq_title1">Preguntas</span> <span>Frecuentes</span></h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <h4 data-i18n="faq_1_q">¿Necesito conexión a internet para usar IronLock?</h4>
+                <p data-i18n="faq_1_a">Absolutamente no. IronLock está diseñado para funcionar 100% offline. No requiere
+                    internet para activarse, bloquear carpetas o cifrar archivos. Tu privacidad está garantizada por
+                    diseño.</p>
+            </div>
+            <div class="faq-item">
+                <h4 data-i18n="faq_2_q">¿Qué pasa si olvido mi contraseña maestra?</h4>
+                <p data-i18n="faq_2_a">Por tu seguridad, IronLock utiliza cifrado real sin "puertas traseras". Si
+                    pierdes la contraseña maestra, es matemáticamente imposible recuperar los datos cifrados de tu
+                    bóveda.</p>
+            </div>
+            <div class="faq-item">
+                <h4 data-i18n="faq_3_q">¿La licencia de $15 dólares me obliga a pagar mensualidades después?</h4>
+                <p data-i18n="faq_3_a">No. Es un pago único. Con tu compra obtienes acceso perpetuo a la versión 1.0
+                    (tanto el Instalador como el Ejecutable Portable) sin renovaciones anuales ni cargos ocultos.</p>
+            </div>
+            <div class="faq-item">
+                <h4 data-i18n="faq_4_q">¿Funciona en Mac o Linux?</h4>
+                <p data-i18n="faq_4_a">Actualmente, IronLock V1.0 está diseñado y optimizado exclusivamente para el
+                    ecosistema Windows (64 bits), aprovechando sus sistemas de permisos nativos para máxima eficacia.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p data-i18n="footer">&copy; 2026 Kinetic Shield. Software independiente de seguridad para Windows.</p>
+    </footer>
+
+    <script>
+        const translations = {
+            es: {
+                slogan: "Tu privacidad ante todo. Seguridad 100% Offline.",
+                hero: "IronLock V1.0 es la bóveda digital definitiva para Windows. Sin conexiones a internet, sin suscripciones, sin registros ocultos. Bloquea, cifra y destruye tus archivos con seguridad de grado militar operando exclusivamente en tu hardware.",
+                cta: "Obtener Licencia de por Vida - $15 USD",
+                why_title1: "¿Por qué elegir",
+                why_1_title: "Aislamiento Total (Zero-Cloud)",
+                why_1_desc: "A diferencia de la competencia, IronLock no se conecta a internet. No hay \"copias automáticas en la nube\" que puedan ser hackeadas, ni telemetría. Tus datos nunca abandonan tu disco duro.",
+                why_2_title: "Pago Único. Sin Suscripciones.",
+                why_2_desc: "La seguridad no debería ser un alquiler mensual. Paga $15 dólares una sola vez y obtén una licencia de por vida para la versión Instalable y la versión Portable. Fin de la historia.",
+                why_3_title: "Implementación Transparente",
+                why_3_desc: "Sin controladores de kernel invasivos que ralentizan tu PC. IronLock utiliza cifrado AES-256 y permisos nativos de Windows para garantizar protección irrompible sin dañar tu sistema operativo.",
+                feat_title1: "Potentes funciones de",
+                feat_1_title: "Carpetas Protegidas",
+                feat_1_desc: "Bloquea y oculta carpetas enteras en tu equipo. Ni el Explorador de Windows ni otros programas podrán acceder a ellas sin tu contraseña maestra.",
+                feat_2_title: "Bóvedas Cifradas",
+                feat_2_desc: "Crea contenedores blindados con encriptación AES-256-GCM. Al mover un archivo a la bóveda, el original se destruye de forma segura automáticamente.",
+                feat_3_title: "Modo Portable (USB)",
+                feat_3_desc: "Lleva tus archivos cifrados a donde vayas. Ejecuta IronLock directamente desde un pendrive sin instalar nada y sin dejar rastros en la computadora anfitriona.",
+                feat_4_title: "Destrucción Segura",
+                feat_4_desc: "Elimina archivos de forma permanente e irrecuperable. Nuestro algoritmo sobrescribe tus datos, imposibilitando su recuperación incluso con software forense.",
+                feat_5_title: "Bóveda Señuelo",
+                feat_5_desc: "Protección contra coacciones físicas. Configura una contraseña falsa que abre una bóveda de utilería con datos inocuos, manteniendo tus verdaderos secretos ocultos.",
+                feat_6_title: "Cartera de Credenciales",
+                feat_6_desc: "Gestiona y protege tus contraseñas, tarjetas bancarias y notas secretas directamente dentro de tu bóveda cifrada, aisladas de los gestores tradicionales.",
+                faq_title1: "Preguntas",
+                faq_1_q: "¿Necesito conexión a internet para usar IronLock?",
+                faq_1_a: "Absolutamente no. IronLock está diseñado para funcionar 100% offline. No requiere internet para activarse, bloquear carpetas o cifrar archivos. Tu privacidad está garantizada por diseño.",
+                faq_2_q: "¿Qué pasa si olvido mi contraseña maestra?",
+                faq_2_a: "Por tu seguridad, IronLock utiliza cifrado real sin \"puertas traseras\". Si pierdes la contraseña maestra, es matemáticamente imposible recuperar los datos cifrados de tu bóveda.",
+                faq_3_q: "¿La licencia de $15 dólares me obliga a pagar mensualidades después?",
+                faq_3_a: "No. Es un pago único. Con tu compra obtienes acceso perpetuo a la versión 1.0 (tanto el Instalador como el Ejecutable Portable) sin renovaciones anuales ni cargos ocultos.",
+                faq_4_q: "¿Funciona en Mac o Linux?",
+                faq_4_a: "Actualmente, IronLock V1.0 está diseñado y optimizado exclusivamente para el ecosistema Windows (64 bits), aprovechando sus sistemas de permisos nativos para máxima eficacia.",
+                footer: "© 2026 Kinetic Shield. Software independiente de seguridad para Windows."
+            },
+            en: {
+                slogan: "Privacy first. 100% Offline Security.",
+                hero: "IronLock V1.0 is the ultimate digital vault for Windows. No internet connections, no subscriptions, no hidden logs. Lock, encrypt, and shred your files with military-grade security operating exclusively on your hardware.",
+                cta: "Get Lifetime License - $15 USD",
+                why_title1: "Why choose",
+                why_1_title: "Total Isolation (Zero-Cloud)",
+                why_1_desc: "Unlike the competition, IronLock doesn't connect to the internet. There are no \"automatic cloud backups\" that can be hacked, nor telemetry. Your data never leaves your hard drive.",
+                why_2_title: "One-Time Payment. No Subscriptions.",
+                why_2_desc: "Security shouldn't be a monthly rent. Pay $15 once and get a lifetime license for both the Installer and Portable versions. End of story.",
+                why_3_title: "Seamless Implementation",
+                why_3_desc: "No invasive kernel drivers that slow down your PC. IronLock uses AES-256 encryption and native Windows permissions to guarantee unbreakable protection without harming your OS.",
+                feat_title1: "Powerful security",
+                feat_1_title: "Protected Folders",
+                feat_1_desc: "Lock and hide entire folders on your computer. Neither Windows Explorer nor other programs will be able to access them without your master password.",
+                feat_2_title: "Encrypted Vaults",
+                feat_2_desc: "Create armored containers with AES-256-GCM encryption. When moving a file to the vault, the original is automatically securely shredded.",
+                feat_3_title: "Portable Mode (USB)",
+                feat_3_desc: "Take your encrypted files wherever you go. Run IronLock directly from a flash drive without installing anything and leaving zero traces on the host computer.",
+                feat_4_title: "Secure Shredding",
+                feat_4_desc: "Permanently and irretrievably delete files. Our algorithm overwrites your data, making recovery impossible even with forensic software.",
+                feat_5_title: "Decoy Vault",
+                feat_5_desc: "Protection against physical coercion. Set a fake password that opens a prop vault with harmless data, keeping your true secrets hidden.",
+                feat_6_title: "Credential Wallet",
+                feat_6_desc: "Manage and protect your passwords, bank cards, and secret notes directly inside your encrypted vault, isolated from traditional cloud managers.",
+                faq_title1: "Frequently Asked",
+                faq_1_q: "Do I need an internet connection to use IronLock?",
+                faq_1_a: "Absolutely not. IronLock is designed to work 100% offline. It doesn't require internet to activate, lock folders, or encrypt files. Your privacy is guaranteed by design.",
+                faq_2_q: "What happens if I forget my master password?",
+                faq_2_a: "For your security, IronLock uses real encryption with no \"backdoors\". If you lose the master password, it is mathematically impossible to recover the encrypted data in your vault.",
+                faq_3_q: "Does the $15 license force me to pay monthly fees later?",
+                faq_3_a: "No. It's a one-time payment. With your purchase, you get perpetual access to version 1.0 (both Installer and Portable Executable) with no annual renewals or hidden fees.",
+                faq_4_q: "Does it work on Mac or Linux?",
+                faq_4_a: "Currently, IronLock V1.0 is exclusively designed and optimized for the Windows ecosystem (64-bit), leveraging its native permission systems for maximum effectiveness.",
+                footer: "© 2026 Kinetic Shield. Independent security software for Windows."
+            }
+        };
+
+        function changeLanguage() {
+            const lang = document.getElementById('langSwitch').value;
+            const elements = document.querySelectorAll('[data-i18n]');
+
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+
+            document.documentElement.lang = lang;
+        }
+    </script>
+</body>
+
+</html>
