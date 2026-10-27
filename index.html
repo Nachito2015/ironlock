@@ -62,7 +62,7 @@
             margin-right: auto;
         }
 
-        /* --- Nueva Sección Premium de Compra (Payhip) --- */
+        /* --- Sección Premium de Compra (Payhip) --- */
         .pricing-container {
             display: flex;
             flex-wrap: wrap;
@@ -121,7 +121,6 @@
             margin-bottom: 20px;
         }
 
-        /* Listas de características por versión */
         .tier-features {
             list-style: none;
             padding: 0;
@@ -178,7 +177,7 @@
             margin-bottom: 0 !important;
         }
 
-        /* --- Estilos Específicos Standard vs PRO --- */
+        /* --- Estilos Standard vs PRO --- */
         .edition { font-size: 1.1rem; color: #888; font-weight: normal; }
         .edition-pro { font-size: 1.1rem; color: #ffd700; text-shadow: 0 0 10px rgba(255,215,0,0.5); }
         .pro-title { color: #ffd700 !important; }
@@ -210,7 +209,6 @@
             white-space: nowrap;
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
-        /* ----------------------------------------------- */
 
         .section-title {
             color: #d326ff;
@@ -244,6 +242,14 @@
             color: #a0aabf;
             font-size: 15px;
             margin: 0;
+        }
+
+        .pro-card {
+            border: 1px solid #ffd700;
+        }
+
+        .pro-card h3 {
+            color: #ffd700;
         }
 
         .faq-container {
@@ -383,6 +389,7 @@
                     <div class="price-tag pro-price">
                         $29.00 <span data-i18n="purchase_price_note">USD (One-time payment)</span>
                     </div>
+                    <!-- Cambia YOUR_NEW_PRO_LINK cuando crees el producto PRO en Payhip -->
                     <a href="https://payhip.com/buy?link=YOUR_NEW_PRO_LINK" target="_blank" class="payhip-buy-button pro-btn" data-i18n="purchase_pro_btn">
                         Acquire PRO License
                     </a>
@@ -414,6 +421,7 @@
             </div>
         </div>
 
+        <!-- Potentes Funciones de Seguridad (Incluyendo PRO) -->
         <h2 class="section-title" data-i18n="feat_main_title">Powerful security features</h2>
         <div class="grid-3">
             <div class="dark-card">
@@ -445,6 +453,19 @@
                 <h3 data-i18n="feat_6_title">Credential Wallet</h3>
                 <p data-i18n="feat_6_desc">Manage and protect your passwords, bank cards, and secret notes directly
                     inside your encrypted vault, isolated from traditional password managers.</p>
+            </div>
+            <!-- NUEVAS FUNCIONES PRO -->
+            <div class="dark-card pro-card">
+                <h3 data-i18n="feat_7_title">★ Anti-Sabotage System (PRO)</h3>
+                <p data-i18n="feat_7_desc">Advanced anti-debugging defense. Automatically detects unauthorized inspection tools, purges cryptographic buffers from RAM, and terminates execution to prevent tampering.</p>
+            </div>
+            <div class="dark-card pro-card">
+                <h3 data-i18n="feat_8_title">★ Strict Integrity Control (PRO)</h3>
+                <p data-i18n="feat_8_desc">Compiled via V8 bytecode and heavy AST code obfuscation. Source code is completely hidden behind machine-level binaries and dead-code injection layers.</p>
+            </div>
+            <div class="dark-card pro-card">
+                <h3 data-i18n="feat_9_title">★ Secure Master Uninstaller (PRO)</h3>
+                <p data-i18n="feat_9_desc">Enterprise-grade removal protocol. Requires master password verification to execute a clean wipe of application data, caches, and protected registry artifacts.</p>
             </div>
         </div>
 
@@ -511,18 +532,24 @@
                 why_3_title: "Implementación Transparente",
                 why_3_desc: "Sin controladores de kernel invasivos que ralentizan tu PC. IronLock Vault utiliza cifrado AES-256 y permisos nativos de Windows para garantizar protección irrompible sin dañar tu sistema operativo.",
                 feat_main_title: "Potentes funciones de seguridad",
-                feat_1_title: "Carpetas Protegidas",
-                feat_1_desc: "Bloquea y oculta carpetas enteras en tu equipo. Ni el Explorador de Windows ni otros programas podrán acceder a ellas sin tu contraseña maestra.",
-                feat_2_title: "Bóvedas Cifradas",
-                feat_2_desc: "Crea contenedores blindados con encriptación AES-256-GCM. Al mover un archivo a la bóveda, el original se destruye de forma segura automáticamente.",
-                feat_3_title: "Modo Portable (USB)",
-                feat_3_desc: "Lleva tus archivos cifrados a donde vayas. Ejecuta IronLock Vault directamente desde un pendrive sin instalar nada y sin dejar rastros en la computadora anfitriona.",
-                feat_4_title: "Destrucción Segura",
-                feat_4_desc: "Elimina archivos de forma permanente e irrecuperable. Nuestro algoritmo sobrescribe tus datos, imposibilitando su recuperación incluso con software forense.",
-                feat_5_title: "Bóveda Señuelo",
-                feat_5_desc: "Protección contra coacciones físicas. Configura una contraseña falsa que abre una bóveda de utilería con datos inocuos, manteniendo tus verdaderos secretos ocultos.",
-                feat_6_title: "Cartera de Credenciales",
-                feat_6_desc: "Gestiona y protege tus contraseñas, tarjetas bancarias y notas secretas directamente dentro de tu bóveda cifrada, aisladas de los gestores tradicionales.",
+                feat_1_title: "Carpetas protegidas",
+                feat_1_desc: "Bloquea y oculta carpetas completas en tu ordenador. Ni el Explorador de Windows ni otros programas podrán acceder a ellas sin tu contraseña maestra.",
+                feat_2_title: "Bóvedas encriptadas",
+                feat_2_desc: "Cree contenedores protegidos con cifrado AES-256-GCM. Al mover un archivo a la bóveda, el original se destruye de forma automática y segura.",
+                feat_3_title: "Modo portátil (USB)",
+                feat_3_desc: "Lleva tus archivos cifrados contigo a donde quiera que vayas. Ejecuta IronLock Vault directamente desde una unidad flash sin instalar nada ni dejar rastros en el ordenador.",
+                feat_4_title: "Destrucción segura",
+                feat_4_desc: "Elimina archivos de forma permanente e irrecuperable. Nuestro algoritmo sobrescribe tus datos, haciendo imposible su recuperación incluso con software forense.",
+                feat_5_title: "Bóveda de señuelos",
+                feat_5_desc: "Protección contra la coacción física. Crea una contraseña falsa que abra una bóveda ficticia con datos inofensivos, manteniendo tus verdaderos secretos ocultos.",
+                feat_6_title: "Cartera de credenciales",
+                feat_6_desc: "Gestiona y protege tus contraseñas, tarjetas bancarias y notas secretas directamente dentro de tu bóveda cifrada, aislada de los gestores de contraseñas tradicionales.",
+                feat_7_title: "★ Sistema Anti-Sabotaje (PRO)",
+                feat_7_desc: "Defensa avanzada anti-depuración. Detecta herramientas de inspección no autorizadas, purga buffers criptográficos de la memoria RAM y finaliza la ejecución para evitar manipulaciones.",
+                feat_8_title: "★ Control de Integridad Estricto (PRO)",
+                feat_8_desc: "Compilado mediante bytecode V8 y ofuscación pesada AST. El código fuente está completamente oculto tras binarios de nivel de máquina y capas de código muerto.",
+                feat_9_title: "★ Desinstalador con Contraseña (PRO)",
+                feat_9_desc: "Protocolo de eliminación de nivel empresarial. Requiere verificación de contraseña maestra para ejecutar un borrado limpio de datos, cachés y registros protegidos.",
                 faq_title: "Preguntas Frecuentes",
                 faq_1_q: "¿Necesito conexión a internet para usar IronLock Vault?",
                 faq_1_a: "Absolutamente no. IronLock Vault está diseñado para funcionar 100% offline. No requiere internet para activarse, bloquear carpetas o cifrar archivos. Tu privacidad está garantizada por diseño.",
@@ -574,6 +601,12 @@
                 feat_5_desc: "Protection against physical coercion. Set up a fake password that opens a dummy vault with harmless data, keeping your true secrets hidden.",
                 feat_6_title: "Credential Wallet",
                 feat_6_desc: "Manage and protect your passwords, bank cards, and secret notes directly inside your encrypted vault, isolated from traditional password managers.",
+                feat_7_title: "★ Anti-Sabotage System (PRO)",
+                feat_7_desc: "Advanced anti-debugging defense. Automatically detects unauthorized inspection tools, purges cryptographic buffers from RAM, and terminates execution to prevent tampering.",
+                feat_8_title: "★ Strict Integrity Control (PRO)",
+                feat_8_desc: "Compiled via V8 bytecode and heavy AST code obfuscation. Source code is completely hidden behind machine-level binaries and dead-code injection layers.",
+                feat_9_title: "★ Secure Master Uninstaller (PRO)",
+                feat_9_desc: "Enterprise-grade removal protocol. Requires master password verification to execute a clean wipe of application data, caches, and protected registry artifacts.",
                 faq_title: "Frequently Asked Questions",
                 faq_1_q: "Do I need an internet connection to use IronLock Vault?",
                 faq_1_a: "Absolutely not. IronLock Vault is designed to work 100% offline. It does not require the internet to activate, lock folders, or encrypt files. Your privacy is guaranteed by design.",
