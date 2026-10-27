@@ -63,23 +63,32 @@
         }
 
         /* --- Nueva Sección Premium de Compra (Payhip) --- */
+        .pricing-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin: 0 auto 60px auto;
+            max-width: 1100px;
+        }
+
         .purchase-section {
             background: #111;
             color: #fff;
             padding: 50px 20px;
             border-radius: 12px;
-            margin: 0 auto 60px auto;
+            flex: 1;
+            min-width: 320px;
+            margin: 0;
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+            text-align: center;
+            position: relative;
             align-items: center;
-            justify-content: space-around;
-            max-width: 900px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
         .purchase-image {
-            flex: 1;
-            min-width: 250px;
             margin: 20px;
             text-align: center;
         }
@@ -91,10 +100,8 @@
         }
 
         .purchase-details {
-            flex: 1;
-            min-width: 300px;
-            text-align: left;
-            margin: 20px;
+            text-align: center;
+            margin: 0 20px 20px 20px;
         }
 
         .purchase-details h2 {
@@ -128,21 +135,18 @@
 
         .payhip-buy-button {
             display: inline-block;
-            background: linear-gradient(90deg, #d326ff, #4a5ee8);
             color: white;
             text-decoration: none;
             padding: 15px 40px;
             font-size: 1.2rem;
             font-weight: bold;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(74, 94, 232, 0.4);
             transition: transform 0.2s, box-shadow 0.2s;
             text-transform: uppercase;
         }
 
         .payhip-buy-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(74, 94, 232, 0.6);
         }
 
         .purchase-note {
@@ -150,6 +154,39 @@
             color: #777 !important;
             margin-top: 15px !important;
             margin-bottom: 0 !important;
+        }
+
+        /* --- Estilos Específicos Standard vs PRO --- */
+        .edition { font-size: 1.2rem; color: #888; font-weight: normal; }
+        .edition-pro { font-size: 1.2rem; color: #ffd700; text-shadow: 0 0 10px rgba(255,215,0,0.5); }
+        .pro-title { color: #ffd700 !important; }
+        
+        .standard-btn { background: linear-gradient(90deg, #4a5ee8, #3b4bc2); box-shadow: 0 4px 15px rgba(74, 94, 232, 0.4); }
+        .standard-btn:hover { box-shadow: 0 6px 20px rgba(74, 94, 232, 0.6); }
+
+        .pro-btn { background: linear-gradient(90deg, #d326ff, #ff26a5); box-shadow: 0 4px 15px rgba(211, 38, 255, 0.4); }
+        .pro-btn:hover { box-shadow: 0 6px 20px rgba(211, 38, 255, 0.6); }
+        
+        .pro-tier {
+            border: 2px solid #d326ff;
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(211, 38, 255, 0.15);
+        }
+
+        .pro-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #d326ff, #ff26a5);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
         /* ----------------------------------------------- */
 
@@ -269,28 +306,54 @@
             your hardware.
         </p>
 
-        <!-- Nueva sección de Compra Integrada -->
-        <div class="purchase-section">
-            <div class="purchase-image">
-                <!-- Asegúrate de que el nombre del archivo de la caja coincida con el que guardaste -->
-                <img src="IronLock_Vault_Box.jpg" alt="IronLock Vault 3D Box">
-            </div>
-            <div class="purchase-details">
-                <h2>IronLock Vault</h2>
-                <p data-i18n="purchase_desc">
-                    Get the complete 100% offline security suite. Includes standard installer, portable version for USB drives, and official manuals. Protect your data today without subscriptions or telemetry.
-                </p>
-                <div class="price-tag">
-                    $15.00 <span data-i18n="purchase_price_note">USD (One-time payment)</span>
+        <!-- Sección de Compra Integrada: Niveles Standard y PRO -->
+        <div class="pricing-container">
+            
+            <!-- TARJETA STANDARD -->
+            <div class="purchase-section standard-tier">
+                <div class="purchase-image">
+                    <img src="IronLock_Vault_Box.jpg" alt="IronLock Vault Standard Box">
                 </div>
-                <!-- Enlace directo al checkout de Payhip -->
-                <a href="https://payhip.com/buy?link=upmKy" target="_blank" class="payhip-buy-button" data-i18n="purchase_btn">
-                    Acquire License
-                </a>
-                <p class="purchase-note" data-i18n="purchase_req">
-                    * Compatible with Windows 10 & 11 (64-bit). Immediate digital delivery.
-                </p>
+                <div class="purchase-details">
+                    <h2>IronLock Vault <span class="edition">STANDARD</span></h2>
+                    <p data-i18n="purchase_desc">
+                        Get the complete 100% offline security suite. Includes standard installer, portable version for USB drives, and official manuals. Protect your data today without subscriptions or telemetry.
+                    </p>
+                    <div class="price-tag">
+                        $15.00 <span data-i18n="purchase_price_note">USD (One-time payment)</span>
+                    </div>
+                    <a href="https://payhip.com/buy?link=tmTzX" target="_blank" class="payhip-buy-button standard-btn" data-i18n="purchase_btn">
+                        Acquire Standard License
+                    </a>
+                    <p class="purchase-note" data-i18n="purchase_req">
+                        * Compatible with Windows 10 & 11 (64-bit). Immediate digital delivery.
+                    </p>
+                </div>
             </div>
+
+            <!-- TARJETA PRO (Destacada) -->
+            <div class="purchase-section pro-tier">
+                <div class="pro-badge" data-i18n="pro_badge">MOST POPULAR / MAX SECURITY</div>
+                <div class="purchase-image">
+                    <img src="IronLock_Vault_Pro_Box.png" alt="IronLock Vault PRO Box">
+                </div>
+                <div class="purchase-details">
+                    <h2 class="pro-title">IronLock Vault <span class="edition-pro">PRO</span></h2>
+                    <p data-i18n="purchase_pro_desc">
+                        The ultimate corporate-grade shield. Includes everything in Standard PLUS: Anti-Sabotage System, Strict Integrity Control, and Secure Master Password Uninstaller.
+                    </p>
+                    <div class="price-tag pro-price">
+                        $29.00 <span data-i18n="purchase_price_note">USD (One-time payment)</span>
+                    </div>
+                    <a href="https://payhip.com/buy?link=YOUR_NEW_PRO_LINK" target="_blank" class="payhip-buy-button pro-btn" data-i18n="purchase_pro_btn">
+                        Acquire PRO License
+                    </a>
+                    <p class="purchase-note" data-i18n="purchase_req">
+                        * Compatible with Windows 10 & 11 (64-bit). Immediate digital delivery.
+                    </p>
+                </div>
+            </div>
+
         </div>
 
         <h2 class="section-title" data-i18n="why_title">Why choose IronLock Vault?</h2>
@@ -361,9 +424,9 @@
                 </p>
             </div>
             <div class="faq-card">
-                <h3 data-i18n="faq_3_q">Does the $15 license force me to pay monthly fees later?</h3>
+                <h3 data-i18n="faq_3_q">Does the license force me to pay monthly fees later?</h3>
                 <p data-i18n="faq_3_a">No. It is a one-time payment. With your purchase, you get perpetual access to
-                    version 1.0 (both the Installer and Portable Executable) with no annual renewals or hidden fees.</p>
+                    your chosen version (both the Installer and Portable Executable) with no annual renewals or hidden fees.</p>
             </div>
             <div class="faq-card">
                 <h3 data-i18n="faq_4_q">Does it work on Mac or Linux?</h3>
@@ -389,13 +452,16 @@
                 main_desc: "IronLock Vault V1.0 es la bóveda digital definitiva para Windows. Sin conexiones a internet, sin suscripciones, sin registros ocultos. Bloquea, cifra y destruye tus archivos con seguridad de grado militar operando exclusivamente en tu hardware.",
                 purchase_desc: "Consigue la suite completa de seguridad 100% offline. El paquete incluye el instalador tradicional, la versión portable para USB, y los manuales oficiales. Protege tus datos hoy mismo sin suscripciones ni telemetría.",
                 purchase_price_note: "USD (Pago único)",
-                purchase_btn: "Adquirir Licencia",
+                purchase_btn: "Adquirir Licencia Standard",
+                pro_badge: "MÁS POPULAR / SEGURIDAD MÁXIMA",
+                purchase_pro_desc: "El escudo definitivo de grado corporativo. Incluye todo lo de Standard MÁS: Sistema Anti-Sabotaje, Control de Integridad Estricto, y Desinstalador Seguro con Contraseña Maestra.",
+                purchase_pro_btn: "Adquirir Licencia PRO",
                 purchase_req: "* Compatible con Windows 10 y 11 (64 bits). Entrega digital inmediata.",
                 why_title: "¿Por qué elegir IronLock Vault?",
                 why_1_title: "Aislamiento Total (Zero-Cloud)",
                 why_1_desc: "A diferencia de la competencia, IronLock Vault no se conecta a internet. No hay \"copias automáticas en la nube\" que puedan ser hackeadas, ni telemetría. Tus datos nunca abandonan tu disco duro.",
                 why_2_title: "Pago Único. Sin Suscripciones.",
-                why_2_desc: "La seguridad no debería ser un alquiler mensual. Paga $15 dólares una sola vez y obtén una licencia de por vida para la versión Instalable y la versión Portable. Fin de la historia.",
+                why_2_desc: "La seguridad no debería ser un alquiler mensual. Haz un pago único y obtén una licencia de por vida para la versión Instalable y la versión Portable. Fin de la historia.",
                 why_3_title: "Implementación Transparente",
                 why_3_desc: "Sin controladores de kernel invasivos que ralentizan tu PC. IronLock Vault utiliza cifrado AES-256 y permisos nativos de Windows para garantizar protección irrompible sin dañar tu sistema operativo.",
                 feat_main_title: "Potentes funciones de seguridad",
@@ -416,8 +482,8 @@
                 faq_1_a: "Absolutamente no. IronLock Vault está diseñado para funcionar 100% offline. No requiere internet para activarse, bloquear carpetas o cifrar archivos. Tu privacidad está garantizada por diseño.",
                 faq_2_q: "¿Qué pasa si olvido mi contraseña maestra?",
                 faq_2_a: "Por tu seguridad, IronLock Vault utiliza cifrado real sin \"puertas traseras\". Si pierdes la contraseña maestra, es matemáticamente imposible recuperar los datos cifrados de tu bóveda.",
-                faq_3_q: "¿La licencia de $15 dólares me obliga a pagar mensualidades después?",
-                faq_3_a: "No. Es un pago único. Con tu compra obtienes acceso perpetuo a la versión 1.0 (tanto el Instalador como el Ejecutable Portable) sin renovaciones anuales ni cargos ocultos.",
+                faq_3_q: "¿La licencia me obliga a pagar mensualidades después?",
+                faq_3_a: "No. Es un pago único. Con tu compra obtienes acceso perpetuo a la versión elegida (tanto el Instalador como el Ejecutable Portable) sin renovaciones anuales ni cargos ocultos.",
                 faq_4_q: "¿Funciona en Mac o Linux?",
                 faq_4_a: "Actualmente, IronLock Vault V1.0 está diseñado y optimizado exclusivamente para el ecosistema Windows (64 bits), aprovechando sus sistemas de permisos nativos para máxima eficacia.",
                 footer_title: "Sobre IronLock Vault",
@@ -429,13 +495,16 @@
                 main_desc: "IronLock Vault V1.0 is the ultimate digital vault for Windows. No internet connections, no subscriptions, no hidden tracking. Lock, encrypt, and shred your files with military-grade security operating exclusively on your hardware.",
                 purchase_desc: "Get the complete 100% offline security suite. Includes standard installer, portable version for USB drives, and official manuals. Protect your data today without subscriptions or telemetry.",
                 purchase_price_note: "USD (One-time payment)",
-                purchase_btn: "Acquire License",
+                purchase_btn: "Acquire Standard License",
+                pro_badge: "MOST POPULAR / MAX SECURITY",
+                purchase_pro_desc: "The ultimate corporate-grade shield. Includes everything in Standard PLUS: Anti-Sabotage System, Strict Integrity Control, and Secure Master Password Uninstaller.",
+                purchase_pro_btn: "Acquire PRO License",
                 purchase_req: "* Compatible with Windows 10 & 11 (64-bit). Immediate digital delivery.",
                 why_title: "Why choose IronLock Vault?",
                 why_1_title: "Total Isolation (Zero-Cloud)",
                 why_1_desc: "Unlike the competition, IronLock Vault does not connect to the internet. There are no hackable \"automatic cloud backups\" or telemetry. Your data never leaves your hard drive.",
                 why_2_title: "One-Time Payment. No Subscriptions.",
-                why_2_desc: "Security shouldn't be a monthly rental. Pay $15 once and get a lifetime license for both the Installable and Portable versions. End of story.",
+                why_2_desc: "Security shouldn't be a monthly rental. Make a one-time payment and get a lifetime license for both the Installable and Portable versions. End of story.",
                 why_3_title: "Transparent Implementation",
                 why_3_desc: "No invasive kernel drivers slowing down your PC. IronLock Vault uses AES-256 encryption and native Windows permissions to guarantee unbreakable protection without harming your OS.",
                 feat_main_title: "Powerful security features",
@@ -456,8 +525,8 @@
                 faq_1_a: "Absolutely not. IronLock Vault is designed to work 100% offline. It does not require the internet to activate, lock folders, or encrypt files. Your privacy is guaranteed by design.",
                 faq_2_q: "What happens if I forget my master password?",
                 faq_2_a: "For your security, IronLock Vault uses real encryption with no \"backdoors\". If you lose the master password, it is mathematically impossible to recover the encrypted data from your vault.",
-                faq_3_q: "Does the $15 license force me to pay monthly fees later?",
-                faq_3_a: "No. It is a one-time payment. With your purchase, you get perpetual access to version 1.0 (both the Installer and Portable Executable) with no annual renewals or hidden fees.",
+                faq_3_q: "Does the license force me to pay monthly fees later?",
+                faq_3_a: "No. It is a one-time payment. With your purchase, you get perpetual access to your chosen version (both the Installer and Portable Executable) with no annual renewals or hidden fees.",
                 faq_4_q: "Does it work on Mac or Linux?",
                 faq_4_a: "Currently, IronLock Vault V1.0 is designed and optimized exclusively for the Windows (64-bit) ecosystem, leveraging its native permission systems for maximum effectiveness.",
                 footer_title: "About IronLock Vault",
