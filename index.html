@@ -252,6 +252,13 @@
             color: #ffd700;
         }
 
+        /* Centrar la última tarjeta PRO en pantallas de 3 columnas */
+        @media (min-width: 900px) {
+            .grid-3 .pro-card:last-child {
+                grid-column: 2 / span 1;
+            }
+        }
+
         .faq-container {
             display: flex;
             flex-direction: column;
@@ -617,7 +624,7 @@
                 feat_9_title: "★ Secure Master Uninstaller (PRO)",
                 feat_9_desc: "Enterprise-grade removal protocol. Requires master password verification to execute a clean wipe of application data, caches, and protected registry artifacts.",
                 feat_10_title: "★ Autonomous .EXE Exporter (PRO)",
-                feat_10_desc: "Package encrypted files into proprietary extensions or standalone self-decrypting executables (.exe). Share safely with third parties; they open securely with the password on the receiver's end.",
+                feat_10_desc: "Package encrypted files into proprietary formats or standalone self-decrypting executables (.exe). Share safely with third parties; they open securely with the password on the receiver's end.",
                 faq_title: "Frequently Asked Questions",
                 faq_1_q: "Do I need an internet connection to use IronLock Vault?",
                 faq_1_a: "Absolutely not. IronLock Vault is designed to work 100% offline. It does not require the internet to activate, lock folders, or encrypt files. Your privacy is guaranteed by design.",
