@@ -62,6 +62,22 @@
             margin-right: auto;
         }
 
+        /* --- Reproductor de Video --- */
+        .video-wrapper {
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(211, 38, 255, 0.15);
+            border: 1px solid #333;
+            background: #000;
+        }
+        
+        .video-wrapper video {
+            width: 100%;
+            display: block;
+        }
+
         /* --- Sección Premium de Compra (Payhip) --- */
         .pricing-container {
             display: flex;
@@ -340,6 +356,14 @@
             hidden tracking. Lock, encrypt, and shred your files with military-grade security operating exclusively on
             your hardware.
         </p>
+
+        <!-- Reproductor de Video Dinámico -->
+        <div class="video-wrapper">
+            <video id="promoVideo" controls poster="IronLock_Vault_Box.jpg">
+                <source src="VideoIngles.mp4" type="video/mp4">
+                Tu navegador no soporta el reproductor de video.
+            </video>
+        </div>
 
         <!-- Sección de Compra Integrada: Niveles Standard y PRO -->
         <div class="pricing-container">
@@ -653,6 +677,12 @@
             const selectEl = document.getElementById('langSelect');
             if (selectEl) {
                 selectEl.value = lang;
+            }
+
+            // Cambiar el video según el idioma
+            const videoPlayer = document.getElementById('promoVideo');
+            if (videoPlayer) {
+                videoPlayer.src = lang === 'es' ? 'VideoEspañol.mp4' : 'VideoIngles.mp4';
             }
         }
 
