@@ -123,9 +123,11 @@
             text-align: center;
         }
 
-        .purchase-image img {
+        /* Agregado video a los estilos para que coincida con la imagen */
+        .purchase-image img, .purchase-image video {
             width: 100%;
             max-width: 280px;
+            border-radius: 8px;
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.7));
         }
 
@@ -480,9 +482,14 @@
             <!-- TARJETA OPTIMIZER -->
             <div class="purchase-section opt-tier">
                 <div class="opt-badge" data-i18n="opt_badge">NEW RELEASE</div>
+                
+                <!-- === AQUI ESTÁ EL VIDEO REEMPLAZANDO A LA IMAGEN === -->
                 <div class="purchase-image">
-                    <img src="ironlock-optimizer-box-en.jpg" alt="IronLock Optimizer Box">
+                    <video autoplay loop muted playsinline>
+                        <source src="IronLock Optimizer-Spot-D.mp4" type="video/mp4">
+                    </video>
                 </div>
+                
                 <div class="purchase-details">
                     <h2 class="opt-title">IronLock <span class="edition-opt">OPTIMIZER</span></h2>
                     <p data-i18n="opt_purchase_desc">
@@ -500,7 +507,6 @@
                     <div class="price-tag">
                         $9.00 <span data-i18n="purchase_price_note">USD (One-time payment)</span>
                     </div>
-                    <!-- ENLACE CORREGIDO -->
                     <a href="https://payhip.com/b/tIpLB" target="_blank" class="payhip-buy-button opt-btn" data-i18n="opt_purchase_btn">
                         Acquire Optimizer License
                     </a>
