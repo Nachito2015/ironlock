@@ -281,6 +281,23 @@
             margin-bottom: 40px;
         }
 
+        /* Grid específico de 4 elementos PRO para que queden simétricos 2x2 */
+        .grid-pro-4 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 768px) {
+            .grid-pro-4 {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .dark-card {
             background: #1a1c29;
             border-radius: 12px;
@@ -436,14 +453,14 @@
                 <div class="purchase-details">
                     <h2 class="pro-title">IronLock Vault <span class="edition-pro">PRO 2.0</span></h2>
                     <p data-i18n="purchase_pro_desc">
-                        The ultimate corporate-grade shield. Includes everything in Standard PLUS: USB DLP Sentinel, AES-256 Forensic Audit Logs, Anti-Sabotage System, and Proprietary .EXE Package Exporter.
+                        The ultimate corporate-grade shield. Includes everything in Standard PLUS: USB DLP Sentinel, AES-256 Forensic Audit Logs, Strict Integrity Control, and Proprietary .EXE Package Exporter.
                     </p>
 
                     <ul class="tier-features pro-features">
                         <li data-i18n="pro_f1">✓ Todo lo incluido en Standard</li>
                         <li data-i18n="pro_f2">★ Escudo USB & Centinela DLP (Anti-Robo de Datos)</li>
                         <li data-i18n="pro_f3">★ Registro de Auditoría Forense Cifrado (AES-256)</li>
-                        <li data-i18n="pro_f4">★ Control de Integridad Estricto (V8 Bytecode)</li>
+                        <li data-i18n="pro_f4">★ Control de Integridad Estricto (Anti-Borrado/Modificación)</li>
                         <li data-i18n="pro_f5">★ Empaquetador de Archivos Propietarios (.EXE Autónomo)</li>
                     </ul>
 
@@ -558,22 +575,25 @@
                 <p data-i18n="feat_6_desc">Manage and protect your passwords, bank cards, and secret notes directly
                     inside your encrypted vault, isolated from traditional password managers.</p>
             </div>
-            
+        </div>
+
+        <!-- GRILLA PRO CENTRADA DE 4 ELEMENTOS (2x2 simétrico) -->
+        <div class="grid-pro-4">
             <div class="dark-card pro-card">
                 <h3 data-i18n="feat_7_title">★ USB Shield & DLP Sentinel (PRO)</h3>
-                <p data-i18n="feat_7_desc">Endpoint data loss prevention. Instantly block unauthorized file writing to external USB drives (Read-Only mode) and track hardware connections.</p>
+                <p data-i18n="feat_7_desc">Endpoint data loss prevention. Instantly block unauthorized file writing to external USB drives (Read-Only mode) and protect your hardware ports.</p>
             </div>
             <div class="dark-card pro-card">
                 <h3 data-i18n="feat_8_title">★ Encrypted Audit Log (PRO)</h3>
                 <p data-i18n="feat_8_desc">Forensic tracking of external hardware events. All connection logs are securely encrypted in AES-256 (`audit_log.enc`) to prevent tampering.</p>
             </div>
             <div class="dark-card pro-card">
-                <h3 data-i18n="feat_9_title">★ Strict Integrity & Anti-Sabotage (PRO)</h3>
-                <p data-i18n="feat_9_desc">Compiled via V8 bytecode and anti-debugging protection. Purges cryptographic buffers from RAM and hides source code behind machine binaries.</p>
+                <h3 data-i18n="feat_9_title">★ Strict Integrity Control (PRO)</h3>
+                <p data-i18n="feat_9_desc">Strict read-only protection at native Windows level (NTFS ACLs + System Attributes). Freezes and immobilizes vital files and folders, preventing deletion, modification, or renaming.</p>
             </div>
             <div class="dark-card pro-card">
-                <h3 data-i18n="feat_10_title">★ Secure .EXE Exporter (PRO)</h3>
-                <p data-i18n="feat_10_desc">Package encrypted files into proprietary formats or standalone self-decrypting executables (.exe). Share safely with third parties.</p>
+                <h3 data-i18n="feat_10_title">★ Autonomous .EXE Exporter (PRO)</h3>
+                <p data-i18n="feat_10_desc">Package encrypted files into proprietary formats or standalone self-decrypting executables (.exe) to share securely with third parties.</p>
             </div>
         </div>
 
@@ -617,7 +637,7 @@
                 subtitle_top: "TU PRIVACIDAD ANTE TODO. SEGURIDAD 100% OFFLINE.",
                 main_desc: "IronLock Vault V2.0 es la bóveda digital y suite de seguridad de endpoints definitiva para Windows. Sin conexiones a internet, sin suscripciones, sin registros ocultos. Bloquea, cifra, destruye y protege tus puertos de hardware de forma 100% offline.",
                 purchase_desc: "Consigue la suite completa de seguridad 100% offline. El paquete incluye el instalador tradicional, la versión portable para USB, y los manuales oficiales. Protege tus datos hoy mismo sin suscripciones ni telemetría.",
-                purchase_pro_desc: "El escudo definitivo de grado corporativo. Incluye todo lo de Standard MÁS: Escudo USB & Centinela DLP, Registros Forenses Cifrados, Sistema Anti-Sabotaje y Exportador .EXE Propietario.",
+                purchase_pro_desc: "El escudo definitivo de grado corporativo. Incluye todo lo de Standard MÁS: Escudo USB & Centinela DLP, Registros Forenses Cifrados, Control de Integridad y Exportador .EXE Propietario.",
                 std_f1: "✓ Encriptación AES-256 100% Offline",
                 std_f2: "✓ Modo Portable USB e Instalador",
                 std_f3: "✓ Bóvedas cifradas y Destrucción Segura",
@@ -625,7 +645,7 @@
                 pro_f1: "✓ Todo lo incluido en Standard",
                 pro_f2: "★ Escudo USB & Centinela DLP (Anti-Robo de Datos)",
                 pro_f3: "★ Registro de Auditoría Forense Cifrado (AES-256)",
-                pro_f4: "★ Control de Integridad Estricto (V8 Bytecode)",
+                pro_f4: "★ Control de Integridad Estricto (Anti-Borrado/Modificación)",
                 pro_f5: "★ Empaquetador de Archivos Propietarios (.EXE Autónomo)",
                 purchase_price_note: "USD (Pago único)",
                 purchase_btn: "Adquirir Licencia Standard",
@@ -668,8 +688,8 @@
                 feat_7_desc: "Prevención de pérdida de datos en endpoints. Bloquea al instante la escritura no autorizada hacia pendrives externos (modo solo lectura) y protege tus equipos.",
                 feat_8_title: "★ Registro de Auditoría Cifrado (PRO)",
                 feat_8_desc: "Seguimiento forense de eventos de hardware. Todos los registros de conexión se guardan cifrados con AES-256 en `audit_log.enc` para evitar manipulaciones.",
-                feat_9_title: "★ Control de Integridad y Anti-Sabotaje (PRO)",
-                feat_9_desc: "Compilado mediante bytecode V8 y ofuscación pesada. Detecta herramientas de inspección, purga buffers de RAM y oculta el código fuente bajo binarios seguros.",
+                feat_9_title: "★ Control de Integridad Estricto (PRO)",
+                feat_9_desc: "Protección estricta de solo lectura a nivel nativo de Windows (ACLs NTFS + Atributos del Sistema). Inmoviliza y 'congela' archivos y carpetas vitales, impidiendo su eliminación o modificación.",
                 feat_10_title: "★ Exportador de .EXE Autónomo (PRO)",
                 feat_10_desc: "Empaqueta archivos cifrados bajo extensiones propietarias o expórtalos como ejecutables (.exe) autónomos para compartirlos de forma segura con terceros.",
 
@@ -690,7 +710,7 @@
                 subtitle_top: "PRIVACY FIRST. 100% OFFLINE SECURITY.",
                 main_desc: "IronLock Vault V2.0 is the ultimate digital vault and endpoint security suite for Windows. No internet connections, no subscriptions, no hidden tracking. Lock, encrypt, shred, and protect your hardware ports exclusively offline.",
                 purchase_desc: "Get the complete 100% offline security suite. Includes standard installer, portable version for USB drives, and official manuals. Protect your data today without subscriptions or telemetry.",
-                purchase_pro_desc: "The ultimate corporate-grade shield. Includes everything in Standard PLUS: USB DLP Sentinel, AES-256 Forensic Audit Logs, Anti-Sabotage System, and Proprietary .EXE Package Exporter.",
+                purchase_pro_desc: "The ultimate corporate-grade shield. Includes everything in Standard PLUS: USB DLP Sentinel, AES-256 Forensic Audit Logs, Strict Integrity Control, and Proprietary .EXE Package Exporter.",
                 std_f1: "✓ 100% Offline AES-256 Encryption",
                 std_f2: "✓ USB Portable Mode & Installer",
                 std_f3: "✓ Encrypted Vaults & Secure Shredder",
@@ -698,7 +718,7 @@
                 pro_f1: "✓ Everything included in Standard",
                 pro_f2: "★ USB Shield & DLP Sentinel (Anti-Data Theft)",
                 pro_f3: "★ Encrypted Forensic Audit Log (AES-256)",
-                pro_f4: "★ Strict Integrity Control (V8 Bytecode)",
+                pro_f4: "★ Strict Integrity Control (Anti-Deletion/Modification)",
                 pro_f5: "★ Proprietary File & Autonomous .EXE Exporter",
                 purchase_price_note: "USD (One-time payment)",
                 purchase_btn: "Acquire Standard License",
@@ -741,10 +761,10 @@
                 feat_7_desc: "Endpoint data loss prevention. Instantly block unauthorized file writing to external USB drives (Read-Only mode) and protect your hardware ports.",
                 feat_8_title: "★ Encrypted Audit Log (PRO)",
                 feat_8_desc: "Forensic tracking of external hardware events. All connection logs are securely encrypted in AES-256 (`audit_log.enc`) to prevent tampering.",
-                feat_9_title: "★ Strict Integrity & Anti-Sabotage (PRO)",
-                feat_9_desc: "Compiled via V8 bytecode and anti-debugging protection. Purges cryptographic buffers from RAM and hides source code behind machine binaries.",
+                feat_9_title: "★ Strict Integrity Control (PRO)",
+                feat_9_desc: "Strict read-only protection at native Windows level (NTFS ACLs + System Attributes). Freezes and immobilizes vital files and folders, preventing deletion, modification, or renaming.",
                 feat_10_title: "★ Autonomous .EXE Exporter (PRO)",
-                feat_10_desc: "Package encrypted files into proprietary formats or standalone self-decrypting executables (.exe). Share safely with third parties.",
+                feat_10_desc: "Package encrypted files into proprietary formats or standalone self-decrypting executables (.exe) to share securely with third parties.",
 
                 faq_title: "Frequently Asked Questions",
                 faq_1_q: "Do I need an internet connection to use IronLock?",
