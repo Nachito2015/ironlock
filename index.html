@@ -123,7 +123,6 @@
             text-align: center;
         }
 
-        /* Agregado video a los estilos para que coincida con la imagen */
         .purchase-image img, .purchase-image video {
             width: 100%;
             max-width: 280px;
@@ -234,7 +233,7 @@
         .opt-tier {
             border: 2px solid #00e676;
             box-shadow: 0 15px 40px rgba(0, 230, 118, 0.15);
-            max-width: 450px; /* Centrado para un solo producto */
+            max-width: 450px;
         }
 
         .pro-badge {
@@ -305,12 +304,6 @@
 
         .pro-card { border: 1px solid #ffd700; }
         .pro-card h3 { color: #ffd700; }
-
-        @media (min-width: 900px) {
-            .grid-3 .pro-card:last-child {
-                grid-column: 2 / span 1;
-            }
-        }
 
         .faq-container {
             display: flex;
@@ -387,15 +380,13 @@
         <img src="Logo.png" alt="IronLock Logo" class="logo">
 
         <!-- ========================================== -->
-        <!-- SECCIÓN: IRONLOCK VAULT                    -->
+        <!-- SECCIÓN: IRONLOCK VAULT                     -->
         <!-- ========================================== -->
         <h1 class="product-family-title title-vault">IronLock Vault</h1>
         <div class="subtitle-top" data-i18n="subtitle_top">PRIVACY FIRST. 100% OFFLINE SECURITY.</div>
 
         <p class="description" data-i18n="main_desc">
-            IronLock Vault V1.0 is the ultimate digital vault for Windows. No internet connections, no subscriptions, no
-            hidden tracking. Lock, encrypt, and shred your files with military-grade security operating exclusively on
-            your hardware.
+            IronLock Vault V2.0 is the ultimate digital vault and endpoint security suite for Windows. No internet connections, no subscriptions, no hidden tracking. Lock, encrypt, shred, and protect your hardware ports exclusively offline.
         </p>
 
         <div class="video-wrapper">
@@ -443,16 +434,16 @@
                     <img src="IronLock_Vault_Pro_Box.png" alt="IronLock Vault PRO Box">
                 </div>
                 <div class="purchase-details">
-                    <h2 class="pro-title">IronLock Vault <span class="edition-pro">PRO</span></h2>
+                    <h2 class="pro-title">IronLock Vault <span class="edition-pro">PRO 2.0</span></h2>
                     <p data-i18n="purchase_pro_desc">
-                        The ultimate corporate-grade shield. Includes everything in Standard PLUS: Anti-Sabotage System, Strict Integrity Control, Secure Uninstaller, and Proprietary .EXE Package Exporter.
+                        The ultimate corporate-grade shield. Includes everything in Standard PLUS: USB DLP Sentinel, AES-256 Forensic Audit Logs, Anti-Sabotage System, and Proprietary .EXE Package Exporter.
                     </p>
 
                     <ul class="tier-features pro-features">
                         <li data-i18n="pro_f1">✓ Todo lo incluido en Standard</li>
-                        <li data-i18n="pro_f2">★ Sistema Anti-Sabotaje y Anti-Debug</li>
-                        <li data-i18n="pro_f3">★ Control de Integridad Estricto (V8 Bytecode)</li>
-                        <li data-i18n="pro_f4">★ Desinstalador Seguro con Contraseña Maestra</li>
+                        <li data-i18n="pro_f2">★ Escudo USB & Centinela DLP (Anti-Robo de Datos)</li>
+                        <li data-i18n="pro_f3">★ Registro de Auditoría Forense Cifrado (AES-256)</li>
+                        <li data-i18n="pro_f4">★ Control de Integridad Estricto (V8 Bytecode)</li>
                         <li data-i18n="pro_f5">★ Empaquetador de Archivos Propietarios (.EXE Autónomo)</li>
                     </ul>
 
@@ -470,7 +461,7 @@
         </div>
 
         <!-- ========================================== -->
-        <!-- SECCIÓN NUEVA: IRONLOCK OPTIMIZER          -->
+        <!-- SECCIÓN: IRONLOCK OPTIMIZER                -->
         <!-- ========================================== -->
         <h1 class="product-family-title title-opt">IronLock Optimizer</h1>
         
@@ -483,7 +474,6 @@
             <div class="purchase-section opt-tier">
                 <div class="opt-badge" data-i18n="opt_badge">NEW RELEASE</div>
                 
-                <!-- === AQUI ESTÁ EL VIDEO REEMPLAZANDO A LA IMAGEN === -->
                 <div class="purchase-image">
                     <video autoplay loop muted playsinline>
                         <source src="IronLock Optimizer-Spot-D.mp4" type="video/mp4">
@@ -570,20 +560,20 @@
             </div>
             
             <div class="dark-card pro-card">
-                <h3 data-i18n="feat_7_title">★ Anti-Sabotage System (PRO)</h3>
-                <p data-i18n="feat_7_desc">Advanced anti-debugging defense. Automatically detects unauthorized inspection tools, purges cryptographic buffers from RAM, and terminates execution to prevent tampering.</p>
+                <h3 data-i18n="feat_7_title">★ USB Shield & DLP Sentinel (PRO)</h3>
+                <p data-i18n="feat_7_desc">Endpoint data loss prevention. Instantly block unauthorized file writing to external USB drives (Read-Only mode) and track hardware connections.</p>
             </div>
             <div class="dark-card pro-card">
-                <h3 data-i18n="feat_8_title">★ Strict Integrity Control (PRO)</h3>
-                <p data-i18n="feat_8_desc">Compiled via V8 bytecode and heavy AST code obfuscation. Source code is completely hidden behind machine-level binaries and dead-code injection layers.</p>
+                <h3 data-i18n="feat_8_title">★ Encrypted Audit Log (PRO)</h3>
+                <p data-i18n="feat_8_desc">Forensic tracking of external hardware events. All connection logs are securely encrypted in AES-256 (`audit_log.enc`) to prevent tampering.</p>
             </div>
             <div class="dark-card pro-card">
-                <h3 data-i18n="feat_9_title">★ Secure Master Uninstaller (PRO)</h3>
-                <p data-i18n="feat_9_desc">Enterprise-grade removal protocol. Requires master password verification to execute a clean wipe of application data, caches, and protected registry artifacts.</p>
+                <h3 data-i18n="feat_9_title">★ Strict Integrity & Anti-Sabotage (PRO)</h3>
+                <p data-i18n="feat_9_desc">Compiled via V8 bytecode and anti-debugging protection. Purges cryptographic buffers from RAM and hides source code behind machine binaries.</p>
             </div>
             <div class="dark-card pro-card">
                 <h3 data-i18n="feat_10_title">★ Secure .EXE Exporter (PRO)</h3>
-                <p data-i18n="feat_10_desc">Package encrypted files into proprietary formats or standalone self-decrypting executables (.exe). Share safely with third parties; they open securely with the password on the receiver's end.</p>
+                <p data-i18n="feat_10_desc">Package encrypted files into proprietary formats or standalone self-decrypting executables (.exe). Share safely with third parties.</p>
             </div>
         </div>
 
@@ -597,8 +587,7 @@
             <div class="faq-card">
                 <h3 data-i18n="faq_2_q">What happens if I forget my Vault master password?</h3>
                 <p data-i18n="faq_2_a">For your security, IronLock Vault uses real encryption with no "backdoors". If you lose
-                    the master password, it is mathematically impossible to recover the encrypted data from your vault.
-                </p>
+                    the master password, it is mathematically impossible to recover the encrypted data from your vault.</p>
             </div>
             <div class="faq-card">
                 <h3 data-i18n="faq_3_q">Does the license force me to pay monthly fees later?</h3>
@@ -626,25 +615,24 @@
         const translations = {
             es: {
                 subtitle_top: "TU PRIVACIDAD ANTE TODO. SEGURIDAD 100% OFFLINE.",
-                main_desc: "IronLock Vault V1.0 es la bóveda digital definitiva para Windows. Sin conexiones a internet, sin suscripciones, sin registros ocultos. Bloquea, cifra y destruye tus archivos con seguridad de grado militar operando exclusivamente en tu hardware.",
+                main_desc: "IronLock Vault V2.0 es la bóveda digital y suite de seguridad de endpoints definitiva para Windows. Sin conexiones a internet, sin suscripciones, sin registros ocultos. Bloquea, cifra, destruye y protege tus puertos de hardware de forma 100% offline.",
                 purchase_desc: "Consigue la suite completa de seguridad 100% offline. El paquete incluye el instalador tradicional, la versión portable para USB, y los manuales oficiales. Protege tus datos hoy mismo sin suscripciones ni telemetría.",
-                purchase_pro_desc: "El escudo definitivo de grado corporativo. Incluye todo lo de Standard MÁS: Sistema Anti-Sabotaje, Control de Integridad Estricto, Desinstalador con Contraseña y Exportador .EXE Propietario.",
+                purchase_pro_desc: "El escudo definitivo de grado corporativo. Incluye todo lo de Standard MÁS: Escudo USB & Centinela DLP, Registros Forenses Cifrados, Sistema Anti-Sabotaje y Exportador .EXE Propietario.",
                 std_f1: "✓ Encriptación AES-256 100% Offline",
                 std_f2: "✓ Modo Portable USB e Instalador",
                 std_f3: "✓ Bóvedas cifradas y Destrucción Segura",
                 std_f4: "✓ Cartera de Credenciales y Bóveda Señuelo",
                 pro_f1: "✓ Todo lo incluido en Standard",
-                pro_f2: "★ Sistema Anti-Sabotaje y Anti-Debug",
-                pro_f3: "★ Control de Integridad Estricto (V8 Bytecode)",
-                pro_f4: "★ Desinstalador Seguro con Contraseña Maestra",
+                pro_f2: "★ Escudo USB & Centinela DLP (Anti-Robo de Datos)",
+                pro_f3: "★ Registro de Auditoría Forense Cifrado (AES-256)",
+                pro_f4: "★ Control de Integridad Estricto (V8 Bytecode)",
                 pro_f5: "★ Empaquetador de Archivos Propietarios (.EXE Autónomo)",
                 purchase_price_note: "USD (Pago único)",
                 purchase_btn: "Adquirir Licencia Standard",
-                purchase_pro_btn: "Adquirir Licencia PRO",
+                purchase_pro_btn: "Adquirir Licencia PRO 2.0",
                 pro_badge: "MÁS POPULAR / SEGURIDAD MÁXIMA",
                 purchase_req: "* Compatible con Windows 10 y 11 (64 bits). Entrega digital inmediata.",
                 
-                /* TRADUCCIONES NUEVAS PARA OPTIMIZER */
                 opt_main_desc: "Maximiza el rendimiento de tu PC de forma segura. IronLock Optimizer limpia archivos basura, optimiza el registro y acelera tu sistema manteniendo nuestro estricto estándar de privacidad 100% offline.",
                 opt_badge: "NUEVO LANZAMIENTO",
                 opt_purchase_desc: "Dale una nueva vida a tu sistema. Obtén la herramienta de optimización definitiva diseñada para velocidad, estabilidad y privacidad total sin telemetría.",
@@ -675,14 +663,16 @@
                 feat_5_desc: "Protección contra la coacción física. Crea una contraseña falsa que abra una bóveda ficticia con datos inofensivos, manteniendo tus verdaderos secretos ocultos.",
                 feat_6_title: "Cartera de credenciales",
                 feat_6_desc: "Gestiona y protege tus contraseñas, tarjetas bancarias y notas secretas directamente dentro de tu bóveda cifrada, aislada de los gestores de contraseñas tradicionales.",
-                feat_7_title: "★ Sistema Anti-Sabotaje (PRO)",
-                feat_7_desc: "Defensa avanzada anti-depuración. Detecta herramientas de inspección no autorizadas, purga buffers criptográficos de la memoria RAM y finaliza la ejecución para evitar manipulaciones.",
-                feat_8_title: "★ Control de Integridad Estricto (PRO)",
-                feat_8_desc: "Compilado mediante bytecode V8 y ofuscación pesada AST. El código fuente está completamente oculto tras binarios de nivel de máquina y capas de código muerto.",
-                feat_9_title: "★ Desinstalador con Contraseña (PRO)",
-                feat_9_desc: "Protocolo de eliminación de nivel empresarial. Requiere verificación de contraseña maestra para ejecutar un borrado limpio de datos, cachés y registros protegidos.",
+                
+                feat_7_title: "★ Escudo USB & Centinela DLP (PRO)",
+                feat_7_desc: "Prevención de pérdida de datos en endpoints. Bloquea al instante la escritura no autorizada hacia pendrives externos (modo solo lectura) y protege tus equipos.",
+                feat_8_title: "★ Registro de Auditoría Cifrado (PRO)",
+                feat_8_desc: "Seguimiento forense de eventos de hardware. Todos los registros de conexión se guardan cifrados con AES-256 en `audit_log.enc` para evitar manipulaciones.",
+                feat_9_title: "★ Control de Integridad y Anti-Sabotaje (PRO)",
+                feat_9_desc: "Compilado mediante bytecode V8 y ofuscación pesada. Detecta herramientas de inspección, purga buffers de RAM y oculta el código fuente bajo binarios seguros.",
                 feat_10_title: "★ Exportador de .EXE Autónomo (PRO)",
-                feat_10_desc: "Empaqueta archivos cifrados bajo una extensión propietaria o expórtalos como un ejecutable (.exe) autónomo. Compártelos con terceros; se abren de forma segura con la clave en el receptor.",
+                feat_10_desc: "Empaqueta archivos cifrados bajo extensiones propietarias o expórtalos como ejecutables (.exe) autónomos para compartirlos de forma segura con terceros.",
+
                 faq_title: "Preguntas Frecuentes",
                 faq_1_q: "¿Necesito conexión a internet para usar IronLock?",
                 faq_1_a: "Absolutamente no. IronLock está diseñado para funcionar 100% offline. No requiere internet para activarse. Tu privacidad está garantizada por diseño.",
@@ -698,25 +688,24 @@
             },
             en: {
                 subtitle_top: "PRIVACY FIRST. 100% OFFLINE SECURITY.",
-                main_desc: "IronLock Vault V1.0 is the ultimate digital vault for Windows. No internet connections, no subscriptions, no hidden tracking. Lock, encrypt, and shred your files with military-grade security operating exclusively on your hardware.",
+                main_desc: "IronLock Vault V2.0 is the ultimate digital vault and endpoint security suite for Windows. No internet connections, no subscriptions, no hidden tracking. Lock, encrypt, shred, and protect your hardware ports exclusively offline.",
                 purchase_desc: "Get the complete 100% offline security suite. Includes standard installer, portable version for USB drives, and official manuals. Protect your data today without subscriptions or telemetry.",
-                purchase_pro_desc: "The ultimate corporate-grade shield. Includes everything in Standard PLUS: Anti-Sabotage System, Strict Integrity Control, Secure Uninstaller, and Proprietary .EXE Package Exporter.",
+                purchase_pro_desc: "The ultimate corporate-grade shield. Includes everything in Standard PLUS: USB DLP Sentinel, AES-256 Forensic Audit Logs, Anti-Sabotage System, and Proprietary .EXE Package Exporter.",
                 std_f1: "✓ 100% Offline AES-256 Encryption",
                 std_f2: "✓ USB Portable Mode & Installer",
                 std_f3: "✓ Encrypted Vaults & Secure Shredder",
                 std_f4: "✓ Credential Wallet & Decoy Vault",
                 pro_f1: "✓ Everything included in Standard",
-                pro_f2: "★ Anti-Sabotage & Anti-Debug System",
-                pro_f3: "★ Strict Integrity Control (V8 Bytecode)",
-                pro_f4: "★ Master Password Secure Uninstaller",
+                pro_f2: "★ USB Shield & DLP Sentinel (Anti-Data Theft)",
+                pro_f3: "★ Encrypted Forensic Audit Log (AES-256)",
+                pro_f4: "★ Strict Integrity Control (V8 Bytecode)",
                 pro_f5: "★ Proprietary File & Autonomous .EXE Exporter",
                 purchase_price_note: "USD (One-time payment)",
                 purchase_btn: "Acquire Standard License",
-                purchase_pro_btn: "Acquire PRO License",
+                purchase_pro_btn: "Acquire PRO 2.0 License",
                 pro_badge: "MOST POPULAR / MAX SECURITY",
                 purchase_req: "* Compatible with Windows 10 & 11 (64-bit). Immediate digital delivery.",
                 
-                /* TRADUCCIONES NUEVAS PARA OPTIMIZER */
                 opt_main_desc: "Maximize your PC's performance safely. IronLock Optimizer cleans junk files, optimizes your registry, and boosts your system's speed while maintaining our strict 100% offline privacy standard.",
                 opt_badge: "NEW RELEASE",
                 opt_purchase_desc: "Breathe new life into your system. Get the definitive optimization tool designed for speed, stability, and total privacy without telemetry.",
@@ -747,14 +736,16 @@
                 feat_5_desc: "Protection against physical coercion. Set up a fake password that opens a dummy vault with harmless data, keeping your true secrets hidden.",
                 feat_6_title: "Credential Wallet",
                 feat_6_desc: "Manage and protect your passwords, bank cards, and secret notes directly inside your encrypted vault, isolated from traditional password managers.",
-                feat_7_title: "★ Anti-Sabotage System (PRO)",
-                feat_7_desc: "Advanced anti-debugging defense. Automatically detects unauthorized inspection tools, purges cryptographic buffers from RAM, and terminates execution to prevent tampering.",
-                feat_8_title: "★ Strict Integrity Control (PRO)",
-                feat_8_desc: "Compiled via V8 bytecode and heavy AST code obfuscation. Source code is completely hidden behind machine-level binaries and dead-code injection layers.",
-                feat_9_title: "★ Secure Master Uninstaller (PRO)",
-                feat_9_desc: "Enterprise-grade removal protocol. Requires master password verification to execute a clean wipe of application data, caches, and protected registry artifacts.",
+                
+                feat_7_title: "★ USB Shield & DLP Sentinel (PRO)",
+                feat_7_desc: "Endpoint data loss prevention. Instantly block unauthorized file writing to external USB drives (Read-Only mode) and protect your hardware ports.",
+                feat_8_title: "★ Encrypted Audit Log (PRO)",
+                feat_8_desc: "Forensic tracking of external hardware events. All connection logs are securely encrypted in AES-256 (`audit_log.enc`) to prevent tampering.",
+                feat_9_title: "★ Strict Integrity & Anti-Sabotage (PRO)",
+                feat_9_desc: "Compiled via V8 bytecode and anti-debugging protection. Purges cryptographic buffers from RAM and hides source code behind machine binaries.",
                 feat_10_title: "★ Autonomous .EXE Exporter (PRO)",
-                feat_10_desc: "Package encrypted files into proprietary formats or standalone self-decrypting executables (.exe). Share safely with third parties; they open securely with the password on the receiver's end.",
+                feat_10_desc: "Package encrypted files into proprietary formats or standalone self-decrypting executables (.exe). Share safely with third parties.",
+
                 faq_title: "Frequently Asked Questions",
                 faq_1_q: "Do I need an internet connection to use IronLock?",
                 faq_1_a: "Absolutely not. IronLock software is designed to work 100% offline. It does not require the internet to activate. Your privacy is guaranteed by design.",
@@ -785,7 +776,6 @@
                 selectEl.value = lang;
             }
 
-            // Cambiar el video según el idioma
             const videoPlayer = document.getElementById('promoVideo');
             if (videoPlayer) {
                 videoPlayer.src = lang === 'es' ? 'VideoEspañol.mp4' : 'VideoIngles.mp4';
