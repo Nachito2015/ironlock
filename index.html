@@ -109,6 +109,7 @@
             border-radius: 12px;
             flex: 1;
             min-width: 320px;
+            max-width: 450px;
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -226,7 +227,6 @@
         
         .pro-tier {
             border: 2px solid #d326ff;
-            transform: scale(1.02);
             box-shadow: 0 15px 40px rgba(211, 38, 255, 0.15);
         }
 
@@ -281,7 +281,6 @@
             margin-bottom: 40px;
         }
 
-        /* Grid específico de 4 elementos PRO para que queden simétricos 2x2 */
         .grid-pro-4 {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -403,7 +402,7 @@
         <div class="subtitle-top" data-i18n="subtitle_top">PRIVACY FIRST. 100% OFFLINE SECURITY.</div>
 
         <p class="description" data-i18n="main_desc">
-            IronLock Vault V2.0 is the ultimate digital vault and endpoint security suite for Windows. No internet connections, no subscriptions, no hidden tracking. Lock, encrypt, shred, and protect your hardware ports exclusively offline.
+            IronLock Vault is the ultimate digital vault and endpoint security suite for Windows. No internet connections, no subscriptions, no hidden tracking. Lock, encrypt, shred, and protect your hardware ports exclusively offline.
         </p>
 
         <div class="video-wrapper">
@@ -451,7 +450,7 @@
                     <img src="IronLock_Vault_Pro_Box.png" alt="IronLock Vault PRO Box">
                 </div>
                 <div class="purchase-details">
-                    <h2 class="pro-title">IronLock Vault <span class="edition-pro">PRO 2.0</span></h2>
+                    <h2 class="pro-title">IronLock Vault <span class="edition-pro">PRO</span></h2>
                     <p data-i18n="purchase_pro_desc">
                         The ultimate corporate-grade shield. Includes everything in Standard PLUS: USB DLP Sentinel, AES-256 Forensic Audit Logs, Strict Integrity Control, and Proprietary .EXE Package Exporter.
                     </p>
@@ -577,7 +576,6 @@
             </div>
         </div>
 
-        <!-- GRILLA PRO CENTRADA DE 4 ELEMENTOS (2x2 simétrico) -->
         <div class="grid-pro-4">
             <div class="dark-card pro-card">
                 <h3 data-i18n="feat_7_title">★ USB Shield & DLP Sentinel (PRO)</h3>
@@ -635,7 +633,7 @@
         const translations = {
             es: {
                 subtitle_top: "TU PRIVACIDAD ANTE TODO. SEGURIDAD 100% OFFLINE.",
-                main_desc: "IronLock Vault V2.0 es la bóveda digital y suite de seguridad de endpoints definitiva para Windows. Sin conexiones a internet, sin suscripciones, sin registros ocultos. Bloquea, cifra, destruye y protege tus puertos de hardware de forma 100% offline.",
+                main_desc: "IronLock Vault es la bóveda digital y suite de seguridad de endpoints definitiva para Windows. Sin conexiones a internet, sin suscripciones, sin registros ocultos. Bloquea, cifra, destruye y protege tus puertos de hardware de forma 100% offline.",
                 purchase_desc: "Consigue la suite completa de seguridad 100% offline. El paquete incluye el instalador tradicional, la versión portable para USB, y los manuales oficiales. Protege tus datos hoy mismo sin suscripciones ni telemetría.",
                 purchase_pro_desc: "El escudo definitivo de grado corporativo. Incluye todo lo de Standard MÁS: Escudo USB & Centinela DLP, Registros Forenses Cifrados, Control de Integridad y Exportador .EXE Propietario.",
                 std_f1: "✓ Encriptación AES-256 100% Offline",
@@ -649,7 +647,7 @@
                 pro_f5: "★ Empaquetador de Archivos Propietarios (.EXE Autónomo)",
                 purchase_price_note: "USD (Pago único)",
                 purchase_btn: "Adquirir Licencia Standard",
-                purchase_pro_btn: "Adquirir Licencia PRO 2.0",
+                purchase_pro_btn: "Adquirir Licencia PRO",
                 pro_badge: "MÁS POPULAR / SEGURIDAD MÁXIMA",
                 purchase_req: "* Compatible con Windows 10 y 11 (64 bits). Entrega digital inmediata.",
                 
@@ -708,7 +706,7 @@
             },
             en: {
                 subtitle_top: "PRIVACY FIRST. 100% OFFLINE SECURITY.",
-                main_desc: "IronLock Vault V2.0 is the ultimate digital vault and endpoint security suite for Windows. No internet connections, no subscriptions, no hidden tracking. Lock, encrypt, shred, and protect your hardware ports exclusively offline.",
+                main_desc: "IronLock Vault is the ultimate digital vault and endpoint security suite for Windows. No internet connections, no subscriptions, no hidden tracking. Lock, encrypt, shred, and protect your hardware ports exclusively offline.",
                 purchase_desc: "Get the complete 100% offline security suite. Includes standard installer, portable version for USB drives, and official manuals. Protect your data today without subscriptions or telemetry.",
                 purchase_pro_desc: "The ultimate corporate-grade shield. Includes everything in Standard PLUS: USB DLP Sentinel, AES-256 Forensic Audit Logs, Strict Integrity Control, and Proprietary .EXE Package Exporter.",
                 std_f1: "✓ 100% Offline AES-256 Encryption",
@@ -722,7 +720,7 @@
                 pro_f5: "★ Proprietary File & Autonomous .EXE Exporter",
                 purchase_price_note: "USD (One-time payment)",
                 purchase_btn: "Acquire Standard License",
-                purchase_pro_btn: "Acquire PRO 2.0 License",
+                purchase_pro_btn: "Acquire PRO License",
                 pro_badge: "MOST POPULAR / MAX SECURITY",
                 purchase_req: "* Compatible with Windows 10 & 11 (64-bit). Immediate digital delivery.",
                 
