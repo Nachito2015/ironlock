@@ -545,9 +545,8 @@
         <h2 class="section-title" data-i18n="feat_main_title">Vault Security Features</h2>
         <div class="grid-3">
             <div class="dark-card">
-                <h3 data-i18n="feat_1_title">Protected Folders</h3>
-                <p data-i18n="feat_1_desc">Lock and hide entire folders on your computer. Neither Windows Explorer nor
-                    other programs can access them without your master password.</p>
+                <h3 data-i18n="feat_1_title">Hidden & Protected Items</h3>
+                <p data-i18n="feat_1_desc">Hide and encrypt sensitive folders with AES-256-GCM under your master password, or apply native Windows ACL restrictions to block unauthorized local access.</p>
             </div>
             <div class="dark-card">
                 <h3 data-i18n="feat_2_title">Encrypted Vaults</h3>
@@ -560,8 +559,7 @@
             </div>
             <div class="dark-card">
                 <h3 data-i18n="feat_4_title">Secure Shredding</h3>
-                <p data-i18n="feat_4_desc">Delete files permanently and irretrievably. Our algorithm overwrites your
-                    data, making recovery impossible even with forensic software.</p>
+                <p data-i18n="feat_4_desc">Multi-pass overwriting algorithm that truncates, renames, and deletes files. Highly effective on mechanical drives (HDD), with automatic hardware detection for SSDs.</p>
             </div>
             <div class="dark-card">
                 <h3 data-i18n="feat_5_title">Decoy Vault</h3>
@@ -616,6 +614,10 @@
                 <p data-i18n="faq_4_a">Currently, IronLock software is designed and optimized exclusively for the Windows
                     (64-bit) ecosystem, leveraging its native permission systems for maximum effectiveness.</p>
             </div>
+            <div class="faq-card">
+                <h3 data-i18n="faq_5_q">Why does Windows show a "Windows protected your PC" warning when installing?</h3>
+                <p data-i18n="faq_5_a">Because IronLock is an independent, zero-telemetry studio and the installer is distributed without a commercial digital signature certificate, Windows SmartScreen may display an initial warning. Simply click "More info" → "Run anyway" to install safely.</p>
+            </div>
         </div>
 
     </div>
@@ -668,14 +670,14 @@
                 why_3_title: "Implementación Transparente",
                 why_3_desc: "Sin controladores invasivos que ralentizan tu PC. Utilizamos permisos nativos de Windows para garantizar protección y optimización irrompibles sin dañar tu sistema operativo.",
                 feat_main_title: "Potentes funciones de seguridad",
-                feat_1_title: "Carpetas protegidas",
-                feat_1_desc: "Bloquea y oculta carpetas completas en tu ordenador. Ni el Explorador de Windows ni otros programas podrán acceder a ellas sin tu contraseña maestra.",
+                feat_1_title: "Ocultación Cifrada y Carpetas",
+                feat_1_desc: "Oculta y cifra archivos o carpetas completas con AES-256-GCM bajo tu contraseña maestra, o aplica restricciones de permisos nativos (ACLs) para bloquear accesos rápidos.",
                 feat_2_title: "Bóvedas encriptadas",
                 feat_2_desc: "Cree contenedores protegidos con cifrado AES-256-GCM. Al mover un archivo a la bóveda, el original se destruye de forma automática y segura.",
                 feat_3_title: "Instalador Offline",
                 feat_3_desc: "Instala IronLock Vault directamente en tu computadora sin necesidad de conexión a internet durante el proceso.",
                 feat_4_title: "Destrucción segura",
-                feat_4_desc: "Elimina archivos de forma permanente e irrecuperable. Nuestro algoritmo sobrescribe tus datos, haciendo imposible su recuperación incluso con software forense.",
+                feat_4_desc: "Algoritmo de sobrescritura de múltiples pasadas que trunca, renombra y elimina archivos. Altamente efectivo en discos mecánicos (HDD), con detección automática y aviso para unidades SSD.",
                 feat_5_title: "Bóveda de señuelos",
                 feat_5_desc: "Protección contra la coacción física. Crea una contraseña falsa que abra una bóveda ficticia con datos inofensivos, manteniendo tus verdaderos secretos ocultos.",
                 feat_6_title: "Cartera de credenciales",
@@ -699,6 +701,8 @@
                 faq_3_a: "No. Es un pago único. Con tu compra obtienes acceso perpetuo a la versión elegida sin renovaciones anuales ni cargos ocultos.",
                 faq_4_q: "¿Funciona en Mac o Linux?",
                 faq_4_a: "Actualmente, los programas de IronLock están diseñados y optimizados exclusivamente para el ecosistema Windows (64 bits), aprovechando sus sistemas de permisos nativos.",
+                faq_5_q: "¿Por qué Windows muestra el aviso \"Windows protegió su PC\" al instalar?",
+                faq_5_a: "Al ser un estudio independiente sin telemetría, el instalador se distribuye sin un certificado de firma comercial externa, por lo que Windows SmartScreen puede mostrar una advertencia preventiva. Simplemente haz clic en \"Más información\" → \"Ejecutar de todas formas\" para instalar con total seguridad.",
                 footer_title: "Sobre IronLock",
                 footer_desc: "Somos un estudio de desarrollo de software independiente enfocado en crear herramientas de privacidad de conocimiento cero y seguridad 100% offline para usuarios de Windows.",
                 copyright: "© 2026 IronLock. Todos los derechos reservados."
@@ -741,14 +745,14 @@
                 why_3_title: "Transparent Implementation",
                 why_3_desc: "No invasive kernel drivers slowing down your PC. We use native Windows permissions to guarantee unbreakable protection and optimization without harming your OS.",
                 feat_main_title: "Vault Security Features",
-                feat_1_title: "Protected Folders",
-                feat_1_desc: "Lock and hide entire folders on your computer. Neither Windows Explorer nor other programs can access them without your master password.",
+                feat_1_title: "Hidden & Protected Items",
+                feat_1_desc: "Hide and encrypt sensitive folders with AES-256-GCM under your master password, or apply native Windows ACL restrictions to block unauthorized local access.",
                 feat_2_title: "Encrypted Vaults",
                 feat_2_desc: "Create shielded containers with AES-256-GCM encryption. When you move a file to the vault, the original is automatically and securely shredded.",
                 feat_3_title: "Offline Installer",
                 feat_3_desc: "Install IronLock Vault directly on your computer without needing an internet connection during setup.",
                 feat_4_title: "Secure Shredding",
-                feat_4_desc: "Delete files permanently and irretrievably. Our algorithm overwrites your data, making recovery impossible even with forensic software.",
+                feat_4_desc: "Multi-pass overwriting algorithm that truncates, renames, and deletes files. Highly effective on mechanical drives (HDD), with automatic hardware detection for SSDs.",
                 feat_5_title: "Decoy Vault",
                 feat_5_desc: "Protection against physical coercion. Set up a fake password that opens a dummy vault with harmless data, keeping your true secrets hidden.",
                 feat_6_title: "Credential Wallet",
@@ -772,6 +776,8 @@
                 faq_3_a: "No. It is a one-time payment. With your purchase, you get perpetual access to your chosen version with no annual renewals or hidden fees.",
                 faq_4_q: "Does it work on Mac or Linux?",
                 faq_4_a: "Currently, IronLock software is designed and optimized exclusively for the Windows (64-bit) ecosystem, leveraging its native permission systems for maximum effectiveness.",
+                faq_5_q: "Why does Windows show a \"Windows protected your PC\" warning when installing?",
+                faq_5_a: "Because IronLock is an independent, zero-telemetry studio and the installer is distributed without a commercial digital signature certificate, Windows SmartScreen may display an initial warning. Simply click \"More info\" → \"Run anyway\" to install safely.",
                 footer_title: "About IronLock",
                 footer_desc: "We are an independent software development studio focused on creating zero-knowledge privacy tools and 100% offline security for Windows users.",
                 copyright: "© 2026 IronLock. All rights reserved."
