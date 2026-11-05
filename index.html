@@ -199,6 +199,7 @@
             text-transform: uppercase;
             width: 80%;
             max-width: 280px;
+            margin-bottom: 12px;
         }
 
         .payhip-buy-button:hover { transform: translateY(-2px); }
@@ -224,6 +225,9 @@
 
         .opt-btn { background: linear-gradient(90deg, #00e676, #00b259); box-shadow: 0 4px 15px rgba(0, 230, 118, 0.4); }
         .opt-btn:hover { box-shadow: 0 6px 20px rgba(0, 230, 118, 0.6); }
+
+        .free-btn { background: linear-gradient(90deg, #0099ff, #0055ff); box-shadow: 0 4px 15px rgba(0, 153, 255, 0.4); margin-bottom: 10px; }
+        .free-btn:hover { box-shadow: 0 6px 20px rgba(0, 153, 255, 0.6); }
         
         .pro-tier {
             border: 2px solid #d326ff;
@@ -488,7 +492,7 @@
         <div class="pricing-container">
             <!-- TARJETA OPTIMIZER -->
             <div class="purchase-section opt-tier">
-                <div class="opt-badge" data-i18n="opt_badge">NEW RELEASE</div>
+                <div class="opt-badge" data-i18n="opt_badge">FREEMIUM MODEL</div>
                 
                 <div class="purchase-image">
                     <video autoplay loop muted playsinline>
@@ -499,25 +503,33 @@
                 <div class="purchase-details">
                     <h2 class="opt-title">IronLock <span class="edition-opt">OPTIMIZER</span></h2>
                     <p data-i18n="opt_purchase_desc">
-                        Breathe new life into your system. Get the definitive optimization tool designed for speed, stability, and total privacy without telemetry.
+                        Breathe new life into your system. Get the definitive optimization tool designed for speed, stability, and total privacy without telemetry. Download free or unlock PRO features.
                     </p>
                     
                     <ul class="tier-features opt-features">
-                        <li data-i18n="opt_f1">⚡ Limpieza profunda de archivos basura</li>
+                        <li data-i18n="opt_f1">⚡ Liberación de RAM y Limpieza profunda</li>
                         <li data-i18n="opt_f2">⚡ Optimización de registro y arranque</li>
                         <li data-i18n="opt_f3">⚡ Game Booster: Máximo rendimiento</li>
                         <li data-i18n="opt_f4">⚡ Desactiva la telemetría de Windows</li>
                         <li data-i18n="opt_f5">⚡ 100% Privado y Seguro</li>
                     </ul>
 
-                    <div class="price-tag">
-                        $9.00 <span data-i18n="purchase_price_note">USD (One-time payment)</span>
+                    <div class="price-tag" style="font-size: 1.3rem; margin-bottom: 15px;">
+                        $0.00 <span style="color: #00e676;" data-i18n="opt_free_tag">Free Download</span> | $9.00 <span data-i18n="purchase_price_note">USD (PRO License)</span>
                     </div>
-                    <a href="https://payhip.com/b/tIpLB" target="_blank" class="payhip-buy-button opt-btn" data-i18n="opt_purchase_btn">
+
+                    <!-- BOTÓN AZUL DE DESCARGA GRATUITA -->
+                    <a href="https://github.com/Nachito2015/ironlock/releases/download/v1.0.1/IronLock.Optimizer.Setup.1.0.0.exe" class="payhip-buy-button free-btn" data-i18n="opt_free_btn">
+                        Download Free (.exe)
+                    </a>
+
+                    <!-- BOTÓN VERDE DE PAGO EN PAYHIP (Actualizado con https://payhip.com/b/M0Lk6) -->
+                    <a href="https://payhip.com/b/M0Lk6" target="_blank" class="payhip-buy-button opt-btn" data-i18n="opt_purchase_btn">
                         Acquire Optimizer License
                     </a>
+
                     <p class="purchase-note" data-i18n="purchase_req">
-                        * Compatible with Windows 10 & 11 (64-bit). Immediate digital delivery.
+                        * Compatible with Windows 10 & 11 (64-bit). Immediate digital delivery for PRO.
                     </p>
                 </div>
             </div>
@@ -653,10 +665,12 @@
                 purchase_req: "* Compatible con Windows 10 y 11 (64 bits). Entrega digital inmediata.",
                 
                 opt_main_desc: "Maximiza el rendimiento de tu PC de forma segura. IronLock Optimizer limpia archivos basura, optimiza el registro y acelera tu sistema manteniendo nuestro estricto estándar de privacidad 100% offline.",
-                opt_badge: "NUEVO LANZAMIENTO",
-                opt_purchase_desc: "Dale una nueva vida a tu sistema. Obtén la herramienta de optimización definitiva diseñada para velocidad, estabilidad y privacidad total sin telemetría.",
+                opt_badge: "MODELO FREEMIUM",
+                opt_purchase_desc: "Dale una nueva vida a tu sistema. Obtén la herramienta de optimización definitiva diseñada para velocidad, estabilidad y privacidad total sin telemetría. Descarga gratis o desbloquea funciones PRO.",
                 opt_purchase_btn: "Adquirir Licencia Optimizer",
-                opt_f1: "⚡ Limpieza profunda de archivos basura",
+                opt_free_btn: "Descargar Gratis (.exe)",
+                opt_free_tag: "Descarga Gratuita",
+                opt_f1: "⚡ Liberación de RAM y Limpieza profunda",
                 opt_f2: "⚡ Optimización de registro y arranque",
                 opt_f3: "⚡ Game Booster: Máximo rendimiento",
                 opt_f4: "⚡ Desactiva la telemetría de Windows",
@@ -728,10 +742,12 @@
                 purchase_req: "* Compatible with Windows 10 & 11 (64-bit). Immediate digital delivery.",
                 
                 opt_main_desc: "Maximize your PC's performance safely. IronLock Optimizer cleans junk files, optimizes your registry, and boosts your system's speed while maintaining our strict 100% offline privacy standard.",
-                opt_badge: "NEW RELEASE",
-                opt_purchase_desc: "Breathe new life into your system. Get the definitive optimization tool designed for speed, stability, and total privacy without telemetry.",
+                opt_badge: "FREEMIUM MODEL",
+                opt_purchase_desc: "Breathe new life into your system. Get the definitive optimization tool designed for speed, stability, and total privacy without telemetry. Download free or unlock PRO features.",
                 opt_purchase_btn: "Acquire Optimizer License",
-                opt_f1: "⚡ Deep junk file cleaning",
+                opt_free_btn: "Download Free (.exe)",
+                opt_free_tag: "Free Download",
+                opt_f1: "⚡ RAM liberation & deep cleaning",
                 opt_f2: "⚡ Safe registry & startup optimization",
                 opt_f3: "⚡ Game Booster: Maximum performance",
                 opt_f4: "⚡ Disables Windows telemetry",
