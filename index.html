@@ -581,6 +581,10 @@
 
         .opt-check { color: var(--brand-emerald); font-weight: bold; }
 
+        .optimizer-actions-row {
+            display: flex; gap: 14px; flex-wrap: wrap; margin-top: 32px;
+        }
+
         .optimizer-media-col { display: flex; flex-direction: column; gap: 24px; width: 100%; }
 
         .optimizer-box-card {
@@ -994,6 +998,22 @@
                             <li><span class="opt-check">✓</span> <span data-i18n="opt_f4">⚡ Disables Windows telemetry</span></li>
                             <li><span class="opt-check">✓</span> <span data-i18n="opt_f5">⚡ 100% Private & Secure</span></li>
                         </ul>
+
+                        <div class="optimizer-actions-row">
+                            <a href="https://github.com/Nachito2015/ironlock/releases/download/v1.0.1/IronLock.Optimizer.Setup.1.0.0.exe" 
+                               class="btn btn--primary" 
+                               style="background:var(--brand-emerald); color:#0a0d14;" 
+                               data-i18n="opt_free_btn" 
+                               target="_blank">
+                                DOWNLOAD FREE (.EXE)
+                            </a>
+                            <a href="https://payhip.com/b/M0Lk6" 
+                               target="_blank" 
+                               class="btn btn--secondary" 
+                               data-i18n="opt_purchase_btn">
+                                Acquire Optimizer License ($9.00 USD)
+                            </a>
+                        </div>
                     </div>
 
                     <div class="optimizer-media-col">
@@ -1046,7 +1066,7 @@
                         </ul>
 
                         <div class="plan-actions">
-                            <a href="https://github.com/Nachito2015/ironlock/releases/download/v1.0.0/IronLock.Vault.Standard-1.0.0-Instalador.exe" 
+                            <a href="https://github.com/Nachito2015/ironlock/releases/download/v1.0.1/IronLock.Vault.Standard-1.0.0-Instalador.exe" 
                                class="btn-full btn-download-sec" 
                                data-i18n="download_app_btn" 
                                target="_blank">
@@ -1068,7 +1088,7 @@
                         </div>
                     </div>
 
-                    <!-- PRO Plan (Featured) - DIRECTO A PAYHIP -->
+                    <!-- PRO Plan (Featured) -->
                     <div class="pricing-card is-featured">
                         <div class="pricing-badge-pro" data-i18n="pro_badge">MOST POPULAR / MAX SECURITY</div>
                         
@@ -1095,7 +1115,7 @@
                                class="btn-full btn-payhip-pro" 
                                data-i18n="purchase_pro_btn"
                                style="height: 48px; font-size: 15px;">
-                                Acquire PRO License (Payhip)
+                                Acquire PRO License
                             </a>
                         </div>
 
@@ -1127,7 +1147,7 @@
                         </ul>
 
                         <div class="plan-actions">
-                            <a href="https://github.com/Nachito2015/ironlock/releases/download/v1.0.0/IronLock.Optimizer.Setup.1.0.0.exe" 
+                            <a href="https://github.com/Nachito2015/ironlock/releases/download/v1.0.1/IronLock.Optimizer.Setup.1.0.0.exe" 
                                class="btn-full btn-download-sec" 
                                data-i18n="opt_free_btn" 
                                target="_blank">
@@ -1136,7 +1156,7 @@
                             <a href="https://payhip.com/b/M0Lk6" 
                                target="_blank" 
                                class="btn-full btn-payhip-opt" 
-                               data-i18n="opt_purchase_btn">
+                               data-i18n="purchase_btn">
                                 Acquire Optimizer License
                             </a>
                         </div>
@@ -1261,7 +1281,7 @@
                 download_app_btn: "DESCARGAR APP (.EXE)",
                 download_app_zip_btn: "DESCARGAR APP (.ZIP)",
                 purchase_btn: "Adquirir Licencia Standard",
-                purchase_pro_btn: "Adquirir Licencia PRO (Payhip)",
+                purchase_pro_btn: "Adquirir Licencia PRO",
                 activation_note: "* 1. Descarga la app. 2. Cómprala. 3. Envía tu HWID a ironlockvault@gmail.com para recibir tu clave.",
                 pro_badge: "MÁS POPULAR / SEGURIDAD MÁXIMA",
                 purchase_req: "* Compatible con Windows 10 y 11 (64 bits). Entrega digital inmediata.",
@@ -1364,7 +1384,7 @@
                 download_app_btn: "DOWNLOAD APP (.EXE)",
                 download_app_zip_btn: "DOWNLOAD APP (.ZIP)",
                 purchase_btn: "Acquire Standard License",
-                purchase_pro_btn: "Acquire PRO License (Payhip)",
+                purchase_pro_btn: "Acquire PRO License",
                 activation_note: "* 1. Download the app. 2. Buy the license. 3. Send your HWID to ironlockvault@gmail.com to receive your key.",
                 pro_badge: "MOST POPULAR / MAX SECURITY",
                 purchase_req: "* Compatible with Windows 10 & 11 (64-bit). Immediate digital delivery.",
