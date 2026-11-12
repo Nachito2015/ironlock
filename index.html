@@ -1,678 +1,1276 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="en" data-type="software" data-radius="soft">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IronLock Vault & Optimizer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>IronLock Vault: 100% Offline Digital Vault & Endpoint Security</title>
+    <meta name="description" content="IronLock Vault is an air-gapped digital vault and endpoint security suite for Windows. Zero cloud, zero telemetry, one-time payment.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="IronLock Vault: 100% Offline Digital Vault & Endpoint Security">
+    <meta property="og:description" content="Air-gapped digital vault, USB DLP sentinel, and system optimizer for Windows 10 & 11. Complete privacy with zero internet connections.">
+    <meta property="og:image" content="IronLock_Vault_Pro_Box.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="Logo.png" type="image/png">
+    <meta name="theme-color" content="#0a0d14">
+
+    <!-- Fonts: Epilogue + JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400..600&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            background-color: #ffffff;
-            color: #1a1c29;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        :root {
+            --p-bg: #0a0d14;
+            --p-surface: #131824;
+            --p-surface-elevated: #1a2233;
+            --p-ink: #e9edf3;
+            --p-muted: #8891a1;
+            --p-accent: #5ab9fc;
+            --p-accent-hover: #83cbfd;
+
+            --brand-gold: #ffd700;
+            --brand-gold-glow: rgba(255, 215, 0, 0.16);
+            --brand-emerald: #00e676;
+            --brand-emerald-glow: rgba(0, 230, 118, 0.18);
+            --brand-cyan-glow: rgba(90, 185, 252, 0.22);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-hover: rgba(90, 185, 252, 0.35);
+
+            --font-display: "Epilogue", system-ui, sans-serif;
+            --font-text: "Epilogue", system-ui, sans-serif;
+            --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+            --nav-h: 72px;
+            --wrap-max: 1240px;
+            --section-pad-y: 100px;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-pill: 999px;
+            --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--p-bg);
+            color: var(--p-ink);
+            font-family: var(--font-text);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--p-bg);
+            color: var(--p-ink);
             line-height: 1.6;
-            text-align: center;
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
         }
 
-        .language-selector {
+        .skip-link {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
+            top: -60px;
+            left: 20px;
+            background: var(--p-accent);
+            color: #000000;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 13px;
+            z-index: 9999;
+            text-decoration: none;
+            transition: top 0.2s ease;
         }
+        .skip-link:focus { top: 15px; }
 
-        .language-selector select {
-            padding: 8px 12px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 14px;
-            cursor: pointer;
-            background: #f8f9fa;
-            color: #333;
-            font-weight: bold;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .logo {
-            max-width: 280px;
-            margin-bottom: 20px;
-        }
-
-        .subtitle-top {
-            color: #d326ff;
-            font-size: 14px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-        }
-
-        .description {
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 40px;
-            max-width: 700px;
+        .wrap {
+            width: 100%;
+            max-width: var(--wrap-max);
             margin-left: auto;
             margin-right: auto;
-        }
-
-        /* --- Reproductor de Video --- */
-        .video-wrapper {
-            max-width: 800px;
-            margin: 0 auto 50px auto;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(211, 38, 255, 0.15);
-            border: 1px solid #333;
-            background: #000;
-        }
-        
-        .video-wrapper video {
-            width: 100%;
-            display: block;
-        }
-
-        /* --- Títulos de Sección Principales --- */
-        .product-family-title {
-            font-size: 2.5rem;
-            margin: 60px 0 20px 0;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #eee;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .title-vault { color: #d326ff; border-bottom-color: #d326ff; }
-        .title-opt { color: #00e676; border-bottom-color: #00e676; margin-top: 80px; }
-
-        /* --- Sección Premium de Compra (Payhip) --- */
-        .pricing-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-            margin: 0 auto 60px auto;
-            max-width: 1100px;
-        }
-
-        .purchase-section {
-            background: #111;
-            color: #fff;
-            padding: 40px 20px;
-            border-radius: 12px;
-            flex: 1;
-            min-width: 320px;
-            max-width: 450px;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            text-align: center;
+            padding-left: 24px;
+            padding-right: 24px;
             position: relative;
-            align-items: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            z-index: 2;
         }
 
-        .purchase-image {
-            margin: 15px;
-            text-align: center;
-        }
-
-        .purchase-image img, .purchase-image video {
+        section {
+            position: relative;
             width: 100%;
-            max-width: 280px;
-            border-radius: 8px;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.7));
+            padding-top: var(--section-pad-y);
+            padding-bottom: var(--section-pad-y);
+            z-index: 1;
         }
 
-        .purchase-details {
+        .section-header-block {
             text-align: center;
-            margin: 0 15px 15px 15px;
-            width: 100%;
+            max-width: 760px;
+            margin: 0 auto 56px auto;
+            position: relative;
+            z-index: 2;
         }
 
-        .purchase-details h2 {
-            font-size: 2rem;
-            margin-top: 0;
-            margin-bottom: 10px;
-            color: #d326ff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .purchase-details h2.opt-title {
-            color: #00e676;
-        }
-
-        .purchase-details p {
-            font-size: 0.95rem;
-            color: #ccc;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-
-        .tier-features {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 20px 0;
-            text-align: left;
-            color: #bbb;
-            font-size: 0.9rem;
-        }
-
-        .tier-features li {
-            margin-bottom: 8px;
-            padding-left: 5px;
-        }
-
-        .pro-features li { color: #ffca28; }
-        .opt-features li { color: #00e676; }
-
-        .price-tag {
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-
-        .price-tag span {
-            font-size: 0.9rem;
-            color: #888;
-            font-weight: normal;
-        }
-
-        .payhip-buy-button {
+        .section-tag {
             display: inline-block;
-            color: white;
-            text-decoration: none;
-            padding: 12px 30px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 8px;
-            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            width: 80%;
-            max-width: 280px;
+            color: var(--p-accent);
             margin-bottom: 12px;
         }
 
-        .payhip-buy-button:hover { transform: translateY(-2px); }
-
-        .purchase-note {
-            font-size: 0.75rem !important;
-            color: #777 !important;
-            margin-top: 15px !important;
-            margin-bottom: 0 !important;
-        }
-
-        /* --- Estilos Standard vs PRO vs Optimizer --- */
-        .edition { font-size: 1.1rem; color: #888; font-weight: normal; }
-        .edition-pro { font-size: 1.1rem; color: #ffd700; text-shadow: 0 0 10px rgba(255,215,0,0.5); }
-        .edition-opt { font-size: 1.1rem; color: #00e676; }
-        .pro-title { color: #ffd700 !important; }
-        
-        .standard-btn { background: linear-gradient(90deg, #4a5ee8, #3b4bc2); box-shadow: 0 4px 15px rgba(74, 94, 232, 0.4); }
-        .standard-btn:hover { box-shadow: 0 6px 20px rgba(74, 94, 232, 0.6); }
-
-        .pro-btn { background: linear-gradient(90deg, #d326ff, #ff26a5); box-shadow: 0 4px 15px rgba(211, 38, 255, 0.4); }
-        .pro-btn:hover { box-shadow: 0 6px 20px rgba(211, 38, 255, 0.6); }
-
-        .opt-btn { background: linear-gradient(90deg, #00e676, #00b259); box-shadow: 0 4px 15px rgba(0, 230, 118, 0.4); }
-        .opt-btn:hover { box-shadow: 0 6px 20px rgba(0, 230, 118, 0.6); }
-
-        .free-btn { background: linear-gradient(90deg, #0099ff, #0055ff); box-shadow: 0 4px 15px rgba(0, 153, 255, 0.4); margin-bottom: 10px; }
-        .free-btn:hover { box-shadow: 0 6px 20px rgba(0, 153, 255, 0.6); }
-        
-        .pro-tier {
-            border: 2px solid #d326ff;
-            box-shadow: 0 15px 40px rgba(211, 38, 255, 0.15);
-        }
-
-        .opt-tier {
-            border: 2px solid #00e676;
-            box-shadow: 0 15px 40px rgba(0, 230, 118, 0.15);
-            max-width: 450px;
-        }
-
-        .pro-badge {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(90deg, #d326ff, #ff26a5);
-            color: white;
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-            white-space: nowrap;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-
-        .opt-badge {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(90deg, #00e676, #00b259);
-            color: white;
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-            white-space: nowrap;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-
         .section-title {
-            color: #d326ff;
-            font-size: 32px;
-            margin: 60px 0 40px 0;
+            font-size: clamp(28px, 3.2vw, 42px);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            margin: 0 0 16px 0;
         }
 
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .grid-pro-4 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            margin-bottom: 40px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        @media (max-width: 768px) {
-            .grid-pro-4 {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .dark-card {
-            background: #1a1c29;
-            border-radius: 12px;
-            padding: 30px;
-            text-align: left;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .dark-card h3 {
-            color: #4a5ee8;
-            font-size: 20px;
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
-
-        .dark-card p {
-            color: #a0aabf;
-            font-size: 15px;
+        .section-desc {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--p-muted);
             margin: 0;
         }
 
-        .pro-card { border: 1px solid #ffd700; }
-        .pro-card h3 { color: #ffd700; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            height: 44px;
+            padding: 0 24px;
+            border-radius: var(--radius-pill);
+            font-family: var(--font-text);
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s var(--ease-out);
+            white-space: nowrap;
+        }
 
-        .faq-container {
+        .btn--primary {
+            background: var(--p-accent);
+            color: #0a0d14;
+            border-color: var(--p-accent);
+        }
+
+        .btn--primary:hover {
+            background: var(--p-accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px var(--brand-cyan-glow);
+        }
+
+        .btn--secondary {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--p-ink);
+            border-color: var(--border-subtle);
+        }
+
+        .btn--secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Nav */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: var(--nav-h);
+            background: rgba(10, 13, 20, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 1000;
+        }
+
+        .nav__bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .nav__brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--p-ink);
+            font-weight: 700;
+            font-size: 19px;
+            letter-spacing: -0.02em;
+        }
+
+        .nav__brand img {
+            height: 34px;
+            width: auto;
+            border-radius: 6px;
+        }
+
+        .nav__menu-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav__menu-links a {
+            color: var(--p-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav__menu-links a:hover { color: var(--p-ink); }
+
+        .nav__right-controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-pill);
+            padding: 3px;
+            gap: 2px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--p-muted);
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: var(--radius-pill);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn.is-active {
+            background: var(--p-accent);
+            color: #0a0d14;
+            box-shadow: 0 2px 8px var(--brand-cyan-glow);
+        }
+
+        .btn-nav-cta {
+            height: 38px;
+            padding: 0 18px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* Hero */
+        .hero--split {
+            min-height: calc(100vh - var(--nav-h));
+            padding-top: calc(var(--nav-h) + 48px);
+            padding-bottom: 80px;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at 75% 20%, rgba(90, 185, 252, 0.08) 0%, transparent 60%);
+        }
+
+        .hero__grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            align-items: center;
+            gap: 48px;
+            width: 100%;
+        }
+
+        .hero-notice {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(90, 185, 252, 0.08);
+            border: 1px solid rgba(90, 185, 252, 0.25);
+            color: var(--p-accent);
+            padding: 6px 14px;
+            border-radius: var(--radius-pill);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .pulse-dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--p-accent);
+            box-shadow: 0 0 10px var(--p-accent);
+            animation: pulse-ring 2s infinite ease-out;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.9); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.4; }
+            100% { transform: scale(0.9); opacity: 1; }
+        }
+
+        .hero__h1 {
+            font-size: clamp(38px, 4.2vw, 58px);
+            font-weight: 700;
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+            margin: 0 0 20px 0;
+            color: #ffffff;
+        }
+
+        .hero__lead {
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--p-muted);
+            margin: 0 0 32px 0;
+            max-width: 580px;
+        }
+
+        .hero__actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .hero-facts-row {
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            gap: 28px;
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 24px;
+        }
+
+        .fact-item dt {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--p-muted);
+            margin-bottom: 4px;
+        }
+
+        .fact-item dd {
+            font-family: var(--font-mono);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--p-ink);
+            margin: 0;
+        }
+
+        .hero__stage {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .stage-backdrop {
+            position: absolute;
+            width: 320px; height: 320px;
+            background: radial-gradient(circle, rgba(90, 185, 252, 0.15) 0%, rgba(211, 38, 255, 0.08) 40%, transparent 70%);
+            filter: blur(40px);
+            z-index: 0;
+        }
+
+        .stage-card {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(145deg, rgba(19, 24, 36, 0.75), rgba(10, 13, 20, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+
+        .stage-card img {
+            max-width: 100%;
+            height: auto;
+            max-height: 340px;
+            object-fit: contain;
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.8));
+        }
+
+        .stage-status-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 18px;
+            background: rgba(0, 230, 118, 0.1);
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            color: var(--brand-emerald);
+            padding: 5px 12px;
+            border-radius: var(--radius-pill);
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* Theater */
+        .section-theater {
+            background: #0d1018;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .os-window {
+            background: #111520;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .os-window__bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 18px;
+            background: #161c2b;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .os-window__dots { display: flex; gap: 7px; }
+        .dot-control { width: 11px; height: 11px; border-radius: 50%; }
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+
+        .os-window__title {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--p-muted);
+        }
+
+        .os-window__badge {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            padding: 2px 8px;
+            background: rgba(90, 185, 252, 0.1);
+            color: var(--p-accent);
+            border-radius: 4px;
+        }
+
+        .os-window__body video {
+            width: 100%;
+            display: block;
+            background: #000;
+        }
+
+        /* Features Bento */
+        .section-features { background: var(--p-bg); }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .bento-card {
+            background: var(--p-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 32px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            max-width: 800px;
-            margin: 0 auto 60px auto;
+            justify-content: space-between;
+            transition: all 0.25s var(--ease-out);
         }
 
-        .faq-card {
-            background: #1a1c29;
-            border-radius: 8px;
-            padding: 20px 25px;
-            text-align: left;
+        .bento-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-hover);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
         }
 
-        .faq-card h3 {
-            color: white;
-            font-size: 18px;
-            margin-top: 0;
-            margin-bottom: 10px;
+        .bento-card.card--pro {
+            border-color: rgba(255, 215, 0, 0.25);
+            background: linear-gradient(180deg, rgba(25, 30, 44, 0.9) 0%, rgba(19, 24, 36, 0.95) 100%);
         }
 
-        .faq-card p {
-            color: #a0aabf;
-            font-size: 15px;
-            margin: 0;
+        .card-icon-badge {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 44px; height: 44px; border-radius: 10px;
+            background: rgba(90, 185, 252, 0.1);
+            border: 1px solid rgba(90, 185, 252, 0.2);
+            color: var(--p-accent);
+            font-size: 20px;
+            margin-bottom: 20px;
         }
 
-        .footer {
-            border-top: 1px solid #eee;
-            padding: 40px 20px;
-            margin-top: 20px;
+        .card-icon-badge.pro-badge-icon {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: rgba(255, 215, 0, 0.25);
+            color: var(--brand-gold);
         }
 
-        .footer h4 {
-            color: #1a1c29;
-            font-size: 18px;
-            margin-bottom: 15px;
+        .card-title {
+            font-size: 19px; font-weight: 600;
+            margin: 0 0 12px 0; color: #fff;
         }
 
-        .footer p {
-            color: #555;
-            font-size: 15px;
-            max-width: 700px;
-            margin: 0 auto 20px auto;
+        .card-title.pro-gold-title { color: var(--brand-gold); }
+
+        .card-desc {
+            font-size: 15px; line-height: 1.6;
+            color: var(--p-muted); margin: 0 0 20px 0;
         }
 
-        .footer .contact {
-            color: #d326ff;
-            font-weight: bold;
-            font-size: 18px;
-            margin-bottom: 30px;
+        .card-metric {
+            font-family: var(--font-mono);
+            font-size: 12px; color: var(--p-accent);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 14px; margin-top: auto;
         }
 
-        .footer .copyright {
-            color: #999;
-            font-size: 14px;
+        .card-metric.gold-metric { color: var(--brand-gold); }
+
+        /* Optimizer Showcase */
+        .section-optimizer {
+            background: #0d121c;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .optimizer-split {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 56px;
+            align-items: start;
+        }
+
+        .optimizer-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(0, 230, 118, 0.1);
+            border: 1px solid rgba(0, 230, 118, 0.3);
+            color: var(--brand-emerald);
+            padding: 5px 14px; border-radius: var(--radius-pill);
+            font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+            text-transform: uppercase; margin-bottom: 20px;
+        }
+
+        .optimizer-features-list {
+            list-style: none; padding: 0; margin: 28px 0 0 0; display: grid; gap: 12px;
+        }
+
+        .optimizer-features-list li {
+            display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--p-ink);
+        }
+
+        .opt-check { color: var(--brand-emerald); font-weight: bold; }
+
+        .optimizer-actions-row {
+            display: flex; gap: 14px; flex-wrap: wrap; margin-top: 32px;
+        }
+
+        .optimizer-media-col { display: flex; flex-direction: column; gap: 24px; width: 100%; }
+
+        .optimizer-box-card {
+            background: linear-gradient(145deg, rgba(19, 24, 36, 0.8), rgba(10, 13, 20, 0.95));
+            border: 1px solid rgba(0, 230, 118, 0.2);
+            border-radius: var(--radius-md);
+            padding: 16px; text-align: center;
+        }
+
+        .optimizer-box-img {
+            max-width: 100%; width: 100%; height: auto; max-height: 280px;
+            object-fit: contain; border-radius: var(--radius-sm); display: block; margin: 0 auto;
+        }
+
+        .optimizer-video-card {
+            background: #111520;
+            border: 1px solid rgba(0, 230, 118, 0.25);
+            border-radius: var(--radius-md); overflow: hidden;
+        }
+
+        .media-title-bar {
+            display: flex; align-items: center; gap: 8px; padding: 10px 16px;
+            background: #141926; border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            font-family: var(--font-mono); font-size: 11px; color: var(--p-muted);
+        }
+
+        .media-title-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand-emerald); }
+
+        .optimizer-video-card video { width: 100%; display: block; background: #000; }
+
+        /* Pricing */
+        .section-pricing { background: var(--p-bg); }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+            align-items: stretch;
+        }
+
+        .pricing-card {
+            background: var(--p-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 36px 28px;
+            display: flex; flex-direction: column; justify-content: space-between;
+            position: relative;
+            transition: all 0.25s var(--ease-out);
+        }
+
+        .pricing-card:hover { transform: translateY(-4px); border-color: var(--border-hover); }
+
+        .pricing-card.is-featured {
+            border: 2px solid var(--brand-gold);
+            background: linear-gradient(180deg, #171d2c 0%, #111624 100%);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px var(--brand-gold-glow);
+        }
+
+        .pricing-badge-pro {
+            position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+            background: var(--brand-gold); color: #0a0d14; padding: 4px 16px;
+            border-radius: var(--radius-pill); font-family: var(--font-mono);
+            font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+            white-space: nowrap; z-index: 5;
+        }
+
+        .plan-header { margin-bottom: 24px; }
+        .plan-name { font-size: 22px; font-weight: 700; margin: 0 0 6px 0; color: #fff; }
+        .plan-name .edition-tag { font-size: 14px; font-weight: 600; color: var(--p-accent); }
+        .plan-name .edition-pro-tag { color: var(--brand-gold); }
+        .plan-name .edition-opt-tag { color: var(--brand-emerald); }
+
+        .plan-target { font-size: 14px; color: var(--p-muted); margin: 0; min-height: 44px; line-height: 1.5; }
+
+        .plan-price-row {
+            margin: 20px 0 28px 0; padding-bottom: 24px; border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .plan-price { font-size: 40px; font-weight: 800; color: #fff; font-family: var(--font-mono); letter-spacing: -0.04em; }
+        .plan-period { font-size: 13px; color: var(--p-muted); display: block; margin-top: 4px; }
+
+        .plan-features-list { list-style: none; padding: 0; margin: 0 0 32px 0; display: grid; gap: 12px; flex-grow: 1; }
+        .plan-features-list li { font-size: 14px; color: var(--p-ink); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+        .plan-features-list li.pro-highlight { color: #fffae0; font-weight: 500; }
+
+        .plan-actions { display: flex; flex-direction: column; gap: 10px; }
+        .btn-full {
+            width: 100%; text-align: center; justify-content: center; box-sizing: border-box;
+            padding: 12px 20px; font-size: 14px; font-weight: 600; border-radius: var(--radius-pill);
+            text-decoration: none; display: inline-flex; align-items: center; transition: all 0.2s var(--ease-out);
+        }
+
+        .btn-payhip-std { background: var(--p-accent); color: #0a0d14; }
+        .btn-payhip-std:hover { background: var(--p-accent-hover); box-shadow: 0 4px 16px var(--brand-cyan-glow); transform: translateY(-2px); }
+
+        .btn-payhip-pro { background: var(--brand-gold); color: #0a0d14; }
+        .btn-payhip-pro:hover { background: #ffe347; box-shadow: 0 4px 16px var(--brand-gold-glow); transform: translateY(-2px); }
+
+        .btn-payhip-opt { background: var(--brand-emerald); color: #0a0d14; }
+        .btn-payhip-opt:hover { background: #33ff95; box-shadow: 0 4px 16px var(--brand-emerald-glow); transform: translateY(-2px); }
+
+        .btn-download-sec { background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border-subtle); color: var(--p-ink); }
+        .btn-download-sec:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
+
+        .activation-callout {
+            font-size: 12px; line-height: 1.5; color: #e0be43;
+            background: rgba(255, 215, 0, 0.06); border: 1px dashed rgba(255, 215, 0, 0.3);
+            border-radius: var(--radius-sm); padding: 10px; margin-top: 14px; text-align: left;
+        }
+
+        .requirements-tag { font-size: 11px; color: var(--p-muted); text-align: center; margin-top: 8px; }
+
+        /* FAQ */
+        .section-faq { background: #0d1018; border-top: 1px solid var(--border-subtle); }
+        .faq-accordion-grid { max-width: 840px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+        .faq-item { background: var(--p-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px 28px; }
+        .faq-q { font-size: 17px; font-weight: 600; color: #fff; margin: 0 0 10px 0; }
+        .faq-a { font-size: 15px; line-height: 1.6; color: var(--p-muted); margin: 0; }
+
+        /* Footer */
+        .footer-tech { padding: 80px 0 40px 0; background: #07090f; border-top: 1px solid var(--border-subtle); }
+        .footer-closing-card {
+            text-align: center; max-width: 680px; margin: 0 auto 60px auto; padding: 48px 32px;
+            background: linear-gradient(180deg, rgba(19, 24, 36, 0.6) 0%, rgba(10, 13, 20, 0.8) 100%);
+            border: 1px solid var(--border-subtle); border-radius: var(--radius-lg);
+        }
+        .footer-closing-h { font-size: 32px; font-weight: 700; margin: 0 0 16px 0; color: #fff; }
+        .footer-subrow { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 32px; flex-wrap: wrap; gap: 20px; }
+        .footer-brand-side { display: flex; align-items: center; gap: 12px; }
+        .footer-brand-side img { height: 28px; width: auto; border-radius: 4px; }
+        .footer-brand-side span { font-weight: 700; font-size: 16px; color: var(--p-ink); }
+        .footer-contact-link { color: var(--p-accent); text-decoration: none; font-family: var(--font-mono); font-size: 13px; }
+        .footer-legal-copy { color: var(--p-muted); font-size: 13px; }
+
+        @media (max-width: 1024px) {
+            .hero__grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .hero__lead, .hero__actions { margin-left: auto; margin-right: auto; justify-content: center; }
+            .hero-facts-row { justify-content: center; }
+            .bento-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+            .optimizer-split { grid-template-columns: 1fr; gap: 40px; }
+            .nav__menu-links { display: none; }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="language-selector">
-        <select id="langSelect" onchange="changeLanguage(this.value)">
-            <option value="en">English</option>
-            <option value="es">Español</option>
-        </select>
-    </div>
+    <a class="skip-link" href="#top">Skip to content</a>
 
-    <div class="container">
+    <!-- Fixed Header Nav -->
+    <header class="nav">
+        <div class="wrap nav__bar">
+            <a class="nav__brand" href="#top">
+                <img src="Logo.png" alt="IronLock Logo">
+                <span>IronLock</span>
+            </a>
 
-        <img src="Logo.png" alt="IronLock Logo" class="logo">
+            <nav aria-label="Main Navigation">
+                <ul class="nav__menu-links">
+                    <li><a href="#theater" data-i18n="nav_demo">Product Demo</a></li>
+                    <li><a href="#features" data-i18n="nav_architecture">Architecture</a></li>
+                    <li><a href="#optimizer" data-i18n="nav_optimizer">Optimizer</a></li>
+                    <li><a href="#pricing" data-i18n="nav_pricing">Editions</a></li>
+                    <li><a href="#faq" data-i18n="nav_faq">FAQ</a></li>
+                </ul>
+            </nav>
 
-        <!-- ========================================== -->
-        <!-- SECCIÓN: IRONLOCK VAULT                    -->
-        <!-- ========================================== -->
-        <h1 class="product-family-title title-vault">IronLock Vault</h1>
-        <div class="subtitle-top" data-i18n="subtitle_top">PRIVACY FIRST. 100% OFFLINE SECURITY.</div>
-
-        <p class="description" data-i18n="main_desc">
-            IronLock Vault is the ultimate digital vault and endpoint security suite for Windows. No internet connections, no subscriptions, no hidden tracking. Lock, encrypt, shred, and protect your hardware ports exclusively offline.
-        </p>
-
-        <div class="video-wrapper">
-            <video id="promoVideo" controls poster="IronLock_Vault_Box.jpg">
-                <source src="VideoIngles.mp4" type="video/mp4">
-                Tu navegador no soporta el reproductor de video.
-            </video>
-        </div>
-
-        <div class="pricing-container">
-            <!-- TARJETA STANDARD -->
-            <div class="purchase-section standard-tier">
-                <div class="purchase-image">
-                    <img src="IronLock_Vault_Box.jpg" alt="IronLock Vault Standard Box">
+            <div class="nav__right-controls">
+                <div class="lang-switch" role="group" aria-label="Language selection">
+                    <button type="button" class="lang-btn is-active" id="btnLangEn" onclick="changeLanguage('en')">EN</button>
+                    <button type="button" class="lang-btn" id="btnLangEs" onclick="changeLanguage('es')">ES</button>
                 </div>
-                <div class="purchase-details">
-                    <h2>IronLock Vault <span class="edition">STANDARD</span></h2>
-                    <p data-i18n="purchase_desc">
-                        Get the complete 100% offline security suite. Includes standard installer and official manuals. Protect your data today without subscriptions or telemetry.
-                    </p>
+                <a href="#pricing" class="btn btn--primary btn-nav-cta" data-i18n="nav_cta">Get IronLock</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="top">
+
+        <!-- 1. HERO -->
+        <section class="hero--split" aria-labelledby="hero-title">
+            <div class="wrap">
+                <div class="hero__grid">
+                    <div class="hero__copy">
+                        <div class="hero-notice">
+                            <span class="pulse-dot" aria-hidden="true"></span>
+                            <span data-i18n="subtitle_top">PRIVACY FIRST. 100% OFFLINE SECURITY.</span>
+                        </div>
+
+                        <h1 id="hero-title" class="hero__h1">IronLock Vault & Optimizer</h1>
+
+                        <p class="hero__lead" data-i18n="main_desc">
+                            IronLock Vault is the ultimate digital vault and endpoint security suite for Windows. No internet connections, no subscriptions, no hidden tracking. Lock, encrypt, shred, and protect your hardware ports exclusively offline.
+                        </p>
+
+                        <div class="hero__actions">
+                            <a href="#pricing" class="btn btn--primary" data-i18n="hero_get_btn">Download & Buy Licenses</a>
+                            <a href="#theater" class="btn btn--secondary" data-i18n="hero_demo_btn">Watch 2-Min Demo</a>
+                        </div>
+
+                        <dl class="hero-facts-row">
+                            <div class="fact-item">
+                                <dt data-i18n="fact_cipher_title">ENCRYPTION</dt>
+                                <dd>AES-256-GCM</dd>
+                            </div>
+                            <div class="fact-item">
+                                <dt data-i18n="fact_telemetry_title">TELEMETRY</dt>
+                                <dd data-i18n="fact_telemetry_val">0 KB (Zero-Cloud)</dd>
+                            </div>
+                            <div class="fact-item">
+                                <dt data-i18n="fact_license_title">LICENSE</dt>
+                                <dd data-i18n="fact_license_val">Perpetual (No Sub)</dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <div class="hero__stage">
+                        <div class="stage-backdrop"></div>
+                        <div class="stage-card">
+                            <img src="IronLock_Vault_Pro_Box.png" alt="IronLock Vault PRO Box">
+                            <br>
+                            <span class="stage-status-chip">
+                                <span class="pulse-dot" style="background:#00e676; box-shadow:0 0 8px #00e676;"></span>
+                                AIR-GAPPED SHIELD: ACTIVE
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. THEATER (VIDEO DEMO) -->
+        <section class="section-theater" id="theater">
+            <div class="wrap">
+                <div class="section-header-block">
+                    <div class="section-tag" data-i18n="theater_tag">SYSTEM DEMONSTRATION</div>
+                    <h2 class="section-title" data-i18n="theater_title">See IronLock in Action</h2>
+                    <p class="section-desc" data-i18n="theater_desc">Watch how IronLock Vault secures your files, encrypts containers, and freezes NTFS permissions locally without cloud dependencies.</p>
+                </div>
+
+                <div class="os-window">
+                    <div class="os-window__bar">
+                        <div class="os-window__dots">
+                            <span class="dot-control dot-red"></span>
+                            <span class="dot-control dot-yellow"></span>
+                            <span class="dot-control dot-green"></span>
+                        </div>
+                        <span class="os-window__title">IronLock.Vault.Official_Demo.mp4</span>
+                        <span class="os-window__badge">OFFLINE VERIFIED</span>
+                    </div>
+                    <div class="os-window__body">
+                        <video id="promoVideo" controls autoplay muted loop playsinline poster="IronLock_Vault_Pro_Box.png" preload="auto">
+                            <source src="IronLock Vault-Publicidad-Ingles-Definitivo.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video playback.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ARCHITECTURE & FEATURES -->
+        <section class="section-features" id="features">
+            <div class="wrap">
+                <div class="section-header-block">
+                    <div class="section-tag" data-i18n="arch_tag">ZERO-CLOUD DEFENSE</div>
+                    <h2 class="section-title" data-i18n="why_title">Why choose IronLock?</h2>
+                    <p class="section-desc" data-i18n="arch_desc">Engineered for Windows users who refuse to compromise their digital privacy to cloud servers and recurring subscriptions.</p>
+                </div>
+
+                <div class="bento-grid" style="margin-bottom: 24px;">
+                    <div class="bento-card">
+                        <div>
+                            <div class="card-icon-badge">🛡️</div>
+                            <h3 class="card-title" data-i18n="why_1_title">Total Isolation (Zero-Cloud)</h3>
+                            <p class="card-desc" data-i18n="why_1_desc">Unlike the competition, IronLock software does not connect to the internet. There are no hackable "automatic cloud backups" or telemetry. Your data never leaves your hard drive.</p>
+                        </div>
+                        <div class="card-metric">AIR-GAP VERIFIED</div>
+                    </div>
+
+                    <div class="bento-card">
+                        <div>
+                            <div class="card-icon-badge">💳</div>
+                            <h3 class="card-title" data-i18n="why_2_title">One-Time Payment. No Subscriptions.</h3>
+                            <p class="card-desc" data-i18n="why_2_desc">Software shouldn't be a monthly rental. Make a one-time payment and get a lifetime license. End of story.</p>
+                        </div>
+                        <div class="card-metric">PERPETUAL ACCESS</div>
+                    </div>
+
+                    <div class="bento-card">
+                        <div>
+                            <div class="card-icon-badge">⚙️</div>
+                            <h3 class="card-title" data-i18n="why_3_title">Transparent Implementation</h3>
+                            <p class="card-desc" data-i18n="why_3_desc">No invasive kernel drivers slowing down your PC. We use native Windows permissions to guarantee unbreakable protection and optimization without harming your OS.</p>
+                        </div>
+                        <div class="card-metric">NATIVE WINDOWS ACLs</div>
+                    </div>
+                </div>
+
+                <!-- Feature Deep-Dive Bento -->
+                <div class="section-header-block" style="margin-top: 64px;">
+                    <div class="section-tag" data-i18n="feat_tag">FEATURE SUITE</div>
+                    <h2 class="section-title" data-i18n="feat_main_title">Vault Security Features</h2>
+                </div>
+
+                <div class="bento-grid">
+                    <div class="bento-card">
+                        <div>
+                            <div class="card-icon-badge">📁</div>
+                            <h3 class="card-title" data-i18n="feat_1_title">Hidden & Protected Items</h3>
+                            <p class="card-desc" data-i18n="feat_1_desc">Hide and encrypt sensitive folders with AES-256-GCM under your master password, or apply native Windows ACL restrictions to block unauthorized local access.</p>
+                        </div>
+                        <div class="card-metric">AES-256-GCM + ACLs</div>
+                    </div>
+
+                    <div class="bento-card">
+                        <div>
+                            <div class="card-icon-badge">🔒</div>
+                            <h3 class="card-title" data-i18n="feat_2_title">Encrypted Vaults</h3>
+                            <p class="card-desc" data-i18n="feat_2_desc">Create shielded containers with AES-256-GCM encryption. When you move a file to the vault, the original is automatically and securely shredded.</p>
+                        </div>
+                        <div class="card-metric">AUTO-SHRED INTEGRATION</div>
+                    </div>
+
+                    <div class="bento-card">
+                        <div>
+                            <div class="card-icon-badge">💾</div>
+                            <h3 class="card-title" data-i18n="feat_3_title">Offline Installer</h3>
+                            <p class="card-desc" data-i18n="feat_3_desc">Install IronLock Vault directly on your computer without needing an internet connection during setup.</p>
+                        </div>
+                        <div class="card-metric">STANDALONE PACKAGE</div>
+                    </div>
+
+                    <div class="bento-card">
+                        <div>
+                            <div class="card-icon-badge">🔥</div>
+                            <h3 class="card-title" data-i18n="feat_4_title">Secure Shredding</h3>
+                            <p class="card-desc" data-i18n="feat_4_desc">Multi-pass overwriting algorithm that truncates, renames, and deletes files. Highly effective on mechanical drives (HDD), with automatic hardware detection for SSDs.</p>
+                        </div>
+                        <div class="card-metric">MULTI-PASS OVERWRITE</div>
+                    </div>
+
+                    <div class="bento-card">
+                        <div>
+                            <div class="card-icon-badge">🎭</div>
+                            <h3 class="card-title" data-i18n="feat_5_title">Decoy Vault</h3>
+                            <p class="card-desc" data-i18n="feat_5_desc">Protection against physical coercion. Set up a fake password that opens a dummy vault with harmless data, keeping your true secrets hidden.</p>
+                        </div>
+                        <div class="card-metric">ANTI-COERCION SHIELD</div>
+                    </div>
+
+                    <div class="bento-card">
+                        <div>
+                            <div class="card-icon-badge">🔑</div>
+                            <h3 class="card-title" data-i18n="feat_6_title">Credential Wallet</h3>
+                            <p class="card-desc" data-i18n="feat_6_desc">Manage and protect your passwords, bank cards, and secret notes directly inside your encrypted vault, isolated from traditional password managers.</p>
+                        </div>
+                        <div class="card-metric">ISOLATED CREDENTIAL STORE</div>
+                    </div>
+
+                    <!-- PRO Features -->
+                    <div class="bento-card card--pro">
+                        <div>
+                            <div class="card-icon-badge pro-badge-icon">⚡</div>
+                            <h3 class="card-title pro-gold-title" data-i18n="feat_7_title">★ USB Shield & DLP Sentinel (PRO)</h3>
+                            <p class="card-desc" data-i18n="feat_7_desc">Endpoint data loss prevention. Instantly block unauthorized file writing to external USB drives (Read-Only mode) and protect your hardware ports.</p>
+                        </div>
+                        <div class="card-metric gold-metric">HARDWARE PORT INTERLOCK</div>
+                    </div>
+
+                    <div class="bento-card card--pro">
+                        <div>
+                            <div class="card-icon-badge pro-badge-icon">📜</div>
+                            <h3 class="card-title pro-gold-title" data-i18n="feat_8_title">★ Encrypted Audit Log (PRO)</h3>
+                            <p class="card-desc" data-i18n="feat_8_desc">Forensic tracking of external hardware events. All connection logs are securely encrypted in AES-256 (`audit_log.enc`) to prevent tampering.</p>
+                        </div>
+                        <div class="card-metric gold-metric">AUDIT_LOG.ENC CIPHERED</div>
+                    </div>
+
+                    <div class="bento-card card--pro">
+                        <div>
+                            <div class="card-icon-badge pro-badge-icon">🧊</div>
+                            <h3 class="card-title pro-gold-title" data-i18n="feat_9_title">★ Strict Integrity Control (PRO)</h3>
+                            <p class="card-desc" data-i18n="feat_9_desc">Strict read-only protection at native Windows level (NTFS ACLs + System Attributes). Freezes and immobilizes vital files and folders, preventing deletion, modification, or renaming.</p>
+                        </div>
+                        <div class="card-metric gold-metric">NTFS IMMUTABILITY LOCK</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. OPTIMIZER SHOWCASE -->
+        <section class="section-optimizer" id="optimizer">
+            <div class="wrap">
+                <div class="optimizer-split">
+                    <div class="optimizer-text-col">
+                        <div class="optimizer-badge">
+                            <span class="pulse-dot" style="background:#00e676; box-shadow:0 0 8px #00e676;"></span>
+                            <span data-i18n="opt_badge">FREEMIUM MODEL</span>
+                        </div>
+
+                        <h2 class="section-title">IronLock Optimizer</h2>
+
+                        <p class="section-desc" data-i18n="opt_main_desc">
+                            Maximize your PC's performance safely. IronLock Optimizer cleans junk files, optimizes your registry, and boosts your system's speed while maintaining our strict 100% offline privacy standard.
+                        </p>
+
+                        <ul class="optimizer-features-list">
+                            <li><span class="opt-check">✓</span> <span data-i18n="opt_f1">⚡ RAM liberation & deep cleaning</span></li>
+                            <li><span class="opt-check">✓</span> <span data-i18n="opt_f2">⚡ Safe registry & startup optimization</span></li>
+                            <li><span class="opt-check">✓</span> <span data-i18n="opt_f3">⚡ Game Booster: Maximum performance</span></li>
+                            <li><span class="opt-check">✓</span> <span data-i18n="opt_f4">⚡ Disables Windows telemetry</span></li>
+                            <li><span class="opt-check">✓</span> <span data-i18n="opt_f5">⚡ 100% Private & Secure</span></li>
+                        </ul>
+
+                        <div class="optimizer-actions-row">
+                            <a href="https://github.com/Nachito2015/ironlock/releases/latest/download/IronLock.Optimizer.Setup.1.0.0.exe" 
+                               class="btn btn--primary" 
+                               style="background:var(--brand-emerald); color:#0a0d14;" 
+                               data-i18n="opt_free_btn" 
+                               target="_blank">
+                                DOWNLOAD FREE (.EXE)
+                            </a>
+                            <a href="https://payhip.com/b/M0Lk6" 
+                               target="_blank" 
+                               class="btn btn--secondary" 
+                               data-i18n="opt_purchase_btn">
+                                Acquire Optimizer License ($9.00 USD)
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="optimizer-media-col">
+                        <div class="optimizer-box-card">
+                            <img src="ironlock-optimizer-box-en.jpg" alt="IronLock Optimizer Box Edition" class="optimizer-box-img">
+                        </div>
+                        <div class="optimizer-video-card">
+                            <div class="media-title-bar">
+                                <span class="media-title-dot"></span>
+                                <span>IronLock Optimizer — Feature Preview</span>
+                            </div>
+                            <video controls autoplay muted loop playsinline preload="auto">
+                                <source src="IronLock Optimizer-Spot-D.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video playback.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. PRICING & EDITIONS -->
+        <section class="section-pricing" id="pricing">
+            <div class="wrap">
+                <div class="section-header-block">
+                    <div class="section-tag" data-i18n="pricing_tag">TRANSPARENT PRICING</div>
+                    <h2 class="section-title" data-i18n="pricing_title">Perpetual Licenses Without Monthly Fees</h2>
+                    <p class="section-desc" data-i18n="pricing_desc">Own your security software forever with a single one-time payment. Immediate digital delivery.</p>
+                </div>
+
+                <div class="pricing-grid">
                     
-                    <ul class="tier-features">
-                        <li data-i18n="std_f1">✓ Encriptación AES-256 100% Offline</li>
-                        <li data-i18n="std_f2">✓ Instalador Estándar</li>
-                        <li data-i18n="std_f3">✓ Bóvedas cifradas y Destrucción Segura</li>
-                        <li data-i18n="std_f4">✓ Cartera de Credenciales y Bóveda Señuelo</li>
-                    </ul>
+                    <!-- Standard Plan -->
+                    <div class="pricing-card">
+                        <div class="plan-header">
+                            <h3 class="plan-name">Vault <span class="edition-tag">STANDARD</span></h3>
+                            <p class="plan-target" data-i18n="purchase_desc">Complete 100% offline security suite. Crypted vaults, secure shredder, and credential store.</p>
+                            <div class="plan-price-row">
+                                <span class="plan-price">$15.00</span>
+                                <span class="plan-period" data-i18n="purchase_price_note">USD (One-time payment)</span>
+                            </div>
+                        </div>
 
-                    <div class="price-tag">
-                        $15.00 <span data-i18n="purchase_price_note">USD (One-time payment)</span>
+                        <ul class="plan-features-list">
+                            <li data-i18n="std_f1">✓ 100% Offline AES-256 Encryption</li>
+                            <li data-i18n="std_f2">✓ Standard Windows Installer</li>
+                            <li data-i18n="std_f3">✓ Encrypted Vaults & Secure Shredder</li>
+                            <li data-i18n="std_f4">✓ Credential Wallet & Decoy Vault</li>
+                            <li>✓ Zero-Cloud & Zero-Telemetry</li>
+                        </ul>
+
+                        <div class="plan-actions">
+                            <a href="https://github.com/Nachito2015/ironlock/releases/latest/download/IronLock.Vault.Standard-1.0.0-Instalador.exe" 
+                               class="btn-full btn-download-sec" 
+                               data-i18n="download_app_btn" 
+                               target="_blank">
+                                DOWNLOAD APP (.EXE)
+                            </a>
+                            <a href="https://payhip.com/buy?link=tmTzX" 
+                               target="_blank" 
+                               class="btn-full btn-payhip-std" 
+                               data-i18n="purchase_btn">
+                                Acquire Standard License
+                            </a>
+                        </div>
+
+                        <div class="activation-callout" data-i18n="activation_note">
+                            * 1. Download the app. 2. Buy the license. 3. Send your HWID to ironlockvault@gmail.com to receive your key.
+                        </div>
+                        <div class="requirements-tag" data-i18n="purchase_req">
+                            * Compatible with Windows 10 & 11 (64-bit). Immediate digital delivery.
+                        </div>
                     </div>
 
-                    <!-- BOTÓN AZUL DE DESCARGA DIRECTA DE GITHUB -->
-                    <a href="https://github.com/Nachito2015/ironlock/releases/latest/download/IronLock.Vault.Standard-1.0.0-Instalador.exe" class="payhip-buy-button free-btn" data-i18n="download_app_btn" target="_blank">
-                        DOWNLOAD APP (.EXE)
-                    </a>
+                    <!-- PRO Plan (Featured) - DIRECTO A PAYHIP -->
+                    <div class="pricing-card is-featured">
+                        <div class="pricing-badge-pro" data-i18n="pro_badge">MOST POPULAR / MAX SECURITY</div>
+                        
+                        <div class="plan-header">
+                            <h3 class="plan-name">Vault <span class="edition-pro-tag">PRO</span></h3>
+                            <p class="plan-target" data-i18n="purchase_pro_desc">Corporate-grade shield: USB DLP Sentinel, AES-256 Forensic Audit Logs, and NTFS Strict Integrity.</p>
+                            <div class="plan-price-row">
+                                <span class="plan-price" style="color:var(--brand-gold);">$29.00</span>
+                                <span class="plan-period" data-i18n="purchase_price_note">USD (One-time payment)</span>
+                            </div>
+                        </div>
 
-                    <!-- BOTÓN VERDE DE PAGO EN PAYHIP -->
-                    <a href="https://payhip.com/buy?link=tmTzX" target="_blank" class="payhip-buy-button standard-btn" data-i18n="purchase_btn">
-                        Acquire Standard License
-                    </a>
+                        <ul class="plan-features-list">
+                            <li class="pro-highlight" data-i18n="pro_f1">✓ Everything included in Standard</li>
+                            <li class="pro-highlight" data-i18n="pro_f2">★ USB Shield & DLP Sentinel (Anti-Data Theft)</li>
+                            <li class="pro-highlight" data-i18n="pro_f3">★ Encrypted Forensic Audit Log (AES-256)</li>
+                            <li class="pro-highlight" data-i18n="pro_f4">★ Strict Integrity Control (Anti-Deletion/Modification)</li>
+                            <li class="pro-highlight" data-i18n="pro_f5">★ Proprietary File & Autonomous .EXE Exporter</li>
+                        </ul>
 
-                    <p class="purchase-note" style="color: #ffca28 !important; font-weight: bold;" data-i18n="activation_note">
-                        * 1. Download the app. 2. Buy the license. 3. Send your HWID to ironlockvault@gmail.com to receive your key.
-                    </p>
-                    <p class="purchase-note" data-i18n="purchase_req">
-                        * Compatible with Windows 10 & 11 (64-bit). Immediate digital delivery.
-                    </p>
-                </div>
-            </div>
+                        <div class="plan-actions">
+                            <!-- Botón directo a Payhip para la versión Pro -->
+                            <a href="https://payhip.com/b/Ozg9V" 
+                               target="_blank" 
+                               class="btn-full btn-payhip-pro" 
+                               data-i18n="purchase_pro_btn"
+                               style="height: 48px; font-size: 15px;">
+                                Acquire PRO License
+                            </a>
+                        </div>
 
-            <!-- TARJETA PRO -->
-            <div class="purchase-section pro-tier">
-                <div class="pro-badge" data-i18n="pro_badge">MOST POPULAR / MAX SECURITY</div>
-                <div class="purchase-image">
-                    <img src="IronLock_Vault_Pro_Box.png" alt="IronLock Vault PRO Box">
-                </div>
-                <div class="purchase-details">
-                    <h2 class="pro-title">IronLock Vault <span class="edition-pro">PRO</span></h2>
-                    <p data-i18n="purchase_pro_desc">
-                        The ultimate corporate-grade shield. Includes everything in Standard PLUS: USB DLP Sentinel, AES-256 Forensic Audit Logs, Strict Integrity Control, and Proprietary .EXE Package Exporter.
-                    </p>
-
-                    <ul class="tier-features pro-features">
-                        <li data-i18n="pro_f1">✓ Todo lo incluido en Standard</li>
-                        <li data-i18n="pro_f2">★ Escudo USB & Centinela DLP (Anti-Robo de Datos)</li>
-                        <li data-i18n="pro_f3">★ Registro de Auditoría Forense Cifrado (AES-256)</li>
-                        <li data-i18n="pro_f4">★ Control de Integridad Estricto (Anti-Borrado/Modificación)</li>
-                        <li data-i18n="pro_f5">★ Empaquetador de Archivos Propietarios (.EXE Autónomo)</li>
-                    </ul>
-
-                    <div class="price-tag pro-price">
-                        $29.00 <span data-i18n="purchase_price_note">USD (One-time payment)</span>
+                        <div class="activation-callout" data-i18n="activation_note">
+                            * 1. Buy the license on Payhip. 2. Download the app & ZIP. 3. Send your HWID to ironlockvault@gmail.com to receive your key.
+                        </div>
+                        <div class="requirements-tag" data-i18n="purchase_req">
+                            * Compatible with Windows 10 & 11 (64-bit). Immediate digital delivery.
+                        </div>
                     </div>
 
-                    <!-- BOTÓN AZUL DE DESCARGA DIRECTA DE GITHUB (NUEVO ENLACE ZIP) -->
-                    <a href="https://github.com/Nachito2015/ironlock/releases/download/v2.0.0-pro/IronLock.Vault.Pro.2.0.zip" class="payhip-buy-button free-btn" data-i18n="download_app_zip_btn" target="_blank">
-                        DOWNLOAD APP (.ZIP)
-                    </a>
+                    <!-- Optimizer Plan -->
+                    <div class="pricing-card">
+                        <div class="plan-header">
+                            <h3 class="plan-name">IronLock <span class="edition-opt-tag">OPTIMIZER</span></h3>
+                            <p class="plan-target" data-i18n="opt_purchase_desc">Definitive optimization tool designed for speed, stability, and total privacy without telemetry.</p>
+                            <div class="plan-price-row">
+                                <span class="plan-price">$9.00</span>
+                                <span class="plan-period" data-i18n="purchase_price_note">USD (One-time payment)</span>
+                            </div>
+                        </div>
 
-                    <!-- BOTÓN VERDE DE PAGO EN PAYHIP -->
-                    <a href="https://payhip.com/b/Ozg9V" target="_blank" class="payhip-buy-button pro-btn" data-i18n="purchase_pro_btn">
-                        Acquire PRO License
-                    </a>
+                        <ul class="plan-features-list">
+                            <li data-i18n="opt_f1">⚡ RAM liberation & deep cleaning</li>
+                            <li data-i18n="opt_f2">⚡ Safe registry & startup optimization</li>
+                            <li data-i18n="opt_f3">⚡ Game Booster: Maximum performance</li>
+                            <li data-i18n="opt_f4">⚡ Disables Windows telemetry</li>
+                            <li data-i18n="opt_f5">⚡ 100% Private & Secure</li>
+                        </ul>
 
-                    <p class="purchase-note" style="color: #ffca28 !important; font-weight: bold;" data-i18n="activation_note">
-                        * 1. Download the app. 2. Buy the license. 3. Send your HWID to ironlockvault@gmail.com to receive your key.
-                    </p>
-                    <p class="purchase-note" data-i18n="purchase_req">
-                        * Compatible with Windows 10 & 11 (64-bit). Immediate digital delivery.
-                    </p>
-                </div>
-            </div>
-        </div>
+                        <div class="plan-actions">
+                            <a href="https://github.com/Nachito2015/ironlock/releases/latest/download/IronLock.Optimizer.Setup.1.0.0.exe" 
+                               class="btn-full btn-download-sec" 
+                               data-i18n="opt_free_btn" 
+                               target="_blank">
+                                DOWNLOAD FREE (.EXE)
+                            </a>
+                            <a href="https://payhip.com/b/M0Lk6" 
+                               target="_blank" 
+                               class="btn-full btn-payhip-opt" 
+                               data-i18n="purchase_btn">
+                                Acquire Optimizer License
+                            </a>
+                        </div>
 
-        <!-- ========================================== -->
-        <!-- SECCIÓN: IRONLOCK OPTIMIZER                -->
-        <!-- ========================================== -->
-        <h1 class="product-family-title title-opt">IronLock Optimizer</h1>
-        
-        <p class="description" data-i18n="opt_main_desc">
-            Maximize your PC's performance safely. IronLock Optimizer cleans junk files, optimizes your registry, and boosts your system's speed while maintaining our strict 100% offline privacy standard.
-        </p>
-
-        <div class="pricing-container">
-            <!-- TARJETA OPTIMIZER -->
-            <div class="purchase-section opt-tier">
-                <div class="opt-badge" data-i18n="opt_badge">FREEMIUM MODEL</div>
-                
-                <div class="purchase-image">
-                    <video autoplay loop muted playsinline>
-                        <source src="IronLock Optimizer-Spot-D.mp4" type="video/mp4">
-                    </video>
-                </div>
-                
-                <div class="purchase-details">
-                    <h2 class="opt-title">IronLock <span class="edition-opt">OPTIMIZER</span></h2>
-                    <p data-i18n="opt_purchase_desc">
-                        Breathe new life into your system. Get the definitive optimization tool designed for speed, stability, and total privacy without telemetry. Download free or unlock PRO features.
-                    </p>
-                    
-                    <ul class="tier-features opt-features">
-                        <li data-i18n="opt_f1">⚡ Liberación de RAM y Limpieza profunda</li>
-                        <li data-i18n="opt_f2">⚡ Optimización de registro y arranque</li>
-                        <li data-i18n="opt_f3">⚡ Game Booster: Máximo rendimiento</li>
-                        <li data-i18n="opt_f4">⚡ Desactiva la telemetría de Windows</li>
-                        <li data-i18n="opt_f5">⚡ 100% Privado y Seguro</li>
-                    </ul>
-
-                    <div class="price-tag" style="font-size: 1.3rem; margin-bottom: 15px;">
-                        <span data-i18n="opt_free_tag">Free Download</span> (0.00 USD) | 9.00 <span data-i18n="purchase_price_note">USD (One-time payment)</span>
+                        <div class="activation-callout" style="color:var(--brand-emerald); background:rgba(0,230,118,0.06); border-color:rgba(0,230,118,0.3);">
+                            * Freemium model: Clean your PC for free, or acquire the perpetual license for advanced registry tools.
+                        </div>
+                        <div class="requirements-tag" data-i18n="purchase_req">
+                            * Compatible with Windows 10 & 11 (64-bit). Immediate digital delivery.
+                        </div>
                     </div>
 
-                    <!-- BOTÓN AZUL DE DESCARGA GRATUITA -->
-                    <a href="https://github.com/Nachito2015/ironlock/releases/latest/download/IronLock.Optimizer.Setup.1.0.0.exe" class="payhip-buy-button free-btn" data-i18n="opt_free_btn" data-goatcounter-click="descarga-freemium-optimizer" target="_blank">
-                        DOWNLOAD FREE (.EXE)
-                    </a>
+                </div>
+            </div>
+        </section>
 
-                    <!-- BOTÓN VERDE DE PAGO EN PAYHIP CON GOATCOUNTER -->
-                    <a href="https://payhip.com/b/M0Lk6" target="_blank" class="payhip-buy-button opt-btn" data-i18n="opt_purchase_btn" data-goatcounter-click="clic-compra-optimizer">
-                        Acquire Optimizer License
-                    </a>
+        <!-- 6. FAQ -->
+        <section class="section-faq" id="faq">
+            <div class="wrap">
+                <div class="section-header-block">
+                    <div class="section-tag">VERIFICATION & ARCHITECTURE</div>
+                    <h2 class="section-title" data-i18n="faq_title">Frequently Asked Questions</h2>
+                    <p class="section-desc">Direct technical answers regarding encryption, licensing, and installation.</p>
+                </div>
 
-                    <p class="purchase-note" data-i18n="purchase_req">
-                        * Compatible with Windows 10 & 11 (64-bit). Immediate digital delivery for PRO.
-                    </p>
+                <div class="faq-accordion-grid">
+                    <div class="faq-item">
+                        <h3 class="faq-q" data-i18n="faq_1_q">Do I need an internet connection to use IronLock?</h3>
+                        <p class="faq-a" data-i18n="faq_1_a">Absolutely not. IronLock software is designed to work 100% offline. It does not require the internet to activate or function. Your privacy is guaranteed by design.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-q" data-i18n="faq_2_q">What happens if I forget my Vault master password?</h3>
+                        <p class="faq-a" data-i18n="faq_2_a">For your security, IronLock Vault uses real encryption with no "backdoors". If you lose the master password, it is mathematically impossible to recover the encrypted data from your vault.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-q" data-i18n="faq_3_q">Does the license force me to pay monthly fees later?</h3>
+                        <p class="faq-a" data-i18n="faq_3_a">No. It is a one-time payment. With your purchase, you get perpetual access to your chosen version with no annual renewals or hidden fees.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-q" data-i18n="faq_4_q">Does it work on Mac or Linux?</h3>
+                        <p class="faq-a" data-i18n="faq_4_a">Currently, IronLock software is designed and optimized exclusively for the Windows (64-bit) ecosystem, leveraging its native permission systems for maximum effectiveness.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3 class="faq-q" data-i18n="faq_5_q">Why does Windows show a "Windows protected your PC" warning when installing?</h3>
+                        <p class="faq-a" data-i18n="faq_5_a">Because IronLock is an independent, zero-telemetry studio and the installer is distributed without a commercial digital signature certificate, Windows SmartScreen may display an initial warning. Click "More info" → "Run anyway" to install safely.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 7. FOOTER -->
+    <footer class="footer-tech">
+        <div class="wrap">
+            <div class="footer-closing-card">
+                <h3 class="footer-closing-h">Air-Gapped Security. Absolute Control.</h3>
+                <p style="color:var(--p-muted); font-size:16px; margin:0 0 28px 0;" data-i18n="footer_desc">
+                    We are an independent software development studio focused on creating zero-knowledge privacy tools and 100% offline security for Windows users.
+                </p>
+                <a href="#pricing" class="btn btn--primary" style="padding:0 32px; height:48px;" data-i18n="hero_get_btn">
+                    Download & Buy Licenses
+                </a>
+            </div>
+
+            <div class="footer-subrow">
+                <div class="footer-brand-side">
+                    <img src="Logo.png" alt="IronLock Logo">
+                    <span>IronLock Vault</span>
+                </div>
+                <div>
+                    <a href="mailto:ironlockvault@gmail.com" class="footer-contact-link">✉ ironlockvault@gmail.com</a>
+                </div>
+                <div class="footer-legal-copy" data-i18n="copyright">
+                    © 2026 IronLock. All rights reserved.
                 </div>
             </div>
         </div>
-        <!-- ========================================== -->
+    </footer>
 
-        <h2 class="section-title" data-i18n="why_title">Why choose IronLock?</h2>
-        <div class="grid-3">
-            <div class="dark-card">
-                <h3 data-i18n="why_1_title">Total Isolation (Zero-Cloud)</h3>
-                <p data-i18n="why_1_desc">Unlike the competition, IronLock software does not connect to the internet. There are
-                    no hackable "automatic cloud backups" or telemetry. Your data never leaves your hard drive.</p>
-            </div>
-            <div class="dark-card">
-                <h3 data-i18n="why_2_title">One-Time Payment. No Subscriptions.</h3>
-                <p data-i18n="why_2_desc">Software shouldn't be a monthly rental. Pay once and get a lifetime
-                    license. End of story.</p>
-            </div>
-            <div class="dark-card">
-                <h3 data-i18n="why_3_title">Transparent Implementation</h3>
-                <p data-i18n="why_3_desc">No invasive kernel drivers slowing down your PC. We use native Windows permissions to guarantee unbreakable protection and optimization without harming your OS.</p>
-            </div>
-        </div>
-
-        <h2 class="section-title" data-i18n="feat_main_title">Vault Security Features</h2>
-        <div class="grid-3">
-            <div class="dark-card">
-                <h3 data-i18n="feat_1_title">Hidden & Protected Items</h3>
-                <p data-i18n="feat_1_desc">Hide and encrypt sensitive folders with AES-256-GCM under your master password, or apply native Windows ACL restrictions to block unauthorized local access.</p>
-            </div>
-            <div class="dark-card">
-                <h3 data-i18n="feat_2_title">Encrypted Vaults</h3>
-                <p data-i18n="feat_2_desc">Create shielded containers with AES-256-GCM encryption. When you move a file
-                    to the vault, the original is automatically and securely shredded.</p>
-            </div>
-            <div class="dark-card">
-                <h3 data-i18n="feat_3_title">Offline Installer</h3>
-                <p data-i18n="feat_3_desc">Install IronLock Vault directly on your computer without needing an internet connection during setup.</p>
-            </div>
-            <div class="dark-card">
-                <h3 data-i18n="feat_4_title">Secure Shredding</h3>
-                <p data-i18n="feat_4_desc">Multi-pass overwriting algorithm that truncates, renames, and deletes files. Highly effective on mechanical drives (HDD), with automatic hardware detection for SSDs.</p>
-            </div>
-            <div class="dark-card">
-                <h3 data-i18n="feat_5_title">Decoy Vault</h3>
-                <p data-i18n="feat_5_desc">Protection against physical coercion. Set up a fake password that opens a
-                    dummy vault with harmless data, keeping your true secrets hidden.</p>
-            </div>
-            <div class="dark-card">
-                <h3 data-i18n="feat_6_title">Credential Wallet</h3>
-                <p data-i18n="feat_6_desc">Manage and protect your passwords, bank cards, and secret notes directly
-                    inside your encrypted vault, isolated from traditional password managers.</p>
-            </div>
-        </div>
-
-        <div class="grid-pro-4">
-            <div class="dark-card pro-card">
-                <h3 data-i18n="feat_7_title">★ USB Shield & DLP Sentinel (PRO)</h3>
-                <p data-i18n="feat_7_desc">Endpoint data loss prevention. Instantly block unauthorized file writing to external USB drives (Read-Only mode) and protect your hardware ports.</p>
-            </div>
-            <div class="dark-card pro-card">
-                <h3 data-i18n="feat_8_title">★ Encrypted Audit Log (PRO)</h3>
-                <p data-i18n="feat_8_desc">Forensic tracking of external hardware events. All connection logs are securely encrypted in AES-256 (`audit_log.enc`) to prevent tampering.</p>
-            </div>
-            <div class="dark-card pro-card">
-                <h3 data-i18n="feat_9_title">★ Strict Integrity Control (PRO)</h3>
-                <p data-i18n="feat_9_desc">Strict read-only protection at native Windows level (NTFS ACLs + System Attributes). Freezes and immobilizes vital files and folders, preventing deletion, modification, or renaming.</p>
-            </div>
-            <div class="dark-card pro-card">
-                <h3 data-i18n="feat_10_title">★ Autonomous .EXE Exporter (PRO)</h3>
-                <p data-i18n="feat_10_desc">Package encrypted files into proprietary formats or standalone self-decrypting executables (.exe) to share securely with third parties.</p>
-            </div>
-        </div>
-
-        <h2 class="section-title" data-i18n="faq_title">Frequently Asked Questions</h2>
-        <div class="faq-container">
-            <div class="faq-card">
-                <h3 data-i18n="faq_1_q">Do I need an internet connection to use IronLock?</h3>
-                <p data-i18n="faq_1_a">Absolutely not. IronLock software is designed to work 100% offline. It does not require
-                    the internet to activate or function. Your privacy is guaranteed by design.</p>
-            </div>
-            <div class="faq-card">
-                <h3 data-i18n="faq_2_q">What happens if I forget my Vault master password?</h3>
-                <p data-i18n="faq_2_a">For your security, IronLock Vault uses real encryption with no "backdoors". If you lose
-                    the master password, it is mathematically impossible to recover the encrypted data from your vault.</p>
-            </div>
-            <div class="faq-card">
-                <h3 data-i18n="faq_3_q">Does the license force me to pay monthly fees later?</h3>
-                <p data-i18n="faq_3_a">No. It is a one-time payment. With your purchase, you get perpetual access to
-                    your chosen version with no annual renewals or hidden fees.</p>
-            </div>
-            <div class="faq-card">
-                <h3 data-i18n="faq_4_q">Does it work on Mac or Linux?</h3>
-                <p data-i18n="faq_4_a">Currently, IronLock software is designed and optimized exclusively for the Windows
-                    (64-bit) ecosystem, leveraging its native permission systems for maximum effectiveness.</p>
-            </div>
-            <div class="faq-card">
-                <h3 data-i18n="faq_5_q">Why does Windows show a "Windows protected your PC" warning when installing?</h3>
-                <p data-i18n="faq_5_a">Because IronLock is an independent, zero-telemetry studio and the installer is distributed without a commercial digital signature certificate, Windows SmartScreen may display an initial warning. Simply click "More info" → "Run anyway" to install safely.</p>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="footer">
-        <h4 data-i18n="footer_title">About IronLock</h4>
-        <p data-i18n="footer_desc">We are an independent software development studio focused on creating zero-knowledge
-            privacy tools and 100% offline security for Windows users.</p>
-        <div class="contact">✉ Contacto y Soporte: ironlockvault@gmail.com</div>
-        <div class="copyright" data-i18n="copyright">© 2026 IronLock. All rights reserved.</div>
-    </div>
-
+    <!-- Translations & Interaction Scripts -->
     <script>
         const translations = {
             es: {
+                nav_demo: "Demostración",
+                nav_architecture: "Arquitectura",
+                nav_optimizer: "Optimizador",
+                nav_pricing: "Ediciones",
+                nav_faq: "Preguntas",
+                nav_cta: "Obtener IronLock",
+                hero_get_btn: "Descargar y Comprar",
+                hero_demo_btn: "Ver Demo de 2 Min",
+                fact_cipher_title: "CIFRADO",
+                fact_telemetry_title: "TELEMETRÍA",
+                fact_telemetry_val: "0 KB (Zero-Cloud)",
+                fact_license_title: "LICENCIA",
+                fact_license_val: "Perpetua (Sin Cuotas)",
+                theater_tag: "DEMOSTRACIÓN DEL SISTEMA",
+                theater_title: "Descubre IronLock en Acción",
+                theater_desc: "Observa cómo IronLock Vault protege tus archivos, cifra contenedores y congela permisos NTFS de forma local sin servidores en la nube.",
+                arch_tag: "DEFENSA ZERO-CLOUD",
+                arch_desc: "Diseñado para usuarios de Windows que exigen privacidad real sin depender de la nube ni pagar suscripciones mensuales.",
+                feat_tag: "SUITE DE SEGURIDAD",
+                pricing_tag: "PRECIOS TRANSPARENTES",
+                pricing_title: "Licencias Perpetuas Sin Cuotas Mensuales",
+                pricing_desc: "Consigue tus herramientas de seguridad para siempre con un único pago. Entrega digital inmediata.",
+
                 subtitle_top: "TU PRIVACIDAD ANTE TODO. SEGURIDAD 100% OFFLINE.",
                 main_desc: "IronLock Vault es la bóveda digital y suite de seguridad de endpoints definitiva para Windows. Sin conexiones a internet, sin suscripciones, sin registros ocultos. Bloquea, cifra, destruye y protege tus puertos de hardware de forma 100% offline.",
                 purchase_desc: "Consigue la suite completa de seguridad 100% offline. El paquete incluye el instalador estándar y los manuales oficiales. Protege tus datos hoy mismo sin suscripciones ni telemetría.",
                 purchase_pro_desc: "El escudo definitivo de grado corporativo. Incluye todo lo de Standard MÁS: Escudo USB & Centinela DLP, Registros Forenses Cifrados, Control de Integridad y Exportador .EXE Propietario.",
                 std_f1: "✓ Encriptación AES-256 100% Offline",
-                std_f2: "✓ Instalador Estándar",
+                std_f2: "✓ Instalador Estándar para Windows",
                 std_f3: "✓ Bóvedas cifradas y Destrucción Segura",
                 std_f4: "✓ Cartera de Credenciales y Bóveda Señuelo",
                 pro_f1: "✓ Todo lo incluido en Standard",
@@ -684,14 +1282,14 @@
                 download_app_btn: "DESCARGAR APP (.EXE)",
                 download_app_zip_btn: "DESCARGAR APP (.ZIP)",
                 purchase_btn: "Adquirir Licencia Standard",
-                purchase_pro_btn: "Adquirir Licencia PRO",
+                purchase_pro_btn: "Adquirir Licencia PRO (Payhip)",
                 activation_note: "* 1. Descarga la app. 2. Cómprala. 3. Envía tu HWID a ironlockvault@gmail.com para recibir tu clave.",
                 pro_badge: "MÁS POPULAR / SEGURIDAD MÁXIMA",
                 purchase_req: "* Compatible con Windows 10 y 11 (64 bits). Entrega digital inmediata.",
                 
                 opt_main_desc: "Maximiza el rendimiento de tu PC de forma segura. IronLock Optimizer limpia archivos basura, optimiza el registro y acelera tu sistema manteniendo nuestro estricto estándar de privacidad 100% offline.",
                 opt_badge: "MODELO FREEMIUM",
-                opt_purchase_desc: "Dale una nueva vida a tu sistema. Obtén la herramienta de optimización definitiva diseñada para velocidad, estabilidad y privacidad total sin telemetría. Descarga gratis o desbloquea funciones PRO.",
+                opt_purchase_desc: "Dale una nueva vida a tu sistema. Obtén la herramienta de optimización definitiva diseñada para velocidad, estabilidad y privacidad total sin telemetría. Descarga gratis o adquiere funciones PRO.",
                 opt_purchase_btn: "Adquirir Licencia Optimizer",
                 opt_free_btn: "DESCARGA GRATUITA (.EXE)",
                 opt_free_tag: "Descarga gratuita",
@@ -712,7 +1310,7 @@
                 feat_1_title: "Ocultación Cifrada y Carpetas",
                 feat_1_desc: "Oculta y cifra archivos o carpetas completas con AES-256-GCM bajo tu contraseña maestra, o aplica restricciones de permisos nativos (ACLs) para bloquear accesos rápidos.",
                 feat_2_title: "Bóvedas encriptadas",
-                feat_2_desc: "Cree contenedores protegidos con cifrado AES-256-GCM. Al mover un archivo a la bóveda, el original se destruye de forma automática y segura.",
+                feat_2_desc: "Crea contenedores protegidos con cifrado AES-256-GCM. Al mover un archivo a la bóveda, el original se destruye de forma automática y segura.",
                 feat_3_title: "Instalador Offline",
                 feat_3_desc: "Instala IronLock Vault directamente en tu computadora sin necesidad de conexión a internet durante el proceso.",
                 feat_4_title: "Destrucción segura",
@@ -741,18 +1339,41 @@
                 faq_4_q: "¿Funciona en Mac o Linux?",
                 faq_4_a: "Actualmente, los programas de IronLock están diseñados y optimizados exclusivamente para el ecosistema Windows (64 bits), aprovechando sus sistemas de permisos nativos.",
                 faq_5_q: "¿Por qué Windows muestra el aviso \"Windows protegió su PC\" al instalar?",
-                faq_5_a: "Al ser un estudio independiente sin telemetría, el instalador se distribuye sin un certificado de firma comercial externa, por lo que Windows SmartScreen puede mostrar una advertencia preventiva. Simplemente haz clic en \"Más información\" → \"Ejecutar de todas formas\" para instalar con total seguridad.",
+                faq_5_a: "Al ser un estudio independiente sin telemetría, el instalador se distribuye sin un certificado de firma comercial externa, por lo que Windows SmartScreen puede mostrar una advertencia preventiva. Haz clic en \"Más información\" → \"Ejecutar de todas formas\" para instalar con total seguridad.",
                 footer_title: "Sobre IronLock",
                 footer_desc: "Somos un estudio de desarrollo de software independiente enfocado en crear herramientas de privacidad de conocimiento cero y seguridad 100% offline para usuarios de Windows.",
                 copyright: "© 2026 IronLock. Todos los derechos reservados."
             },
             en: {
+                nav_demo: "Product Demo",
+                nav_architecture: "Architecture",
+                nav_optimizer: "Optimizer",
+                nav_pricing: "Editions",
+                nav_faq: "FAQ",
+                nav_cta: "Get IronLock",
+                hero_get_btn: "Download & Buy Licenses",
+                hero_demo_btn: "Watch 2-Min Demo",
+                fact_cipher_title: "ENCRYPTION",
+                fact_telemetry_title: "TELEMETRY",
+                fact_telemetry_val: "0 KB (Zero-Cloud)",
+                fact_license_title: "LICENSE",
+                fact_license_val: "Perpetual (No Sub)",
+                theater_tag: "SYSTEM DEMONSTRATION",
+                theater_title: "See IronLock in Action",
+                theater_desc: "Watch how IronLock Vault secures your files, encrypts containers, and freezes NTFS permissions locally without cloud dependencies.",
+                arch_tag: "ZERO-CLOUD DEFENSE",
+                arch_desc: "Engineered for Windows users who refuse to compromise their digital privacy to cloud servers and recurring subscriptions.",
+                feat_tag: "FEATURE SUITE",
+                pricing_tag: "TRANSPARENT PRICING",
+                pricing_title: "Perpetual Licenses Without Monthly Fees",
+                pricing_desc: "Own your security software forever with a single one-time payment. Immediate digital delivery.",
+
                 subtitle_top: "PRIVACY FIRST. 100% OFFLINE SECURITY.",
                 main_desc: "IronLock Vault is the ultimate digital vault and endpoint security suite for Windows. No internet connections, no subscriptions, no hidden tracking. Lock, encrypt, shred, and protect your hardware ports exclusively offline.",
                 purchase_desc: "Get the complete 100% offline security suite. Includes standard installer and official manuals. Protect your data today without subscriptions or telemetry.",
                 purchase_pro_desc: "The ultimate corporate-grade shield. Includes everything in Standard PLUS: USB DLP Sentinel, AES-256 Forensic Audit Logs, Strict Integrity Control, and Proprietary .EXE Package Exporter.",
                 std_f1: "✓ 100% Offline AES-256 Encryption",
-                std_f2: "✓ Standard Installer",
+                std_f2: "✓ Standard Windows Installer",
                 std_f3: "✓ Encrypted Vaults & Secure Shredder",
                 std_f4: "✓ Credential Wallet & Decoy Vault",
                 pro_f1: "✓ Everything included in Standard",
@@ -764,14 +1385,14 @@
                 download_app_btn: "DOWNLOAD APP (.EXE)",
                 download_app_zip_btn: "DOWNLOAD APP (.ZIP)",
                 purchase_btn: "Acquire Standard License",
-                purchase_pro_btn: "Acquire PRO License",
+                purchase_pro_btn: "Acquire PRO License (Payhip)",
                 activation_note: "* 1. Download the app. 2. Buy the license. 3. Send your HWID to ironlockvault@gmail.com to receive your key.",
                 pro_badge: "MOST POPULAR / MAX SECURITY",
                 purchase_req: "* Compatible with Windows 10 & 11 (64-bit). Immediate digital delivery.",
                 
                 opt_main_desc: "Maximize your PC's performance safely. IronLock Optimizer cleans junk files, optimizes your registry, and boosts your system's speed while maintaining our strict 100% offline privacy standard.",
                 opt_badge: "FREEMIUM MODEL",
-                opt_purchase_desc: "Breathe new life into your system. Get the definitive optimization tool designed for speed, stability, and total privacy without telemetry. Download free or unlock PRO features.",
+                opt_purchase_desc: "Breathe new life into your system. Get the definitive optimization tool designed for speed, stability, and total privacy without telemetry. Download free or acquire PRO features.",
                 opt_purchase_btn: "Acquire Optimizer License",
                 opt_free_btn: "DOWNLOAD FREE (.EXE)",
                 opt_free_tag: "Free Download",
@@ -821,9 +1442,9 @@
                 faq_4_q: "Does it work on Mac or Linux?",
                 faq_4_a: "Currently, IronLock software is designed and optimized exclusively for the Windows (64-bit) ecosystem, leveraging its native permission systems for maximum effectiveness.",
                 faq_5_q: "Why does Windows show a \"Windows protected your PC\" warning when installing?",
-                faq_5_a: "Because IronLock is an independent, zero-telemetry studio and the installer is distributed without a commercial digital signature certificate, Windows SmartScreen may display an initial warning. Simply click \"More info\" → \"Run anyway\" to install safely.",
+                faq_5_a: "Because IronLock is an independent, zero-telemetry studio and the installer is distributed without a commercial digital signature certificate, Windows SmartScreen may display an initial warning. Click \"More info\" → \"Run anyway\" to install safely.",
                 footer_title: "About IronLock",
-                footer_desc: "We are an independent software development studio focused on creating zero-knowledge privacy tools and 100% offline security for Windows users.",
+                footer_desc: "Studio de desarrollo de software independiente...",
                 copyright: "© 2026 IronLock. All rights reserved."
             }
         };
@@ -837,29 +1458,28 @@
                 }
             });
             document.documentElement.lang = lang;
-            
-            const selectEl = document.getElementById('langSelect');
-            if (selectEl) {
-                selectEl.value = lang;
-            }
 
-            const videoPlayer = document.getElementById('promoVideo');
-            if (videoPlayer) {
-                videoPlayer.src = lang === 'es' ? 'VideoEspañol.mp4' : 'VideoIngles.mp4';
+            const btnEn = document.getElementById('btnLangEn');
+            const btnEs = document.getElementById('btnLangEs');
+            if (btnEn && btnEs) {
+                if (lang === 'es') {
+                    btnEs.classList.add('is-active');
+                    btnEn.classList.remove('is-active');
+                } else {
+                    btnEn.classList.add('is-active');
+                    btnEs.classList.remove('is-active');
+                }
             }
         }
 
-        window.onload = function() {
-            const selectEl = document.getElementById('langSelect');
-            let initialLang = selectEl ? selectEl.value : 'en';
-            changeLanguage(initialLang);
-        };
+        window.addEventListener('DOMContentLoaded', () => {
+            const browserLang = navigator.language && navigator.language.startsWith('es') ? 'es' : 'en';
+            changeLanguage(browserLang);
+        });
     </script>
 
     <!-- GoatCounter Analytics -->
-    <script data-goatcounter="https://ironlockvault.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+    <script data-goatcounter="https://ironlockvault.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
 </body>
-
 </html>
