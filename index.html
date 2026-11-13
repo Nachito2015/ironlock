@@ -746,6 +746,10 @@
             .optimizer-split { grid-template-columns: 1fr; gap: 40px; }
             .nav__menu-links { display: none; }
         }
+
+        @media (max-width: 768px) {
+            .bento-grid { grid-template-columns: 1fr !important; }
+        }
     </style>
 </head>
 
@@ -1477,7 +1481,6 @@
             });
             document.documentElement.lang = lang;
 
-            // Cambio dinámico del video y el título de la ventana según el idioma
             const videoSource = document.getElementById('videoSource');
             const promoVideo = document.getElementById('promoVideo');
             const videoTitleBar = document.getElementById('videoTitleBar');
@@ -1490,7 +1493,7 @@
                     videoSource.src = 'VideoIngles.mp4';
                     if (videoTitleBar) videoTitleBar.textContent = 'IronLock.Vault.Official_Demo.mp4';
                 }
-                promoVideo.load(); // Recarga el reproductor con el nuevo archivo de video
+                promoVideo.load();
             }
 
             const btnEn = document.getElementById('btnLangEn');
