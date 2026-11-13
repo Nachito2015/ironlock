@@ -851,12 +851,12 @@
                             <span class="dot-control dot-yellow"></span>
                             <span class="dot-control dot-green"></span>
                         </div>
-                        <span class="os-window__title">IronLock.Vault.Official_Demo.mp4</span>
+                        <span class="os-window__title" id="videoTitleBar">IronLock.Vault.Official_Demo.mp4</span>
                         <span class="os-window__badge">OFFLINE VERIFIED</span>
                     </div>
                     <div class="os-window__body">
                         <video id="promoVideo" controls autoplay muted loop playsinline poster="IronLock_Vault_Pro_Box.png" preload="auto">
-                            <source src="VideoIngles.mp4" type="video/mp4">
+                            <source id="videoSource" src="VideoIngles.mp4" type="video/mp4">
                             Your browser does not support HTML5 video playback.
                         </video>
                     </div>
@@ -1359,7 +1359,8 @@
                 footer_desc: "Somos un estudio de desarrollo de software independiente enfocado en crear herramientas de privacidad de conocimiento cero y seguridad 100% offline para usuarios de Windows.",
                 copyright: "© 2026 IronLock. Todos los derechos reservados.",
                 mp_btn: "Mercado Pago (Solo LatAm)",
-                mp_note: "* Entrega manual del ZIP por correo (puede demorar unas horas)."
+                mp_note: "* Entrega manual del ZIP por correo (puede demorar unas horas).",
+                video_title_es: "IronLock.Vault.Demostracion_Oficial.mp4"
             },
             en: {
                 nav_demo: "Product Demo",
@@ -1461,7 +1462,8 @@
                 footer_desc: "We are an independent software development studio focused on creating zero-knowledge privacy tools and 100% offline security for Windows users.",
                 copyright: "© 2026 IronLock. All rights reserved.",
                 mp_btn: "Mercado Pago (LatAm Only)",
-                mp_note: "* Manual .ZIP delivery via email (may take a few hours)."
+                mp_note: "* Manual .ZIP delivery via email (may take a few hours).",
+                video_title_es: "IronLock.Vault.Official_Demo.mp4"
             }
         };
 
@@ -1474,6 +1476,22 @@
                 }
             });
             document.documentElement.lang = lang;
+
+            // Cambio dinámico del video y el título de la ventana según el idioma
+            const videoSource = document.getElementById('videoSource');
+            const promoVideo = document.getElementById('promoVideo');
+            const videoTitleBar = document.getElementById('videoTitleBar');
+
+            if (videoSource && promoVideo) {
+                if (lang === 'es') {
+                    videoSource.src = 'VideoEspañol.mp4';
+                    if (videoTitleBar) videoTitleBar.textContent = 'IronLock.Vault.Demostracion_Oficial.mp4';
+                } else {
+                    videoSource.src = 'VideoIngles.mp4';
+                    if (videoTitleBar) videoTitleBar.textContent = 'IronLock.Vault.Official_Demo.mp4';
+                }
+                promoVideo.load(); // Recarga el reproductor con el nuevo archivo de video
+            }
 
             const btnEn = document.getElementById('btnLangEn');
             const btnEs = document.getElementById('btnLangEs');
