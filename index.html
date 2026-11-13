@@ -1,1 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IronLock - Mantenimiento Programado</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0a0d14;
+            color: #e9edf3;
+            font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+        .container {
+            max-width: 540px;
+            padding: 48px 40px;
+            background: linear-gradient(145deg, #131824, #0a0d14);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 20px rgba(90, 185, 252, 0.05);
+        }
+        .pulse-dot {
+            display: inline-block;
+            width: 12px; 
+            height: 12px;
+            border-radius: 50%;
+            background: #ffd700;
+            box-shadow: 0 0 15px #ffd700;
+            animation: pulse-ring 2s infinite ease-out;
+            margin-bottom: 24px;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.9); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.4; }
+            100% { transform: scale(0.9); opacity: 1; }
+        }
+        h1 { 
+            font-size: 28px; 
+            font-weight: 700;
+            margin: 0 0 16px 0; 
+            color: #ffffff; 
+            letter-spacing: -0.02em;
+        }
+        p { 
+            font-size: 16px; 
+            color: #8891a1; 
+            line-height: 1.6; 
+            margin: 0 0 12px 0; 
+        }
+        .brand {
+            margin-top: 32px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: #5ab9fc;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
 
+    <div class="container">
+        <span class="pulse-dot"></span>
+        <h1>Mantenimiento Programado</h1>
+        <p>Estamos actualizando nuestra plataforma y los servidores de descarga para las nuevas versiones de <strong>IronLock Vault</strong> y <strong>Optimizer</strong>.</p>
+        <p>Estaremos en línea nuevamente muy pronto. Gracias por tu paciencia.</p>
+        
+        <div class="brand">IRONLOCK SECURITY SUITE</div>
+    </div>
+
+</body>
+</html>
