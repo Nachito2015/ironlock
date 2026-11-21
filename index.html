@@ -557,6 +557,16 @@
             color: var(--p-muted); margin: 0 0 20px 0;
         }
 
+        /* Estilo para la etiqueta <code> */
+        .card-desc code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--p-accent);
+        }
+
         .card-metric {
             font-family: var(--font-mono);
             font-size: 12px; color: var(--p-accent);
@@ -1020,7 +1030,7 @@
                         <div>
                             <div class="card-icon-badge pro-badge-icon">📜</div>
                             <h3 class="card-title pro-gold-title" data-i18n="feat_8_title">★ Encrypted Audit Log (PRO)</h3>
-                            <p class="card-desc" data-i18n="feat_8_desc">Forensic tracking of external hardware events. All connection logs are securely encrypted in AES-256 (`audit_log.enc`) to prevent tampering.</p>
+                            <p class="card-desc" data-i18n="feat_8_desc">Forensic tracking of external hardware events. All connection logs are securely encrypted in AES-256 (<code>audit_log.enc</code>) to prevent tampering.</p>
                         </div>
                         <div class="card-metric gold-metric">AUDIT_LOG.ENC CIPHERED</div>
                     </div>
@@ -1162,7 +1172,7 @@
                         </div>
 
                         <div class="activation-callout" data-i18n="activation_note">
-                            * **Process:** 1. Buy on Payhip (instant download). 2. Run IronLock on your PC. 3. The app will display your unique HWID. 4. Send it to soporte@ironlockvault.com to receive your lifetime license. All sales are final.
+                            * <strong>Process:</strong> 1. Buy on Payhip (instant download). 2. Run IronLock on your PC. 3. The app will display your unique HWID. 4. Send it to soporte@ironlockvault.com to receive your lifetime license. All sales are final.
                         </div>
                         <div class="requirements-tag" data-i18n="purchase_req">
                             * Compatible with Windows 10 & 11 (64-bit).
@@ -1206,7 +1216,7 @@
                         </div>
 
                         <div class="activation-callout" data-i18n="activation_note">
-                            * **Process:** 1. Buy on Payhip (instant download). 2. Run IronLock on your PC. 3. The app will display your unique HWID. 4. Send it to soporte@ironlockvault.com to receive your lifetime license. All sales are final.
+                            * <strong>Process:</strong> 1. Buy on Payhip (instant download). 2. Run IronLock on your PC. 3. The app will display your unique HWID. 4. Send it to soporte@ironlockvault.com to receive your lifetime license. All sales are final.
                         </div>
                         <div class="requirements-tag" data-i18n="purchase_req">
                             * Compatible with Windows 10 & 11 (64-bit).
@@ -1248,7 +1258,7 @@
                         </div>
 
                         <div class="activation-callout" style="color:var(--brand-emerald); background:rgba(0,230,118,0.06); border-color:rgba(0,230,118,0.3);" data-i18n="activation_note">
-                            * **Process:** 1. Buy on Payhip (instant download). 2. Run IronLock on your PC. 3. The app will display your unique HWID. 4. Send it to soporte@ironlockvault.com to receive your lifetime license. All sales are final.
+                            * <strong>Process:</strong> 1. Buy on Payhip (instant download). 2. Run IronLock on your PC. 3. The app will display your unique HWID. 4. Send it to soporte@ironlockvault.com to receive your lifetime license. All sales are final.
                         </div>
                         <div class="requirements-tag" data-i18n="purchase_req">
                             * Compatible with Windows 10 & 11 (64-bit).
@@ -1263,9 +1273,9 @@
         <section class="section-faq" id="faq">
             <div class="wrap">
                 <div class="section-header-block">
-                    <div class="section-tag">VERIFICATION & ARCHITECTURE</div>
+                    <div class="section-tag" data-i18n="faq_tag">VERIFICATION & ARCHITECTURE</div>
                     <h2 class="section-title" data-i18n="faq_title">Frequently Asked Questions</h2>
-                    <p class="section-desc">Direct technical answers regarding encryption, licensing, and installation.</p>
+                    <p class="section-desc" data-i18n="faq_desc">Direct technical answers regarding encryption, licensing, and installation.</p>
                 </div>
 
                 <div class="faq-accordion-grid">
@@ -1394,7 +1404,7 @@
                 purchase_price_note: "USD (pago único)",
                 purchase_btn: "Adquirir Licencia Standard",
                 purchase_pro_btn: "Adquirir Licencia PRO",
-                activation_note: "* **Proceso:** 1. Compra en Payhip (descarga inmediata). 2. Ejecuta IronLock en tu PC. 3. La app te mostrará tu HWID único. 4. Envíalo a soporte@ironlockvault.com para recibir tu licencia vitalicia. Ventas definitivas (No reembolsable).",
+                activation_note: "* <strong>Proceso:</strong> 1. Compra en Payhip (descarga inmediata). 2. Ejecuta IronLock en tu PC. 3. La app te mostrará tu HWID único. 4. Envíalo a soporte@ironlockvault.com para recibir tu licencia vitalicia. Ventas definitivas (No reembolsable).",
                 pro_badge: "MÁS POPULAR / SEGURIDAD MÁXIMA",
                 purchase_req: "* Compatible con Windows 10 y 11 (64 bits).",
                 
@@ -1432,13 +1442,15 @@
                 feat_7_title: "★ Escudo USB & Centinela DLP (PRO)",
                 feat_7_desc: "Prevención de pérdida de datos en endpoints. Bloquea al instante la escritura no autorizada hacia pendrives externos (modo solo lectura) y protege tus equipos.",
                 feat_8_title: "★ Registro de Auditoría Cifrado (PRO)",
-                feat_8_desc: "Seguimiento forense de eventos de hardware. Todos los registros de conexión se guardan cifrados con AES-256 en `audit_log.enc` para evitar manipulaciones.",
+                feat_8_desc: "Seguimiento forense de eventos de hardware. Todos los registros de conexión se guardan cifrados con AES-256 (<code>audit_log.enc</code>) para evitar manipulaciones.",
                 feat_9_title: "★ Control de Integridad Estricto (PRO)",
                 feat_9_desc: "Protección estricta de solo lectura a nivel nativo de Windows (ACLs NTFS + Atributos del Sistema). Inmoviliza y 'congela' archivos y carpetas vitales, impidiendo su eliminación o modificación.",
                 feat_10_title: "★ Exportador de .EXE Autónomo (PRO)",
                 feat_10_desc: "Empaqueta archivos cifrados bajo extensiones propietarias o expórtalos como ejecutables (.exe) autónomos para compartirlos de forma segura con terceros.",
 
+                faq_tag: "VERIFICACIÓN Y ARQUITECTURA",
                 faq_title: "Preguntas Frecuentes",
+                faq_desc: "Respuestas técnicas directas sobre cifrado, licencias e instalación.",
                 faq_1_q: "¿Necesito conexión a internet para usar IronLock?",
                 faq_1_a: "Absolutamente no. IronLock está diseñado para funcionar 100% offline. No requiere internet para activarse. Tu privacidad está garantizada por diseño.",
                 faq_2_q: "¿Qué pasa si olvido mi contraseña maestra de Vault?",
@@ -1449,7 +1461,7 @@
                 faq_4_a: "Actualmente, los programas de IronLock están diseñados y optimizados exclusivamente para el ecosistema Windows (64 bits), aprovechando sus sistemas de permisos nativos.",
                 faq_5_q: "¿Por qué Windows muestra el aviso \"Windows protegió su PC\" al instalar?",
                 faq_5_a_part1: "Al ser un estudio independiente sin telemetría, el instalador se distribuye sin un certificado de firma comercial externa, por lo que Windows SmartScreen puede mostrar una advertencia preventiva. Para verificar que nuestro software está 100% limpio (0/67 detecciones), puedes revisar los reportes públicos en VirusTotal:",
-                faq_5_a_part2: ". Haz clic en \"Más información\" → \"Ejecutar de todas formas\" para instalar con total seguridad.",
+                faq_5_a_part2: " Haz clic en \"Más información\" → \"Ejecutar de todas formas\" para instalar con total seguridad.",
                 faq_6_q: "¿El sitio web de IronLock también es 100% offline?",
                 faq_6_a: "No. El claim \"100% offline\" aplica exclusivamente al software IronLock (Vault, Optimizer). Este sitio web utiliza Google Fonts para la tipografía y GoatCounter, una herramienta de analítica agregada y respetuosa de la privacidad que no usa cookies ni rastrea usuarios individuales. Ninguno de esos servicios se conecta con el software que descargas.",
                 faq_7_q: "¿Cuánto tarda en llegar mi licencia?",
@@ -1508,7 +1520,7 @@
                 purchase_price_note: "USD (One-time payment)",
                 purchase_btn: "Acquire Standard License",
                 purchase_pro_btn: "Acquire PRO License",
-                activation_note: "* **Process:** 1. Buy on Payhip (instant download). 2. Run IronLock on your PC. 3. The app will display your unique HWID. 4. Send it to soporte@ironlockvault.com to receive your lifetime license. All sales are final.",
+                activation_note: "* <strong>Process:</strong> 1. Buy on Payhip (instant download). 2. Run IronLock on your PC. 3. The app will display your unique HWID. 4. Send it to soporte@ironlockvault.com to receive your lifetime license. All sales are final.",
                 pro_badge: "MOST POPULAR / MAX SECURITY",
                 purchase_req: "* Compatible with Windows 10 & 11 (64-bit).",
                 
@@ -1546,13 +1558,15 @@
                 feat_7_title: "★ USB Shield & DLP Sentinel (PRO)",
                 feat_7_desc: "Endpoint data loss prevention. Instantly block unauthorized file writing to external USB drives (Read-Only mode) and protect your hardware ports.",
                 feat_8_title: "★ Encrypted Audit Log (PRO)",
-                feat_8_desc: "Forensic tracking of external hardware events. All connection logs are securely encrypted in AES-256 (`audit_log.enc`) to prevent tampering.",
+                feat_8_desc: "Forensic tracking of external hardware events. All connection logs are securely encrypted in AES-256 (<code>audit_log.enc</code>) to prevent tampering.",
                 feat_9_title: "★ Strict Integrity Control (PRO)",
                 feat_9_desc: "Strict read-only protection at native Windows level (NTFS ACLs + System Attributes). Freezes and immobilizes vital files and folders, preventing deletion, modification, or renaming.",
                 feat_10_title: "★ Autonomous .EXE Exporter (PRO)",
                 feat_10_desc: "Package encrypted files into proprietary formats or standalone self-decrypting executables (.exe) to share securely with third parties.",
 
+                faq_tag: "VERIFICATION & ARCHITECTURE",
                 faq_title: "Frequently Asked Questions",
+                faq_desc: "Direct technical answers regarding encryption, licensing, and installation.",
                 faq_1_q: "Do I need an internet connection to use IronLock?",
                 faq_1_a: "Absolutely not. IronLock software is designed to work 100% offline. It does not require the internet to activate. Your privacy is guaranteed by design.",
                 faq_2_q: "What happens if I forget my Vault master password?",
@@ -1563,7 +1577,7 @@
                 faq_4_a: "Currently, IronLock software is designed and optimized exclusively for the Windows (64-bit) ecosystem, leveraging its native permission systems for maximum effectiveness.",
                 faq_5_q: "Why does Windows show a \"Windows protected your PC\" warning when installing?",
                 faq_5_a_part1: "Because IronLock is an independent, zero-telemetry studio and the installer is distributed without a commercial digital signature certificate, Windows SmartScreen may display an initial warning. To verify our software is 100% clean (0/67 detections), check the public scans on VirusTotal:",
-                faq_5_a_part2: ". Click \"More info\" → \"Run anyway\" to install safely.",
+                faq_5_a_part2: " Click \"More info\" → \"Run anyway\" to install safely.",
                 faq_6_q: "Is the IronLock website itself 100% offline?",
                 faq_6_a: "No. The \"100% offline\" claim applies exclusively to the IronLock software (Vault, Optimizer). This website uses Google Fonts for typography and GoatCounter, a privacy-friendly aggregate analytics tool that uses no cookies and does not track individual users. Neither of these services connects to the software you download.",
                 faq_7_q: "How long does it take to get my license?",
