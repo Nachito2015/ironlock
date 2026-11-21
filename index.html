@@ -764,6 +764,16 @@
         .footer-brand-side span { font-weight: 700; font-size: 16px; color: var(--p-ink); }
         .footer-contact-link { color: var(--p-accent); text-decoration: none; font-family: var(--font-mono); font-size: 13px; }
         .footer-legal-copy { color: var(--p-muted); font-size: 13px; display: flex; align-items: center; gap: 15px; }
+        
+        .footer-author {
+            width: 100%;
+            text-align: center;
+            margin-top: 32px;
+            font-size: 12px;
+            color: var(--p-muted);
+            font-family: var(--font-mono);
+            letter-spacing: 0.05em;
+        }
 
         @media (max-width: 1024px) {
             .hero__grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
@@ -973,7 +983,7 @@
                         <div>
                             <div class="card-icon-badge">🔥</div>
                             <h3 class="card-title" data-i18n="feat_4_title">Secure Shredding</h3>
-                            <p class="card-desc" data-i18n="feat_4_desc">Multi-pass overwriting algorithm that truncates, renounces, and deletes files. Highly effective on mechanical drives (HDD), with automatic hardware detection for SSDs.</p>
+                            <p class="card-desc" data-i18n="feat_4_desc">Multi-pass overwriting algorithm that truncates, renames, and deletes files. Highly effective on mechanical drives (HDD), with automatic hardware detection for SSDs.</p>
                         </div>
                         <div class="card-metric">MULTI-PASS OVERWRITE</div>
                     </div>
@@ -1043,7 +1053,7 @@
                     <div class="optimizer-text-col">
                         <div class="optimizer-badge">
                             <span class="pulse-dot" style="background:#00e676; box-shadow:0 0 8px #00e676;"></span>
-                            <span data-i18n="opt_badge">FREEMIUM MODEL</span>
+                            <span data-i18n="opt_badge">PREMIUM TOOL</span>
                         </div>
 
                         <h2 class="section-title">IronLock Optimizer</h2>
@@ -1101,7 +1111,7 @@
                 <div class="section-header-block">
                     <div class="section-tag" data-i18n="pricing_tag">TRANSPARENT PRICING</div>
                     <h2 class="section-title" data-i18n="pricing_title">Perpetual Licenses Without Monthly Fees</h2>
-                    <p class="section-desc" data-i18n="pricing_desc">Own your security software forever with a single one-time payment. Immediate digital delivery.</p>
+                    <p class="section-desc" data-i18n="pricing_desc">Own your security software forever with a single one-time payment. Instant download via Payhip. Manual HWID activation.</p>
                 </div>
 
                 <!-- VirusTotal Trust Badge -->
@@ -1332,6 +1342,10 @@
                     <span data-i18n="copyright">© 2026 IronLock. All rights reserved.</span>
                 </div>
             </div>
+            
+            <div class="footer-author" data-i18n="footer_author">
+                Engineered by José Hidalgo — Independent Windows Security Studio
+            </div>
         </div>
     </footer>
 
@@ -1361,7 +1375,7 @@
                 feat_tag: "SUITE DE SEGURIDAD",
                 pricing_tag: "PRECIOS TRANSPARENTES",
                 pricing_title: "Licencias Perpetuas Sin Cuotas Mensuales",
-                pricing_desc: "Consigue tus herramientas de seguridad para siempre con un único pago. Entrega digital inmediata.",
+                pricing_desc: "Consigue tus herramientas de seguridad para siempre con un único pago. Descarga instantánea vía Payhip. Activación manual por HWID.",
                 vt_badge_text: "0/67 Detecciones de Antivirus. Transparencia total verificada en VirusTotal:",
 
                 subtitle_top: "TU PRIVACIDAD ANTE TODO. SEGURIDAD 100% OFFLINE.",
@@ -1385,8 +1399,8 @@
                 purchase_req: "* Compatible con Windows 10 y 11 (64 bits).",
                 
                 opt_main_desc: "Maximiza el rendimiento de tu PC de forma segura. IronLock Optimizer limpia archivos basura, optimiza el registro y acelera tu sistema manteniendo nuestro estricto estándar de privacidad 100% offline.",
-                opt_badge: "MODELO FREEMIUM",
-                opt_purchase_desc: "Dale una nueva vida a tu sistema. Obtén la herramienta de optimización definitiva diseñada para velocidad, estabilidad y privacidad total sin telemetría. Descarga gratis o adquiere funciones PRO.",
+                opt_badge: "HERRAMIENTA PREMIUM",
+                opt_purchase_desc: "Dale una nueva vida a tu sistema. Obtén la herramienta de optimización definitiva diseñada para velocidad, estabilidad y privacidad total sin telemetría.",
                 opt_purchase_btn: "Adquirir Licencia Optimizer",
                 opt_f1: "⚡ Liberación de RAM y limpieza profunda",
                 opt_f2: "⚡ Registro seguro y optimización del inicio",
@@ -1447,6 +1461,7 @@
                 footer_desc: "Somos un estudio de desarrollo de software independiente enfocado en crear herramientas de privacidad de conocimiento cero y seguridad 100% offline para usuarios de Windows.",
                 footer_terms: "Privacidad y Términos",
                 copyright: "© 2026 IronLock. Todos los derechos reservados.",
+                footer_author: "Desarrollado por José Hidalgo — Estudio Independiente de Seguridad para Windows",
                 mp_btn: "Mercado Pago (Solo LatAm)",
                 mp_note: "* Activación manual segura por HWID. Recibirás tu clave en menos de 12 horas (normalmente en 1-2 horas).",
                 video_title_es: "IronLock.Vault.Demostracion_Oficial.mp4"
@@ -1474,7 +1489,7 @@
                 feat_tag: "FEATURE SUITE",
                 pricing_tag: "TRANSPARENT PRICING",
                 pricing_title: "Perpetual Licenses Without Monthly Fees",
-                pricing_desc: "Own your security software forever with a single one-time payment. Immediate digital delivery.",
+                pricing_desc: "Own your security software forever with a single one-time payment. Instant download via Payhip. Manual HWID activation.",
                 vt_badge_text: "0/67 Antivirus Detections. Total transparency verified on VirusTotal:",
 
                 subtitle_top: "PRIVACY FIRST. 100% OFFLINE SECURITY.",
@@ -1498,8 +1513,8 @@
                 purchase_req: "* Compatible with Windows 10 & 11 (64-bit).",
                 
                 opt_main_desc: "Maximize your PC's performance safely. IronLock Optimizer cleans junk files, optimizes your registry, and boosts your system's speed while maintaining our strict 100% offline privacy standard.",
-                opt_badge: "FREEMIUM MODEL",
-                opt_purchase_desc: "Breathe new life into your system. Get the definitive optimization tool designed for speed, stability, and total privacy without telemetry. Download free or acquire PRO features.",
+                opt_badge: "PREMIUM TOOL",
+                opt_purchase_desc: "Breathe new life into your system. Get the definitive optimization tool designed for speed, stability, and total privacy without telemetry.",
                 opt_purchase_btn: "Acquire Optimizer License",
                 opt_f1: "⚡ RAM liberation & deep cleaning",
                 opt_f2: "⚡ Safe registry & startup optimization",
@@ -1522,7 +1537,7 @@
                 feat_3_title: "Offline Installer",
                 feat_3_desc: "Install IronLock Vault directly on your computer without needing an internet connection during setup.",
                 feat_4_title: "Secure Shredding",
-                feat_4_desc: "Multi-pass overwriting algorithm that truncates, renounces, and deletes files. Highly effective on mechanical drives (HDD), with automatic hardware detection for SSDs.",
+                feat_4_desc: "Multi-pass overwriting algorithm that truncates, renames, and deletes files. Highly effective on mechanical drives (HDD), with automatic hardware detection for SSDs.",
                 feat_5_title: "Decoy Vault",
                 feat_5_desc: "Protection against physical coercion. Set up a fake password that opens a dummy vault with harmless data, keeping your true secrets hidden.",
                 feat_6_title: "Credential Wallet",
@@ -1560,6 +1575,7 @@
                 footer_desc: "We are an independent software development studio focused on creating zero-knowledge privacy tools and 100% offline security for Windows users.",
                 footer_terms: "Privacy & Terms",
                 copyright: "© 2026 IronLock. All rights reserved.",
+                footer_author: "Engineered by José Hidalgo — Independent Windows Security Studio",
                 mp_btn: "Mercado Pago (LatAm Only)",
                 mp_note: "* Secure manual HWID activation. You will receive your key in less than 12 hours (usually 1-2 hours).",
                 video_title_es: "IronLock.Vault.Official_Demo.mp4"
