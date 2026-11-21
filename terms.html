@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en" data-type="software" data-radius="soft">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Terms & Privacy | IronLock Vault</title>
+    <meta name="description" content="IronLock Vault Legal Terms and Privacy Policy. 100% offline security software.">
+    <meta name="theme-color" content="#0a0d14">
+    <link rel="icon" href="Logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:wght@400..600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --p-bg: #0a0d14;
+            --p-surface: #131824;
+            --p-ink: #e9edf3;
+            --p-muted: #8891a1;
+            --p-accent: #5ab9fc;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --font-text: "Epilogue", system-ui, sans-serif;
+            --font-mono: "JetBrains Mono", ui-monospace, monospace;
+            --radius-md: 14px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { background-color: var(--p-bg); color: var(--p-ink); font-family: var(--font-text); -webkit-font-smoothing: antialiased; }
+        body { line-height: 1.7; padding: 40px 20px; }
+        
+        .wrap { max-width: 800px; margin: 0 auto; position: relative; }
+        
+        .nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--border-subtle); }
+        .nav__brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--p-ink); font-weight: 700; font-size: 19px; }
+        .nav__brand img { height: 34px; width: auto; border-radius: 6px; }
+        
+        .lang-switch { display: flex; gap: 5px; background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border-subtle); border-radius: 20px; padding: 3px; }
+        .lang-btn { background: transparent; border: none; color: var(--p-muted); font-family: var(--font-mono); font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; cursor: pointer; transition: 0.2s; }
+        .lang-btn.is-active { background: var(--p-accent); color: #0a0d14; }
+
+        h1 { font-size: 32px; font-weight: 700; color: #fff; margin-bottom: 10px; line-height: 1.2; }
+        .last-updated { font-family: var(--font-mono); font-size: 12px; color: var(--p-muted); margin-bottom: 40px; display: block; }
+        
+        h2 { font-size: 24px; font-weight: 700; color: var(--p-accent); margin: 40px 0 16px 0; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; }
+        h3 { font-size: 18px; font-weight: 600; color: #fff; margin: 24px 0 8px 0; }
+        p { margin-bottom: 16px; color: var(--p-muted); font-size: 15px; }
+        ul { margin-bottom: 16px; padding-left: 20px; color: var(--p-muted); font-size: 15px; }
+        li { margin-bottom: 8px; }
+        a { color: var(--p-accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        .alert-box { background: rgba(255, 215, 0, 0.08); border: 1px solid rgba(255, 215, 0, 0.3); padding: 20px; border-radius: var(--radius-md); margin: 24px 0; color: #fff; }
+        .alert-box p { color: #fffae0; margin: 0; font-size: 15px; }
+        
+        .btn-back { display: inline-flex; align-items: center; height: 44px; padding: 0 24px; background: var(--p-surface); color: var(--p-ink); border: 1px solid var(--border-subtle); border-radius: 999px; text-decoration: none; font-weight: 600; margin-top: 40px; transition: 0.2s; }
+        .btn-back:hover { background: rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body>
+
+    <div class="wrap">
+        <header class="nav">
+            <a href="index.html" class="nav__brand">
+                <img src="Logo.png" alt="IronLock Logo">
+                <span>IronLock</span>
+            </a>
+            <div class="lang-switch">
+                <button type="button" class="lang-btn is-active" id="btnLangEn" onclick="changeLanguage('en')">EN</button>
+                <button type="button" class="lang-btn" id="btnLangEs" onclick="changeLanguage('es')">ES</button>
+            </div>
+        </header>
+
+        <main>
+            <h1 data-i18n="page_title">Terms of Service & Privacy</h1>
+            <span class="last-updated" data-i18n="last_updated">Last Updated: October 2026</span>
+
+            <!-- PRIVACY POLICY -->
+            <h2 data-i18n="privacy_title">1. Privacy Policy</h2>
+            <p data-i18n="privacy_desc1">Your privacy is our core principle. IronLock Vault and IronLock Optimizer are designed as 100% offline, air-gapped software.</p>
+            <ul>
+                <li data-i18n="privacy_li1"><strong>Zero Telemetry:</strong> The software does not collect, transmit, or share any data, analytics, or personal information.</li>
+                <li data-i18n="privacy_li2"><strong>Website Analytics:</strong> Our website uses GoatCounter (privacy-friendly aggregate analytics without cookies) and Google Fonts. No individual user tracking is performed.</li>
+                <li data-i18n="privacy_li3"><strong>HWID Collection:</strong> To activate your perpetual license, we require your Hardware ID (HWID). This is used exclusively for license binding and anti-piracy purposes. It is never sold or shared with third parties.</li>
+            </ul>
+
+            <!-- TERMS OF SERVICE -->
+            <h2 data-i18n="terms_title">2. Terms of Service (EULA)</h2>
+            <h3 data-i18n="terms_h1">License Grant</h3>
+            <p data-i18n="terms_p1">Upon purchasing a license, you are granted a perpetual, non-exclusive, non-transferable license to install and use the software on one (1) Windows PC tied to your specific HWID.</p>
+            
+            <h3 data-i18n="terms_h2">Restrictions</h3>
+            <p data-i18n="terms_p2">You may not reverse engineer, decompile, redistribute, rent, lease, or sublicense the software. The software is provided "as is", without warranty of any kind.</p>
+
+            <h3 data-i18n="terms_h3">Offline Nature</h3>
+            <p data-i18n="terms_p3">The software requires no internet connection to function. Activation is performed manually via email support to maintain our air-gapped security standard.</p>
+
+            <!-- NO REFUND POLICY -->
+            <h2 data-i18n="refund_title">3. Non-Refundable Policy</h2>
+            <div class="alert-box">
+                <p data-i18n="refund_desc1"><strong>All Sales Are Final.</strong> Due to the nature of digital software and the 100% offline model (where licenses are custom-generated and permanently bound to the user's Hardware ID), we do not offer refunds.</p>
+            </div>
+            <p data-i18n="refund_desc2">We strongly encourage you to watch our demo videos and ask any technical questions before purchasing. We are committed to providing technical support to ensure the software works properly on your machine.</p>
+            <p data-i18n="refund_desc3">By completing your purchase, you expressly acknowledge and agree to this non-refundable policy and waive any right of withdrawal or cancellation.</p>
+
+            <a href="index.html" class="btn-back" data-i18n="btn_back">← Back to Home</a>
+        </main>
+    </div>
+
+    <script>
+        const translations = {
+            es: {
+                page_title: "Términos de Servicio y Privacidad",
+                last_updated: "Última actualización: Octubre de 2026",
+                
+                privacy_title: "1. Política de Privacidad",
+                privacy_desc1: "Tu privacidad es nuestro principio fundamental. IronLock Vault y IronLock Optimizer están diseñados como software 100% offline y air-gapped.",
+                privacy_li1: "<strong>Cero Telemetría:</strong> El software no recopila, transmite ni comparte ningún dato, analítica o información personal.",
+                privacy_li2: "<strong>Analítica del Sitio Web:</strong> Nuestra web utiliza GoatCounter (analítica agregada amigable con la privacidad, sin cookies) y Google Fonts. No se realiza seguimiento individual de usuarios.",
+                privacy_li3: "<strong>Recolección de HWID:</strong> Para activar tu licencia, requerimos tu Hardware ID (HWID). Esto se usa exclusivamente para vincular la licencia y evitar la piratería. Nunca se vende ni se comparte con terceros.",
+
+                terms_title: "2. Términos de Servicio (EULA)",
+                terms_h1: "Concesión de Licencia",
+                terms_p1: "Al comprar una licencia, se te otorga una licencia perpetua, no exclusiva e intransferible para instalar y usar el software en una (1) PC con Windows vinculada a tu HWID específico.",
+                terms_h2: "Restricciones",
+                terms_p2: "No puedes aplicar ingeniería inversa, descompilar, redistribuir, alquilar, arrendar o sublicenciar el software. El software se proporciona \"tal cual\", sin garantías de ningún tipo.",
+                terms_h3: "Naturaleza Offline",
+                terms_p3: "El software no requiere conexión a internet para funcionar. La activación se realiza manualmente a través del correo de soporte para mantener nuestro estándar de seguridad air-gapped.",
+
+                refund_title: "3. Política de No Reembolso",
+                refund_desc1: "<strong>Todas las ventas son definitivas.</strong> Debido a la naturaleza del software digital y al modelo 100% offline (donde las licencias se generan a medida y se vinculan permanentemente al Hardware ID del usuario), no ofrecemos reembolsos.",
+                refund_desc2: "Te recomendamos encarecidamente ver nuestros videos de demostración y realizar cualquier consulta técnica antes de comprar. Nos comprometemos a brindarte soporte técnico para asegurar que el software funcione correctamente en tu equipo.",
+                refund_desc3: "Al completar tu compra, reconoces y aceptas expresamente esta política de no reembolso y renuncias a cualquier derecho de retracto o cancelación.",
+                
+                btn_back: "← Volver al Inicio"
+            },
+            en: {
+                page_title: "Terms of Service & Privacy",
+                last_updated: "Last Updated: October 2026",
+                
+                privacy_title: "1. Privacy Policy",
+                privacy_desc1: "Your privacy is our core principle. IronLock Vault and IronLock Optimizer are designed as 100% offline, air-gapped software.",
+                privacy_li1: "<strong>Zero Telemetry:</strong> The software does not collect, transmit, or share any data, analytics, or personal information.",
+                privacy_li2: "<strong>Website Analytics:</strong> Our website uses GoatCounter (privacy-friendly aggregate analytics without cookies) and Google Fonts. No individual user tracking is performed.",
+                privacy_li3: "<strong>HWID Collection:</strong> To activate your perpetual license, we require your Hardware ID (HWID). This is used exclusively for license binding and anti-piracy purposes. It is never sold or shared with third parties.",
+
+                terms_title: "2. Terms of Service (EULA)",
+                terms_h1: "License Grant",
+                terms_p1: "Upon purchasing a license, you are granted a perpetual, non-exclusive, non-transferable license to install and use the software on one (1) Windows PC tied to your specific HWID.",
+                terms_h2: "Restrictions",
+                terms_p2: "You may not reverse engineer, decompile, redistribute, rent, lease, or sublicense the software. The software is provided \"as is\", without warranty of any kind.",
+                terms_h3: "Offline Nature",
+                terms_p3: "The software requires no internet connection to function. Activation is performed manually via email support to maintain our air-gapped security standard.",
+
+                refund_title: "3. Non-Refundable Policy",
+                refund_desc1: "<strong>All Sales Are Final.</strong> Due to the nature of digital software and the 100% offline model (where licenses are custom-generated and permanently bound to the user's Hardware ID), we do not offer refunds.",
+                refund_desc2: "We strongly encourage you to watch our demo videos and ask any technical questions before purchasing. We are committed to providing technical support to ensure the software works properly on your machine.",
+                refund_desc3: "By completing your purchase, you expressly acknowledge and agree to this non-refundable policy and waive any right of withdrawal or cancellation.",
+                
+                btn_back: "← Back to Home"
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.documentElement.lang = lang;
+            
+            const btnEn = document.getElementById('btnLangEn');
+            const btnEs = document.getElementById('btnLangEs');
+            if (lang === 'es') {
+                btnEs.classList.add('is-active');
+                btnEn.classList.remove('is-active');
+            } else {
+                btnEn.classList.add('is-active');
+                btnEs.classList.remove('is-active');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const browserLang = navigator.language && navigator.language.startsWith('es') ? 'es' : 'en';
+            changeLanguage(browserLang);
+        });
+    </script>
+</body>
+</html>
