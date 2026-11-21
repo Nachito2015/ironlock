@@ -636,6 +636,27 @@
 
         /* Pricing */
         .section-pricing { background: var(--p-bg); }
+        
+        /* Trust Badge */
+        .vt-trust-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            background: rgba(0, 230, 118, 0.08);
+            border: 1px solid rgba(0, 230, 118, 0.2);
+            padding: 12px 24px;
+            border-radius: var(--radius-pill);
+            margin: -20px auto 40px auto;
+            max-width: fit-content;
+            font-size: 14px;
+            color: var(--p-ink);
+        }
+        .vt-trust-badge .vt-icon { font-size: 18px; }
+        .vt-trust-badge a { color: var(--brand-emerald); text-decoration: underline; font-weight: 600; }
+        .vt-trust-badge a:hover { color: #33ff95; }
+
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -721,6 +742,8 @@
         .faq-item { background: var(--p-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px 28px; }
         .faq-q { font-size: 17px; font-weight: 600; color: #fff; margin: 0 0 10px 0; }
         .faq-a { font-size: 15px; line-height: 1.6; color: var(--p-muted); margin: 0; }
+        .faq-a a { color: var(--p-accent); text-decoration: underline; }
+        .faq-a a:hover { color: var(--p-accent-hover); }
 
         /* Footer */
         .footer-tech { padding: 80px 0 40px 0; background: #07090f; border-top: 1px solid var(--border-subtle); }
@@ -754,6 +777,7 @@
 
         @media (max-width: 768px) {
             .bento-grid { grid-template-columns: 1fr !important; }
+            .vt-trust-badge { flex-direction: column; text-align: center; border-radius: var(--radius-lg); }
         }
     </style>
 </head>
@@ -1080,6 +1104,17 @@
                     <p class="section-desc" data-i18n="pricing_desc">Own your security software forever with a single one-time payment. Immediate digital delivery.</p>
                 </div>
 
+                <!-- VirusTotal Trust Badge -->
+                <div class="vt-trust-badge">
+                    <span class="vt-icon">🛡️</span>
+                    <span data-i18n="vt_badge_text">0/67 Detecciones de Antivirus. Transparencia total verificada en VirusTotal:</span>
+                    <span class="vt-links-badge">
+                        <a href="https://www.virustotal.com/gui/file/453dd05f92cf1497a0a62c12c6aa1e5bfb16332c61c2d054966b03cce21fe55c?nocache=1" target="_blank" rel="noopener noreferrer">Standard</a> |
+                        <a href="https://www.virustotal.com/gui/file/e55dd17d3876d1147cb9a407f32ea6d344933766fbd044dfad64f28d868e19ce?nocache=1" target="_blank" rel="noopener noreferrer">PRO</a> |
+                        <a href="https://www.virustotal.com/gui/file/a8e5ca044a38c2d507159aee4b274bf91d935d1f0e5c74fcbf4acf6d3aa4b9a7?nocache=1" target="_blank" rel="noopener noreferrer">Optimizer</a>
+                    </span>
+                </div>
+
                 <div class="pricing-grid">
                     
                     <!-- Standard Plan -->
@@ -1242,7 +1277,15 @@
                     </div>
                     <div class="faq-item">
                         <h3 class="faq-q" data-i18n="faq_5_q">Why does Windows show a "Windows protected your PC" warning when installing?</h3>
-                        <p class="faq-a" data-i18n="faq_5_a">Because IronLock is an independent, zero-telemetry studio and the installer is distributed without a commercial digital signature certificate, Windows SmartScreen may display an initial warning. Click "More info" → "Run anyway" to install safely.</p>
+                        <p class="faq-a">
+                            <span data-i18n="faq_5_a_part1">Because IronLock is an independent, zero-telemetry studio and the installer is distributed without a commercial digital signature certificate, Windows SmartScreen may display an initial warning. To verify our software is 100% clean (0/67 detections), check the public scans on VirusTotal:</span>
+                            <span class="vt-faq-links">
+                                <a href="https://www.virustotal.com/gui/file/453dd05f92cf1497a0a62c12c6aa1e5bfb16332c61c2d054966b03cce21fe55c?nocache=1" target="_blank" rel="noopener noreferrer">Standard</a> |
+                                <a href="https://www.virustotal.com/gui/file/e55dd17d3876d1147cb9a407f32ea6d344933766fbd044dfad64f28d868e19ce?nocache=1" target="_blank" rel="noopener noreferrer">PRO</a> |
+                                <a href="https://www.virustotal.com/gui/file/a8e5ca044a38c2d507159aee4b274bf91d935d1f0e5c74fcbf4acf6d3aa4b9a7?nocache=1" target="_blank" rel="noopener noreferrer">Optimizer</a>.
+                            </span>
+                            <span data-i18n="faq_5_a_part2"> Click "More info" → "Run anyway" to install safely.</span>
+                        </p>
                     </div>
                     <div class="faq-item">
                         <h3 class="faq-q" data-i18n="faq_6_q">Is the IronLock website itself 100% offline?</h3>
@@ -1319,6 +1362,7 @@
                 pricing_tag: "PRECIOS TRANSPARENTES",
                 pricing_title: "Licencias Perpetuas Sin Cuotas Mensuales",
                 pricing_desc: "Consigue tus herramientas de seguridad para siempre con un único pago. Entrega digital inmediata.",
+                vt_badge_text: "0/67 Detecciones de Antivirus. Transparencia total verificada en VirusTotal:",
 
                 subtitle_top: "TU PRIVACIDAD ANTE TODO. SEGURIDAD 100% OFFLINE.",
                 main_desc: "IronLock Vault es la bóveda digital y suite de seguridad de endpoints definitiva para Windows. Sin conexiones a internet, sin suscripciones, sin registros ocultos. Bloquea, cifra, destruye y protege tus puertos de hardware de forma 100% offline.",
@@ -1390,7 +1434,8 @@
                 faq_4_q: "¿Funciona en Mac o Linux?",
                 faq_4_a: "Actualmente, los programas de IronLock están diseñados y optimizados exclusivamente para el ecosistema Windows (64 bits), aprovechando sus sistemas de permisos nativos.",
                 faq_5_q: "¿Por qué Windows muestra el aviso \"Windows protegió su PC\" al instalar?",
-                faq_5_a: "Al ser un estudio independiente sin telemetría, el instalador se distribuye sin un certificado de firma comercial externa, por lo que Windows SmartScreen puede mostrar una advertencia preventiva. Haz clic en \"Más información\" → \"Ejecutar de todas formas\" para instalar con total seguridad.",
+                faq_5_a_part1: "Al ser un estudio independiente sin telemetría, el instalador se distribuye sin un certificado de firma comercial externa, por lo que Windows SmartScreen puede mostrar una advertencia preventiva. Para verificar que nuestro software está 100% limpio (0/67 detecciones), puedes revisar los reportes públicos en VirusTotal:",
+                faq_5_a_part2: ". Haz clic en \"Más información\" → \"Ejecutar de todas formas\" para instalar con total seguridad.",
                 faq_6_q: "¿El sitio web de IronLock también es 100% offline?",
                 faq_6_a: "No. El claim \"100% offline\" aplica exclusivamente al software IronLock (Vault, Optimizer). Este sitio web utiliza Google Fonts para la tipografía y GoatCounter, una herramienta de analítica agregada y respetuosa de la privacidad que no usa cookies ni rastrea usuarios individuales. Ninguno de esos servicios se conecta con el software que descargas.",
                 faq_7_q: "¿Cuánto tarda en llegar mi licencia?",
@@ -1430,6 +1475,7 @@
                 pricing_tag: "TRANSPARENT PRICING",
                 pricing_title: "Perpetual Licenses Without Monthly Fees",
                 pricing_desc: "Own your security software forever with a single one-time payment. Immediate digital delivery.",
+                vt_badge_text: "0/67 Antivirus Detections. Total transparency verified on VirusTotal:",
 
                 subtitle_top: "PRIVACY FIRST. 100% OFFLINE SECURITY.",
                 main_desc: "IronLock Vault is the ultimate digital vault and endpoint security suite for Windows. No internet connections, no subscriptions, no hidden tracking. Lock, encrypt, shred, and protect your hardware ports exclusively offline.",
@@ -1501,7 +1547,8 @@
                 faq_4_q: "Does it work on Mac or Linux?",
                 faq_4_a: "Currently, IronLock software is designed and optimized exclusively for the Windows (64-bit) ecosystem, leveraging its native permission systems for maximum effectiveness.",
                 faq_5_q: "Why does Windows show a \"Windows protected your PC\" warning when installing?",
-                faq_5_a: "Because IronLock is an independent, zero-telemetry studio and the installer is distributed without a commercial digital signature certificate, Windows SmartScreen may display an initial warning. Click \"More info\" → \"Run anyway\" to install safely.",
+                faq_5_a_part1: "Because IronLock is an independent, zero-telemetry studio and the installer is distributed without a commercial digital signature certificate, Windows SmartScreen may display an initial warning. To verify our software is 100% clean (0/67 detections), check the public scans on VirusTotal:",
+                faq_5_a_part2: ". Click \"More info\" → \"Run anyway\" to install safely.",
                 faq_6_q: "Is the IronLock website itself 100% offline?",
                 faq_6_a: "No. The \"100% offline\" claim applies exclusively to the IronLock software (Vault, Optimizer). This website uses Google Fonts for typography and GoatCounter, a privacy-friendly aggregate analytics tool that uses no cookies and does not track individual users. Neither of these services connects to the software you download.",
                 faq_7_q: "How long does it take to get my license?",
