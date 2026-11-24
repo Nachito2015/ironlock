@@ -746,6 +746,165 @@
 
         .requirements-tag { font-size: 11px; color: var(--p-muted); text-align: center; margin-top: 8px; }
 
+        /* Roadmap / Coming Soon */
+        .section-roadmap {
+            background: #0d121c;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 32px;
+            align-items: stretch;
+        }
+
+        .roadmap-card {
+            background: var(--p-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            transition: all 0.25s var(--ease-out);
+        }
+
+        .roadmap-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--border-hover);
+            box-shadow: 0 20px 44px rgba(0, 0, 0, 0.45);
+        }
+
+        .roadmap-header {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .roadmap-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            background: rgba(90, 185, 252, 0.1);
+            border: 1px solid rgba(90, 185, 252, 0.3);
+            color: var(--p-accent);
+            padding: 4px 12px;
+            border-radius: var(--radius-pill);
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .roadmap-badge.badge-rescue {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: rgba(255, 215, 0, 0.3);
+            color: var(--brand-gold);
+        }
+
+        .roadmap-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 4px 0 0 0;
+        }
+
+        .roadmap-subtitle {
+            font-size: 15px;
+            color: var(--p-muted);
+            margin: 0;
+        }
+
+        .roadmap-video-frame {
+            background: #111520;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        .roadmap-video-frame video {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            display: block;
+            background: #000;
+            object-fit: cover;
+        }
+
+        .roadmap-video-placeholder {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: radial-gradient(circle at 50% 40%, rgba(255, 215, 0, 0.08) 0%, #0b0f18 75%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 24px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .roadmap-placeholder-icon {
+            font-size: 32px;
+            opacity: 0.9;
+        }
+
+        .roadmap-placeholder-text {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--brand-gold);
+            letter-spacing: 0.04em;
+        }
+
+        .roadmap-placeholder-sub {
+            font-size: 12px;
+            color: var(--p-muted);
+            max-width: 320px;
+        }
+
+        .roadmap-features {
+            list-style: none;
+            padding: 0;
+            margin: 4px 0 0 0;
+            display: grid;
+            gap: 12px;
+        }
+
+        .roadmap-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--p-ink);
+            line-height: 1.5;
+        }
+
+        .roadmap-check {
+            color: var(--p-accent);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .roadmap-check.check-gold {
+            color: var(--brand-gold);
+        }
+
+        .roadmap-footer-tag {
+            margin-top: auto;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--p-muted);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
         /* FAQ */
         .section-faq { background: #0d1018; border-top: 1px solid var(--border-subtle); }
         .faq-accordion-grid { max-width: 840px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
@@ -791,6 +950,7 @@
             .hero-facts-row { justify-content: center; }
             .bento-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .pricing-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+            .roadmap-grid { grid-template-columns: 1fr; max-width: 640px; margin: 0 auto; }
             .optimizer-split { grid-template-columns: 1fr; gap: 40px; }
             .nav__menu-links { display: none; }
         }
@@ -820,6 +980,7 @@
                     <li><a href="#features" data-i18n="nav_architecture">Architecture</a></li>
                     <li><a href="#optimizer" data-i18n="nav_optimizer">Optimizer</a></li>
                     <li><a href="#pricing" data-i18n="nav_pricing">Editions</a></li>
+                    <li><a href="#roadmap" data-i18n="nav_roadmap">Coming Soon</a></li>
                     <li><a href="#faq" data-i18n="nav_faq">FAQ</a></li>
                 </ul>
             </nav>
@@ -1172,10 +1333,10 @@
                         </div>
 
                         <div class="activation-callout" data-i18n="activation_note">
-                            * <strong>Process:</strong> 1. Buy on Payhip (instant download). 2. Run IronLock on your PC. 3. The app will display your unique HWID. 4. Send it to soporte@ironlockvault.com to receive your lifetime license. All sales are final.
+- <strong>Process:</strong> 1. Buy on Payhip (instant download). 2. Run IronLock on your PC. 3. The app will display your unique HWID. 4. Send it to soporte@ironlockvault.com to receive your lifetime license. All sales are final.
                         </div>
                         <div class="requirements-tag" data-i18n="purchase_req">
-                            * Compatible with Windows 10 & 11 (64-bit).
+- Compatible with Windows 10 & 11 (64-bit).
                         </div>
                     </div>
 
@@ -1216,10 +1377,10 @@
                         </div>
 
                         <div class="activation-callout" data-i18n="activation_note">
-                            * <strong>Process:</strong> 1. Buy on Payhip (instant download). 2. Run IronLock on your PC. 3. The app will display your unique HWID. 4. Send it to soporte@ironlockvault.com to receive your lifetime license. All sales are final.
+- <strong>Process:</strong> 1. Buy on Payhip (instant download). 2. Run IronLock on your PC. 3. The app will display your unique HWID. 4. Send it to soporte@ironlockvault.com to receive your lifetime license. All sales are final.
                         </div>
                         <div class="requirements-tag" data-i18n="purchase_req">
-                            * Compatible with Windows 10 & 11 (64-bit).
+- Compatible with Windows 10 & 11 (64-bit).
                         </div>
                     </div>
 
@@ -1258,10 +1419,10 @@
                         </div>
 
                         <div class="activation-callout" style="color:var(--brand-emerald); background:rgba(0,230,118,0.06); border-color:rgba(0,230,118,0.3);" data-i18n="activation_note">
-                            * <strong>Process:</strong> 1. Buy on Payhip (instant download). 2. Run IronLock on your PC. 3. The app will display your unique HWID. 4. Send it to soporte@ironlockvault.com to receive your lifetime license. All sales are final.
+- <strong>Process:</strong> 1. Buy on Payhip (instant download). 2. Run IronLock on your PC. 3. The app will display your unique HWID. 4. Send it to soporte@ironlockvault.com to receive your lifetime license. All sales are final.
                         </div>
                         <div class="requirements-tag" data-i18n="purchase_req">
-                            * Compatible with Windows 10 & 11 (64-bit).
+- Compatible with Windows 10 & 11 (64-bit).
                         </div>
                     </div>
 
@@ -1269,7 +1430,100 @@
             </div>
         </section>
 
-        <!-- 6. FAQ -->
+        <!-- 6. COMING SOON / ROADMAP -->
+        <section class="section-roadmap" id="roadmap">
+            <div class="wrap">
+                <div class="section-header-block">
+                    <div class="section-tag" data-i18n="roadmap_tag">EXPANDING ECOSYSTEM</div>
+                    <h2 class="section-title" data-i18n="roadmap_title">Coming Soon to the IronLock Suite</h2>
+                    <p class="section-desc" data-i18n="roadmap_desc">Two new 100% offline, zero-telemetry Windows security tools currently in final development to complete the IronLock defense ecosystem.</p>
+                </div>
+
+                <div class="roadmap-grid">
+
+                    <!-- Card 1: IronLock NetGuard -->
+                    <article class="roadmap-card">
+                        <div class="roadmap-header">
+                            <span class="roadmap-badge">
+                                <span class="pulse-dot"></span>
+                                <span data-i18n="roadmap_badge_soon">COMING SOON</span>
+                            </span>
+                            <h3 class="roadmap-title">IronLock NetGuard</h3>
+                            <p class="roadmap-subtitle" data-i18n="netguard_subtitle">Visual Firewall & 1-Click Air-Gap Mode</p>
+                        </div>
+
+                        <div class="roadmap-video-frame">
+                            <div class="media-title-bar">
+                                <span class="media-title-dot" style="background:var(--p-accent);"></span>
+                                <span>IronLock NetGuard — Official Preview</span>
+                            </div>
+                            <video controls playsinline preload="metadata">
+                                <source src="assetsnetguard-demo-en.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video playback.
+                            </video>
+                        </div>
+
+                        <ul class="roadmap-features">
+                            <li><span class="roadmap-check">✓</span> <span data-i18n="netguard_f1">Real-time connection & traffic monitor per process (ETW)</span></li>
+                            <li><span class="roadmap-check">✓</span> <span data-i18n="netguard_f2">1-click outbound internet blocking per application</span></li>
+                            <li><span class="roadmap-check">✓</span> <span data-i18n="netguard_f3">Native Windows Filtering Platform (WFP) telemetry blocker</span></li>
+                            <li><span class="roadmap-check">✓</span> <span data-i18n="netguard_f4">"Total Air-Gap Mode" kill-switch: cuts all network traffic instantly</span></li>
+                        </ul>
+
+                        <div class="roadmap-footer-tag" data-i18n="roadmap_standard_tag">
+                            100% OFFLINE • ZERO TELEMETRY • PERPETUAL LICENSE
+                        </div>
+                    </article>
+
+                    <!-- Card 2: IronLock Rescue -->
+                    <article class="roadmap-card">
+                        <div class="roadmap-header">
+                            <span class="roadmap-badge badge-rescue">
+                                <span class="pulse-dot" style="background:var(--brand-gold); box-shadow:0 0 8px var(--brand-gold);"></span>
+                                <span data-i18n="roadmap_badge_soon">COMING SOON</span>
+                            </span>
+                            <h3 class="roadmap-title">IronLock Rescue</h3>
+                            <p class="roadmap-subtitle" data-i18n="rescue_subtitle">Forensic Data Recovery & Bit-by-Bit Disk Imaging</p>
+                        </div>
+
+                        <div class="roadmap-video-frame">
+                            <div class="media-title-bar">
+                                <span class="media-title-dot" style="background:var(--brand-gold);"></span>
+                                <span>IronLock Rescue — Preview</span>
+                            </div>
+
+                            <!-- Placeholder temporal hasta subir el video de Rescue -->
+                            <div class="roadmap-video-placeholder">
+                                <span class="roadmap-placeholder-icon">🎞️</span>
+                                <span class="roadmap-placeholder-text" data-i18n="rescue_video_placeholder">VIDEO DEMO COMING SOON...</span>
+                                <span class="roadmap-placeholder-sub" data-i18n="rescue_video_sub">C++ forensic engine preview currently in production.</span>
+                            </div>
+
+                            <!-- Cuando tengas el video de Rescue, borra el div de arriba y descomenta esto:
+                            <video controls playsinline preload="metadata">
+                                <source src="rescue-demo-en.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video playback.
+                            </video>
+                            -->
+                        </div>
+
+                        <ul class="roadmap-features">
+                            <li><span class="roadmap-check check-gold">✓</span> <span data-i18n="rescue_f1">High-performance C++ core (MFT & USN Journal analysis)</span></li>
+                            <li><span class="roadmap-check check-gold">✓</span> <span data-i18n="rescue_f2">100% offline Raw Recovery for deleted or formatted partitions</span></li>
+                            <li><span class="roadmap-check check-gold">✓</span> <span data-i18n="rescue_f3">Forensic bit-by-bit disk cloning to prevent further data loss</span></li>
+                            <li><span class="roadmap-check check-gold">✓</span> <span data-i18n="rescue_f4">Local TRIM damage telemetry for SSD health transparency</span></li>
+                        </ul>
+
+                        <div class="roadmap-footer-tag" data-i18n="roadmap_standard_tag">
+                            100% OFFLINE • ZERO TELEMETRY • PERPETUAL LICENSE
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. FAQ -->
         <section class="section-faq" id="faq">
             <div class="wrap">
                 <div class="section-header-block">
@@ -1325,7 +1579,7 @@
 
     </main>
 
-    <!-- 7. FOOTER -->
+    <!-- 8. FOOTER -->
     <footer class="footer-tech">
         <div class="wrap">
             <div class="footer-closing-card">
@@ -1367,6 +1621,7 @@
                 nav_architecture: "Arquitectura",
                 nav_optimizer: "Optimizador",
                 nav_pricing: "Ediciones",
+                nav_roadmap: "Próximamente",
                 nav_faq: "Preguntas",
                 nav_cta: "Obtener IronLock",
                 hero_get_btn: "Ver Ediciones",
@@ -1387,6 +1642,24 @@
                 pricing_title: "Licencias Perpetuas Sin Cuotas Mensuales",
                 pricing_desc: "Consigue tus herramientas de seguridad para siempre con un único pago. Descarga instantánea vía Payhip. Activación manual por HWID.",
                 vt_badge_text: "0/67 Detecciones de Antivirus. Transparencia total verificada en VirusTotal:",
+
+                roadmap_tag: "ECOSISTEMA EN EXPANSIÓN",
+                roadmap_title: "Próximamente en la Suite IronLock",
+                roadmap_desc: "Dos nuevas herramientas de seguridad para Windows 100% offline y cero telemetría en fase final de desarrollo para completar el ecosistema IronLock.",
+                roadmap_badge_soon: "PRÓXIMAMENTE",
+                roadmap_standard_tag: "100% OFFLINE • CERO TELEMETRÍA • LICENCIA PERPETUA",
+                netguard_subtitle: "Firewall Visual y Modo Air-Gap en 1 Clic",
+                netguard_f1: "Monitor de conexiones y tráfico en tiempo real por proceso (ETW)",
+                netguard_f2: "Bloqueo de salida a internet en 1 clic por aplicación",
+                netguard_f3: "Bloqueo nativo de telemetría de Windows mediante WFP",
+                netguard_f4: "Botón \"Modo Air-Gap Total\": corta el tráfico de red al instante",
+                rescue_subtitle: "Recuperación Forense de Datos e Imágenes de Disco",
+                rescue_video_placeholder: "VIDEO DEMO EN PRODUCCIÓN...",
+                rescue_video_sub: "Vista previa del motor forense en C++ disponible muy pronto.",
+                rescue_f1: "Motor de alto rendimiento en C++ (análisis MFT y USN Journal)",
+                rescue_f2: "Recuperación en crudo (Raw Recovery) 100% offline para particiones borradas o formateadas",
+                rescue_f3: "Clonación forense de discos bit a bit para evitar pérdida adicional de datos",
+                rescue_f4: "Telemetría local de daño TRIM para transparencia en unidades SSD",
 
                 subtitle_top: "TU PRIVACIDAD ANTE TODO. SEGURIDAD 100% OFFLINE.",
                 main_desc: "IronLock Vault es la bóveda digital y suite de seguridad de endpoints definitiva para Windows. Sin conexiones a internet, sin suscripciones, sin registros ocultos. Bloquea, cifra, destruye y protege tus puertos de hardware de forma 100% offline.",
@@ -1483,6 +1756,7 @@
                 nav_architecture: "Architecture",
                 nav_optimizer: "Optimizer",
                 nav_pricing: "Editions",
+                nav_roadmap: "Coming Soon",
                 nav_faq: "FAQ",
                 nav_cta: "Get IronLock",
                 hero_get_btn: "View Editions",
@@ -1503,6 +1777,24 @@
                 pricing_title: "Perpetual Licenses Without Monthly Fees",
                 pricing_desc: "Own your security software forever with a single one-time payment. Instant download via Payhip. Manual HWID activation.",
                 vt_badge_text: "0/67 Antivirus Detections. Total transparency verified on VirusTotal:",
+
+                roadmap_tag: "EXPANDING ECOSYSTEM",
+                roadmap_title: "Coming Soon to the IronLock Suite",
+                roadmap_desc: "Two new 100% offline, zero-telemetry Windows security tools currently in final development to complete the IronLock defense ecosystem.",
+                roadmap_badge_soon: "COMING SOON",
+                roadmap_standard_tag: "100% OFFLINE • ZERO TELEMETRY • PERPETUAL LICENSE",
+                netguard_subtitle: "Visual Firewall & 1-Click Air-Gap Mode",
+                netguard_f1: "Real-time connection & traffic monitor per process (ETW)",
+                netguard_f2: "1-click outbound internet blocking per application",
+                netguard_f3: "Native Windows Filtering Platform (WFP) telemetry blocker",
+                netguard_f4: "\"Total Air-Gap Mode\" kill-switch: cuts all network traffic instantly",
+                rescue_subtitle: "Forensic Data Recovery & Bit-by-Bit Disk Imaging",
+                rescue_video_placeholder: "VIDEO DEMO COMING SOON...",
+                rescue_video_sub: "C++ forensic engine preview currently in production.",
+                rescue_f1: "High-performance C++ core (MFT & USN Journal analysis)",
+                rescue_f2: "100% offline Raw Recovery for deleted or formatted partitions",
+                rescue_f3: "Forensic bit-by-bit disk cloning to prevent further data loss",
+                rescue_f4: "Local TRIM damage telemetry for SSD health transparency",
 
                 subtitle_top: "PRIVACY FIRST. 100% OFFLINE SECURITY.",
                 main_desc: "IronLock Vault is the ultimate digital vault and endpoint security suite for Windows. No internet connections, no subscriptions, no hidden tracking. Lock, encrypt, shred, and protect your hardware ports exclusively offline.",
