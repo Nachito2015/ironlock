@@ -834,39 +834,6 @@
             object-fit: cover;
         }
 
-        .roadmap-video-placeholder {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            background: radial-gradient(circle at 50% 40%, rgba(255, 215, 0, 0.08) 0%, #0b0f18 75%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 24px;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-        }
-
-        .roadmap-placeholder-icon {
-            font-size: 32px;
-            opacity: 0.9;
-        }
-
-        .roadmap-placeholder-text {
-            font-family: var(--font-mono);
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--brand-gold);
-            letter-spacing: 0.04em;
-        }
-
-        .roadmap-placeholder-sub {
-            font-size: 12px;
-            color: var(--p-muted);
-            max-width: 320px;
-        }
-
         .roadmap-features {
             list-style: none;
             padding: 0;
@@ -1489,22 +1456,12 @@
                         <div class="roadmap-video-frame">
                             <div class="media-title-bar">
                                 <span class="media-title-dot" style="background:var(--brand-gold);"></span>
-                                <span>IronLock Rescue — Preview</span>
+                                <span>IronLock Rescue — Official Preview</span>
                             </div>
-
-                            <!-- Placeholder temporal hasta subir el video de Rescue -->
-                            <div class="roadmap-video-placeholder">
-                                <span class="roadmap-placeholder-icon">🎞️</span>
-                                <span class="roadmap-placeholder-text" data-i18n="rescue_video_placeholder">VIDEO DEMO COMING SOON...</span>
-                                <span class="roadmap-placeholder-sub" data-i18n="rescue_video_sub">C++ forensic engine preview currently in production.</span>
-                            </div>
-
-                            <!-- Cuando tengas el video de Rescue, borra el div de arriba y descomenta esto:
                             <video controls playsinline preload="metadata">
-                                <source src="rescue-demo-en.mp4" type="video/mp4">
+                                <source src="IronLock Rescue-Spot.mp4" type="video/mp4">
                                 Your browser does not support HTML5 video playback.
                             </video>
-                            -->
                         </div>
 
                         <ul class="roadmap-features">
@@ -1654,8 +1611,6 @@
                 netguard_f3: "Bloqueo nativo de telemetría de Windows mediante WFP",
                 netguard_f4: "Botón \"Modo Air-Gap Total\": corta el tráfico de red al instante",
                 rescue_subtitle: "Recuperación Forense de Datos e Imágenes de Disco",
-                rescue_video_placeholder: "VIDEO DEMO EN PRODUCCIÓN...",
-                rescue_video_sub: "Vista previa del motor forense en C++ disponible muy pronto.",
                 rescue_f1: "Motor de alto rendimiento en C++ (análisis MFT y USN Journal)",
                 rescue_f2: "Recuperación en crudo (Raw Recovery) 100% offline para particiones borradas o formateadas",
                 rescue_f3: "Clonación forense de discos bit a bit para evitar pérdida adicional de datos",
@@ -1789,8 +1744,6 @@
                 netguard_f3: "Native Windows Filtering Platform (WFP) telemetry blocker",
                 netguard_f4: "\"Total Air-Gap Mode\" kill-switch: cuts all network traffic instantly",
                 rescue_subtitle: "Forensic Data Recovery & Bit-by-Bit Disk Imaging",
-                rescue_video_placeholder: "VIDEO DEMO COMING SOON...",
-                rescue_video_sub: "C++ forensic engine preview currently in production.",
                 rescue_f1: "High-performance C++ core (MFT & USN Journal analysis)",
                 rescue_f2: "100% offline Raw Recovery for deleted or formatted partitions",
                 rescue_f3: "Forensic bit-by-bit disk cloning to prevent further data loss",
