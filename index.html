@@ -1016,17 +1016,69 @@
             margin-top: 2px;
         }
 
-        .custom-cta-wrap {
-            text-align: center;
-            margin-top: 40px;
+        /* Custom Form (Formspree AJAX) */
+        .custom-form-card {
+            max-width: 960px;
+            margin: 36px auto 0 auto;
+            background: var(--p-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 32px 36px;
+        }
+
+        .custom-form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+
+        .form-field label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--p-ink);
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            width: 100%;
+            background: #0d121c;
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            color: var(--p-ink);
+            font-family: var(--font-text);
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            border-color: var(--p-accent);
+            box-shadow: 0 0 0 3px rgba(90, 185, 252, 0.14);
+        }
+
+        .form-field textarea {
+            min-height: 115px;
+            resize: vertical;
         }
 
         .custom-cta-actions {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 14px;
             flex-wrap: wrap;
+            margin-top: 8px;
         }
 
         .btn-copy-email {
@@ -1051,11 +1103,27 @@
             color: var(--brand-emerald);
         }
 
-        .custom-cta-note {
-            font-size: 13px;
-            color: var(--p-muted);
-            margin-top: 14px;
+        .form-status {
+            margin-top: 16px;
+            font-size: 13.5px;
             font-family: var(--font-mono);
+            display: none;
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+        }
+
+        .form-status.is-success {
+            display: block;
+            background: rgba(0, 230, 118, 0.1);
+            border: 1px solid rgba(0, 230, 118, 0.35);
+            color: var(--brand-emerald);
+        }
+
+        .form-status.is-error {
+            display: block;
+            background: rgba(255, 95, 86, 0.1);
+            border: 1px solid rgba(255, 95, 86, 0.35);
+            color: #ff8a84;
         }
 
         /* FAQ */
@@ -1112,7 +1180,8 @@
         @media (max-width: 768px) {
             .bento-grid { grid-template-columns: 1fr !important; }
             .vt-trust-badge { flex-direction: column; text-align: center; border-radius: var(--radius-lg); }
-            .custom-intro-box { padding: 24px; }
+            .custom-intro-box, .custom-form-card { padding: 24px; }
+            .custom-form-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -1744,19 +1813,51 @@
                     </div>
                 </div>
 
-                <div class="custom-cta-wrap">
-                    <div class="custom-cta-actions">
-                        <a href="mailto:soporte@ironlockvault.com?subject=Custom%20IronLock%20Development%20Inquiry" class="btn btn--primary" style="height: 48px; padding: 0 28px;" data-i18n="custom_cta_btn">
-                            ✉ Request a Custom Quote
-                        </a>
-                        <button type="button" class="btn btn-copy-email" id="btnCopySupportEmail" onclick="copySupportEmail()" title="Click to copy email address">
-                            <span id="copyEmailIcon">📋</span>
-                            <span id="copyEmailLabel">soporte@ironlockvault.com</span>
-                        </button>
-                    </div>
-                    <div class="custom-cta-note" data-i18n="custom_cta_note">
-                        Write to soporte@ironlockvault.com telling us which IronLock app and features you need — direct response in less than 24h.
-                    </div>
+                <!-- Direct Inquiry Form (Formspree AJAX) -->
+                <div class="custom-form-card">
+                    <form id="customQuoteForm" action="https://formspree.io/f/xaeovbwv" method="POST">
+                        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                        <input type="hidden" name="_subject" value="New Custom Build Inquiry — IronLock">
+
+                        <div class="custom-form-grid">
+                            <div class="form-field">
+                                <label for="cfName" data-i18n="cf_name_label">Name / Company</label>
+                                <input id="cfName" type="text" name="name" required placeholder="John Doe / Company">
+                            </div>
+                            <div class="form-field">
+                                <label for="cfEmail" data-i18n="cf_email_label">Your Email</label>
+                                <input id="cfEmail" type="email" name="email" required placeholder="you@company.com">
+                            </div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="cfApp" data-i18n="cf_app_label">Base IronLock Application</label>
+                            <select id="cfApp" name="application">
+                                <option value="IronLock Vault (Standard / PRO)">IronLock Vault (Standard / PRO)</option>
+                                <option value="IronLock Optimizer">IronLock Optimizer</option>
+                                <option value="IronLock NetGuard">IronLock NetGuard</option>
+                                <option value="IronLock Rescue">IronLock Rescue</option>
+                                <option value="Full Suite / Combined Build">Full Suite / Combined Build</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="cfMessage" data-i18n="cf_msg_label">Describe the custom features you need</label>
+                            <textarea id="cfMessage" name="message" required placeholder="Tell us about your requirements, number of workstations, or specific policies..."></textarea>
+                        </div>
+
+                        <div class="custom-cta-actions">
+                            <button type="submit" class="btn btn--primary" id="cfSubmitBtn" style="height: 48px; padding: 0 28px;" data-i18n="custom_cta_btn">
+                                ✉ Send Custom Inquiry
+                            </button>
+                            <button type="button" class="btn btn-copy-email" id="btnCopySupportEmail" onclick="copySupportEmail()" title="Click to copy email address">
+                                <span id="copyEmailIcon">📋</span>
+                                <span id="copyEmailLabel">soporte@ironlockvault.com</span>
+                            </button>
+                        </div>
+
+                        <div id="customFormStatus" class="form-status" role="status" aria-live="polite"></div>
+                    </form>
                 </div>
             </div>
         </section>
@@ -1801,7 +1902,7 @@
                     </div>
                     <div class="faq-item">
                         <h3 class="faq-q" data-i18n="faq_6_q">Is the IronLock website itself 100% offline?</h3>
-                        <p class="faq-a" data-i18n="faq_6_a">No. The "100% offline" claim applies exclusively to the IronLock software (Vault, Optimizer). This website uses Google Fonts for typography and GoatCounter, a privacy-friendly aggregate analytics tool that uses no cookies and does not track individual users. Neither of these services connects to the software you download.</p>
+                        <p class="faq-a" data-i18n="faq_6_a">No. The "100% offline" claim applies exclusively to the IronLock software (Vault, Optimizer, NetGuard, Rescue). This website uses Google Fonts for typography, GoatCounter for cookie-free aggregate analytics, and Formspree solely when you choose to submit a custom development inquiry. None of these services connects to the software you download.</p>
                     </div>
                     <div class="faq-item">
                         <h3 class="faq-q" data-i18n="faq_7_q">How long does it take to get my license?</h3>
@@ -1914,8 +2015,11 @@
                 custom_b3: "Entrega rápida al aprovechar nuestra base de código IronLock 100% offline ya probada.",
                 custom_b4: "Interfaz limpia y familiar con tus nuevas funciones integradas de forma nativa.",
                 custom_b5: "Modelo de licencia flexible y libre de regalías, sin suscripciones ni dependencia de la nube.",
-                custom_cta_btn: "✉ Solicitar Presupuesto a Medida",
-                custom_cta_note: "Escríbenos a soporte@ironlockvault.com indicando qué app de IronLock y qué funciones necesitas — respuesta directa en menos de 24 h.",
+                cf_name_label: "Nombre / Empresa",
+                cf_email_label: "Tu correo electrónico",
+                cf_app_label: "Aplicación base de IronLock",
+                cf_msg_label: "Describe las funciones a medida que necesitas",
+                custom_cta_btn: "✉ Enviar Consulta a Medida",
 
                 subtitle_top: "TU PRIVACIDAD ANTE TODO. SEGURIDAD 100% OFFLINE.",
                 main_desc: "IronLock Vault es la bóveda digital y suite de seguridad de endpoints definitiva para Windows. Sin conexiones a internet, sin suscripciones, sin registros ocultos. Bloquea, cifra, destruye y protege tus puertos de hardware de forma 100% offline.",
@@ -1992,7 +2096,7 @@
                 faq_5_a_part1: "Al ser un estudio independiente sin telemetría, el instalador se distribuye sin un certificado de firma comercial externa, por lo que Windows SmartScreen puede mostrar una advertencia preventiva. Para verificar que nuestro software está 100% limpio (0/67 detecciones), puedes revisar los reportes públicos en VirusTotal:",
                 faq_5_a_part2: " Haz clic en \"Más información\" → \"Ejecutar de todas formas\" para instalar con total seguridad.",
                 faq_6_q: "¿El sitio web de IronLock también es 100% offline?",
-                faq_6_a: "No. El claim \"100% offline\" aplica exclusivamente al software IronLock (Vault, Optimizer). Este sitio web utiliza Google Fonts para la tipografía y GoatCounter, una herramienta de analítica agregada y respetuosa de la privacidad que no usa cookies ni rastrea usuarios individuales. Ninguno de esos servicios se conecta con el software que descargas.",
+                faq_6_a: "No. El claim \"100% offline\" aplica exclusivamente al software IronLock (Vault, Optimizer, NetGuard, Rescue). Este sitio web utiliza Google Fonts para la tipografía, GoatCounter para analítica agregada sin cookies y Formspree únicamente cuando decides enviar una consulta de desarrollo a medida. Ninguno de esos servicios se conecta con el software que descargas.",
                 faq_7_q: "¿Cuánto tarda en llegar mi licencia?",
                 faq_7_a: "Como nuestro software es 100% offline y no usamos servidores de activación automáticos, las licencias se generan manualmente vinculadas a tu HWID para máxima seguridad. Recibirás tu clave por correo en un plazo máximo de 12 horas (suele ser mucho menos).",
                 faq_8_q: "¿Puedo solicitar un reembolso?",
@@ -2067,8 +2171,11 @@
                 custom_b3: "Fast turnaround by building directly on our tested, 100% offline IronLock codebase.",
                 custom_b4: "Clean, familiar native interface with your new features seamlessly integrated.",
                 custom_b5: "Flexible, royalty-free licensing with zero subscriptions and zero cloud lock-in.",
-                custom_cta_btn: "✉ Request a Custom Quote",
-                custom_cta_note: "Write to soporte@ironlockvault.com telling us which IronLock app and features you need — direct response in less than 24h.",
+                cf_name_label: "Name / Company",
+                cf_email_label: "Your Email",
+                cf_app_label: "Base IronLock Application",
+                cf_msg_label: "Describe the custom features you need",
+                custom_cta_btn: "✉ Send Custom Inquiry",
 
                 subtitle_top: "PRIVACY FIRST. 100% OFFLINE SECURITY.",
                 main_desc: "IronLock Vault is the ultimate digital vault and endpoint security suite for Windows. No internet connections, no subscriptions, no hidden tracking. Lock, encrypt, shred, and protect your hardware ports exclusively offline.",
@@ -2145,7 +2252,7 @@
                 faq_5_a_part1: "Because IronLock is an independent, zero-telemetry studio and the installer is distributed without a commercial digital signature certificate, Windows SmartScreen may display an initial warning. To verify our software is 100% clean (0/67 detections), check the public scans on VirusTotal:",
                 faq_5_a_part2: " Click \"More info\" → \"Run anyway\" to install safely.",
                 faq_6_q: "Is the IronLock website itself 100% offline?",
-                faq_6_a: "No. The \"100% offline\" claim applies exclusively to the IronLock software (Vault, Optimizer). This website uses Google Fonts for typography and GoatCounter, a privacy-friendly aggregate analytics tool that uses no cookies and does not track individual users. Neither of these services connects to the software you download.",
+                faq_6_a: "No. The \"100% offline\" claim applies exclusively to the IronLock software (Vault, Optimizer, NetGuard, Rescue). This website uses Google Fonts for typography, GoatCounter for cookie-free aggregate analytics, and Formspree solely when you choose to submit a custom development inquiry. None of these services connects to the software you download.",
                 faq_7_q: "How long does it take to get my license?",
                 faq_7_a: "Since our software is 100% offline and we do not use automatic activation servers, licenses are generated manually tied to your HWID for maximum security. You will receive your key by email within a maximum of 12 hours (usually much less).",
                 faq_8_q: "Can I request a refund?",
@@ -2200,6 +2307,19 @@
             });
             document.documentElement.lang = lang;
 
+            const cfName = document.getElementById('cfName');
+            const cfEmail = document.getElementById('cfEmail');
+            const cfMessage = document.getElementById('cfMessage');
+            if (lang === 'es') {
+                if (cfName) cfName.placeholder = 'Juan Pérez / Empresa';
+                if (cfEmail) cfEmail.placeholder = 'tu@empresa.com';
+                if (cfMessage) cfMessage.placeholder = 'Cuéntanos tus requisitos, cantidad de equipos o políticas específicas...';
+            } else {
+                if (cfName) cfName.placeholder = 'John Doe / Company';
+                if (cfEmail) cfEmail.placeholder = 'you@company.com';
+                if (cfMessage) cfMessage.placeholder = 'Tell us about your requirements, number of workstations, or specific policies...';
+            }
+
             const videoSource = document.getElementById('videoSource');
             const promoVideo = document.getElementById('promoVideo');
             const videoTitleBar = document.getElementById('videoTitleBar');
@@ -2226,6 +2346,46 @@
                     btnEs.classList.remove('is-active');
                 }
             }
+        }
+
+        const customForm = document.getElementById('customQuoteForm');
+        if (customForm) {
+            customForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const statusEl = document.getElementById('customFormStatus');
+                const submitBtn = document.getElementById('cfSubmitBtn');
+                const isEs = document.documentElement.lang === 'es';
+
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.7';
+                statusEl.className = 'form-status';
+
+                try {
+                    const response = await fetch(customForm.action, {
+                        method: 'POST',
+                        body: new FormData(customForm),
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        statusEl.textContent = isEs
+                            ? '✓ ¡Consulta enviada! Te responderemos a tu correo en menos de 24 horas.'
+                            : '✓ Inquiry sent! We will reply to your email in less than 24 hours.';
+                        statusEl.classList.add('is-success');
+                        customForm.reset();
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                } catch (err) {
+                    statusEl.textContent = isEs
+                        ? '⚠ No se pudo enviar el formulario. Escríbenos directo a soporte@ironlockvault.com.'
+                        : '⚠ Could not send the form. Please email soporte@ironlockvault.com directly.';
+                    statusEl.classList.add('is-error');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                }
+            });
         }
 
         window.addEventListener('DOMContentLoaded', () => {
