@@ -529,6 +529,12 @@
             background: linear-gradient(180deg, rgba(25, 30, 44, 0.9) 0%, rgba(19, 24, 36, 0.95) 100%);
         }
 
+        @media (min-width: 1025px) {
+            .bento-card--centered-last {
+                grid-column: 2;
+            }
+        }
+
         .card-icon-badge {
             display: inline-flex; align-items: center; justify-content: center;
             width: 44px; height: 44px; border-radius: 10px;
@@ -1015,10 +1021,40 @@
             margin-top: 40px;
         }
 
+        .custom-cta-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn-copy-email {
+            height: 48px;
+            padding: 0 24px;
+            background: rgba(90, 185, 252, 0.08);
+            border: 1px solid rgba(90, 185, 252, 0.35);
+            color: var(--p-accent);
+            font-family: var(--font-mono);
+            font-size: 13.5px;
+        }
+
+        .btn-copy-email:hover {
+            background: rgba(90, 185, 252, 0.16);
+            border-color: var(--p-accent);
+            transform: translateY(-2px);
+        }
+
+        .btn-copy-email.is-copied {
+            background: rgba(0, 230, 118, 0.14);
+            border-color: var(--brand-emerald);
+            color: var(--brand-emerald);
+        }
+
         .custom-cta-note {
             font-size: 13px;
             color: var(--p-muted);
-            margin-top: 12px;
+            margin-top: 14px;
             font-family: var(--font-mono);
         }
 
@@ -1325,7 +1361,7 @@
                         <div class="card-metric gold-metric">NTFS IMMUTABILITY LOCK</div>
                     </div>
 
-                    <div class="bento-card card--pro">
+                    <div class="bento-card card--pro bento-card--centered-last">
                         <div>
                             <div class="card-icon-badge pro-badge-icon">📦</div>
                             <h3 class="card-title pro-gold-title" data-i18n="feat_10_title">★ Autonomous .EXE Exporter (PRO)</h3>
@@ -1709,11 +1745,17 @@
                 </div>
 
                 <div class="custom-cta-wrap">
-                    <a href="mailto:soporte@ironlockvault.com?subject=Custom%20IronLock%20Development%20Inquiry" class="btn btn--primary" style="height: 48px; padding: 0 32px;" data-i18n="custom_cta_btn">
-                        ✉ Request a Custom Quote
-                    </a>
+                    <div class="custom-cta-actions">
+                        <a href="mailto:soporte@ironlockvault.com?subject=Custom%20IronLock%20Development%20Inquiry" class="btn btn--primary" style="height: 48px; padding: 0 28px;" data-i18n="custom_cta_btn">
+                            ✉ Request a Custom Quote
+                        </a>
+                        <button type="button" class="btn btn-copy-email" id="btnCopySupportEmail" onclick="copySupportEmail()" title="Click to copy email address">
+                            <span id="copyEmailIcon">📋</span>
+                            <span id="copyEmailLabel">soporte@ironlockvault.com</span>
+                        </button>
+                    </div>
                     <div class="custom-cta-note" data-i18n="custom_cta_note">
-                        Tell us which IronLock app and features you need — direct response in less than 24h.
+                        Write to soporte@ironlockvault.com telling us which IronLock app and features you need — direct response in less than 24h.
                     </div>
                 </div>
             </div>
@@ -1873,7 +1915,7 @@
                 custom_b4: "Interfaz limpia y familiar con tus nuevas funciones integradas de forma nativa.",
                 custom_b5: "Modelo de licencia flexible y libre de regalías, sin suscripciones ni dependencia de la nube.",
                 custom_cta_btn: "✉ Solicitar Presupuesto a Medida",
-                custom_cta_note: "Cuéntanos qué app de IronLock y qué funciones necesitas — respuesta directa en menos de 24 h.",
+                custom_cta_note: "Escríbenos a soporte@ironlockvault.com indicando qué app de IronLock y qué funciones necesitas — respuesta directa en menos de 24 h.",
 
                 subtitle_top: "TU PRIVACIDAD ANTE TODO. SEGURIDAD 100% OFFLINE.",
                 main_desc: "IronLock Vault es la bóveda digital y suite de seguridad de endpoints definitiva para Windows. Sin conexiones a internet, sin suscripciones, sin registros ocultos. Bloquea, cifra, destruye y protege tus puertos de hardware de forma 100% offline.",
@@ -2026,7 +2068,7 @@
                 custom_b4: "Clean, familiar native interface with your new features seamlessly integrated.",
                 custom_b5: "Flexible, royalty-free licensing with zero subscriptions and zero cloud lock-in.",
                 custom_cta_btn: "✉ Request a Custom Quote",
-                custom_cta_note: "Tell us which IronLock app and features you need — direct response in less than 24h.",
+                custom_cta_note: "Write to soporte@ironlockvault.com telling us which IronLock app and features you need — direct response in less than 24h.",
 
                 subtitle_top: "PRIVACY FIRST. 100% OFFLINE SECURITY.",
                 main_desc: "IronLock Vault is the ultimate digital vault and endpoint security suite for Windows. No internet connections, no subscriptions, no hidden tracking. Lock, encrypt, shred, and protect your hardware ports exclusively offline.",
@@ -2119,6 +2161,34 @@
                 video_title_es: "IronLock.Vault.Official_Demo.mp4"
             }
         };
+
+        function copySupportEmail() {
+            const email = 'soporte@ironlockvault.com';
+            const btn = document.getElementById('btnCopySupportEmail');
+            const label = document.getElementById('copyEmailLabel');
+            const icon = document.getElementById('copyEmailIcon');
+            const isEs = document.documentElement.lang === 'es';
+
+            const showCopiedFeedback = () => {
+                if (!btn || !label || !icon) return;
+                btn.classList.add('is-copied');
+                icon.textContent = '✓';
+                label.textContent = isEs ? '¡Correo copiado!' : 'Email copied!';
+                setTimeout(() => {
+                    btn.classList.remove('is-copied');
+                    icon.textContent = '📋';
+                    label.textContent = email;
+                }, 2500);
+            };
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(email).then(showCopiedFeedback).catch(() => {
+                    window.prompt(isEs ? 'Copia el correo de soporte:' : 'Copy support email:', email);
+                });
+            } else {
+                window.prompt(isEs ? 'Copia el correo de soporte:' : 'Copy support email:', email);
+            }
+        }
 
         function changeLanguage(lang) {
             const elements = document.querySelectorAll('[data-i18n]');
