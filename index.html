@@ -872,6 +872,156 @@
             text-transform: uppercase;
         }
 
+        /* Custom Development / Tailored Builds */
+        .section-custom {
+            background: var(--p-bg);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .custom-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            max-width: 420px;
+            margin: 0 auto 32px auto;
+        }
+
+        .custom-divider::before,
+        .custom-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(90, 185, 252, 0.35), transparent);
+        }
+
+        .custom-divider-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(90, 185, 252, 0.12);
+            border: 1px solid rgba(90, 185, 252, 0.3);
+            color: var(--p-accent);
+            font-size: 18px;
+        }
+
+        .custom-intro-box {
+            max-width: 960px;
+            margin: 0 auto 36px auto;
+            background: linear-gradient(145deg, rgba(19, 24, 36, 0.9), rgba(13, 18, 28, 0.95));
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 32px 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .custom-intro-box p {
+            font-size: 15.5px;
+            line-height: 1.7;
+            color: var(--p-muted);
+            margin: 0;
+        }
+
+        .custom-intro-box strong {
+            color: #ffffff;
+        }
+
+        .custom-columns {
+            max-width: 960px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 28px;
+        }
+
+        .custom-col-card {
+            background: var(--p-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            transition: all 0.25s var(--ease-out);
+        }
+
+        .custom-col-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+
+        .custom-col-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .custom-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 14px;
+        }
+
+        .custom-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 14.5px;
+            color: var(--p-ink);
+            line-height: 1.55;
+        }
+
+        .custom-bullet-q {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: rgba(90, 185, 252, 0.14);
+            color: var(--p-accent);
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .custom-bullet-ok {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: rgba(0, 230, 118, 0.14);
+            color: var(--brand-emerald);
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .custom-cta-wrap {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .custom-cta-note {
+            font-size: 13px;
+            color: var(--p-muted);
+            margin-top: 12px;
+            font-family: var(--font-mono);
+        }
+
         /* FAQ */
         .section-faq { background: #0d1018; border-top: 1px solid var(--border-subtle); }
         .faq-accordion-grid { max-width: 840px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
@@ -918,6 +1068,7 @@
             .bento-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .pricing-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
             .roadmap-grid { grid-template-columns: 1fr; max-width: 640px; margin: 0 auto; }
+            .custom-columns { grid-template-columns: 1fr; }
             .optimizer-split { grid-template-columns: 1fr; gap: 40px; }
             .nav__menu-links { display: none; }
         }
@@ -925,6 +1076,7 @@
         @media (max-width: 768px) {
             .bento-grid { grid-template-columns: 1fr !important; }
             .vt-trust-badge { flex-direction: column; text-align: center; border-radius: var(--radius-lg); }
+            .custom-intro-box { padding: 24px; }
         }
     </style>
 </head>
@@ -948,6 +1100,7 @@
                     <li><a href="#optimizer" data-i18n="nav_optimizer">Optimizer</a></li>
                     <li><a href="#pricing" data-i18n="nav_pricing">Editions</a></li>
                     <li><a href="#roadmap" data-i18n="nav_roadmap">Coming Soon</a></li>
+                    <li><a href="#custom" data-i18n="nav_custom">Custom Builds</a></li>
                     <li><a href="#faq" data-i18n="nav_faq">FAQ</a></li>
                 </ul>
             </nav>
@@ -1480,7 +1633,93 @@
             </div>
         </section>
 
-        <!-- 7. FAQ -->
+        <!-- 7. CUSTOM DEVELOPMENT / BESPOKE BUILDS -->
+        <section class="section-custom" id="custom">
+            <div class="wrap">
+                <div class="section-header-block" style="margin-bottom: 24px;">
+                    <div class="section-tag" data-i18n="custom_tag">BESPOKE ENGINEERING</div>
+                    <h2 class="section-title" data-i18n="custom_title">Missing Features?</h2>
+                </div>
+
+                <div class="custom-divider" aria-hidden="true">
+                    <span class="custom-divider-icon">🔧</span>
+                </div>
+
+                <div class="custom-intro-box">
+                    <p data-i18n="custom_intro_1">
+                        If any application in the <strong>IronLock Suite</strong> (Vault, Optimizer, NetGuard, or Rescue) is not an exact fit for your workflow, <strong>we can customize it to match your specific requirements</strong>. Building on top of our proven, 100% offline architecture lets you get a tailored security solution quickly and affordably.
+                    </p>
+                    <p data-i18n="custom_intro_2">
+                        Customizing an existing IronLock tool is <strong>significantly faster and more cost-effective</strong> than hiring an external developer or building software from scratch. You leverage our tested AES-256 encryption engines, native Windows ACLs, and zero-telemetry core as a rock-solid foundation for your custom functionality.
+                    </p>
+                </div>
+
+                <div class="custom-columns">
+                    <div class="custom-col-card">
+                        <h3 class="custom-col-title" data-i18n="custom_left_title">Do you need customization?</h3>
+                        <ul class="custom-list">
+                            <li>
+                                <span class="custom-bullet-q">?</span>
+                                <span data-i18n="custom_q1">Does the standard edition not cover an exact requirement of your team or PC?</span>
+                            </li>
+                            <li>
+                                <span class="custom-bullet-q">?</span>
+                                <span data-i18n="custom_q2">Is there a specific security policy, rule, or action you would like to add?</span>
+                            </li>
+                            <li>
+                                <span class="custom-bullet-q">?</span>
+                                <span data-i18n="custom_q3">Do you need corporate branding (white-label) or locked settings for workstations?</span>
+                            </li>
+                            <li>
+                                <span class="custom-bullet-q">?</span>
+                                <span data-i18n="custom_q4">Would you like to combine features from multiple IronLock tools into a single build?</span>
+                            </li>
+                            <li>
+                                <span class="custom-bullet-q">?</span>
+                                <span data-i18n="custom_q5">Do you need to integrate the tool with your existing local business workflow?</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="custom-col-card">
+                        <h3 class="custom-col-title" data-i18n="custom_right_title">Benefits of custom development</h3>
+                        <ul class="custom-list">
+                            <li>
+                                <span class="custom-bullet-ok">✓</span>
+                                <span data-i18n="custom_b1">No programming knowledge required: we handle the entire engineering process for you.</span>
+                            </li>
+                            <li>
+                                <span class="custom-bullet-ok">✓</span>
+                                <span data-i18n="custom_b2">Cost-effective professional development directly with the lead developer.</span>
+                            </li>
+                            <li>
+                                <span class="custom-bullet-ok">✓</span>
+                                <span data-i18n="custom_b3">Fast turnaround by building directly on our tested, 100% offline IronLock codebase.</span>
+                            </li>
+                            <li>
+                                <span class="custom-bullet-ok">✓</span>
+                                <span data-i18n="custom_b4">Clean, familiar native interface with your new features seamlessly integrated.</span>
+                            </li>
+                            <li>
+                                <span class="custom-bullet-ok">✓</span>
+                                <span data-i18n="custom_b5">Flexible, royalty-free licensing with zero subscriptions and zero cloud lock-in.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="custom-cta-wrap">
+                    <a href="mailto:soporte@ironlockvault.com?subject=Custom%20IronLock%20Development%20Inquiry" class="btn btn--primary" style="height: 48px; padding: 0 32px;" data-i18n="custom_cta_btn">
+                        ✉ Request a Custom Quote
+                    </a>
+                    <div class="custom-cta-note" data-i18n="custom_cta_note">
+                        Tell us which IronLock app and features you need — direct response in less than 24h.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. FAQ -->
         <section class="section-faq" id="faq">
             <div class="wrap">
                 <div class="section-header-block">
@@ -1536,7 +1775,7 @@
 
     </main>
 
-    <!-- 8. FOOTER -->
+    <!-- 9. FOOTER -->
     <footer class="footer-tech">
         <div class="wrap">
             <div class="footer-closing-card">
@@ -1579,6 +1818,7 @@
                 nav_optimizer: "Optimizador",
                 nav_pricing: "Ediciones",
                 nav_roadmap: "Próximamente",
+                nav_custom: "A Medida",
                 nav_faq: "Preguntas",
                 nav_cta: "Obtener IronLock",
                 hero_get_btn: "Ver Ediciones",
@@ -1615,6 +1855,25 @@
                 rescue_f2: "Recuperación en crudo (Raw Recovery) 100% offline para particiones borradas o formateadas",
                 rescue_f3: "Clonación forense de discos bit a bit para evitar pérdida adicional de datos",
                 rescue_f4: "Telemetría local de daño TRIM para transparencia en unidades SSD",
+
+                custom_tag: "INGENIERÍA A MEDIDA",
+                custom_title: "¿Faltan funciones?",
+                custom_intro_1: "Si alguna aplicación de la <strong>Suite IronLock</strong> (Vault, Optimizer, NetGuard o Rescue) no se ajusta exactamente a lo que buscas, <strong>podemos personalizarla para adaptarla a tus necesidades</strong>. Construir sobre nuestra base probada 100% offline te permite obtener una solución profesional a medida de forma rápida y económica.",
+                custom_intro_2: "Personalizar una herramienta existente de IronLock resulta <strong>mucho más económico y rápido</strong> que contratar un desarrollo externo o crear el software desde cero. Aprovechas nuestros motores de cifrado AES-256, permisos nativos de Windows y arquitectura sin telemetría como base sólida para sumar las funciones que necesitas.",
+                custom_left_title: "¿Necesitas personalización?",
+                custom_q1: "¿La edición estándar no cubre un requisito específico de tu equipo o empresa?",
+                custom_q2: "¿Alguna función, política de seguridad o acción que necesitas no está incluida?",
+                custom_q3: "¿Buscas personalización con marca propia (marca blanca) o ajustes bloqueados para estaciones de trabajo?",
+                custom_q4: "¿Quieres combinar herramientas de distintas apps de IronLock en una sola versión?",
+                custom_q5: "¿Deseas integrar el producto con tu lógica de negocio o flujo de trabajo local existente?",
+                custom_right_title: "Beneficios del desarrollo personalizado",
+                custom_b1: "No necesitas conocimientos de programación: nosotros nos encargamos de todo el desarrollo.",
+                custom_b2: "Desarrollo profesional a bajo coste tratando directamente con el desarrollador principal.",
+                custom_b3: "Entrega rápida al aprovechar nuestra base de código IronLock 100% offline ya probada.",
+                custom_b4: "Interfaz limpia y familiar con tus nuevas funciones integradas de forma nativa.",
+                custom_b5: "Modelo de licencia flexible y libre de regalías, sin suscripciones ni dependencia de la nube.",
+                custom_cta_btn: "✉ Solicitar Presupuesto a Medida",
+                custom_cta_note: "Cuéntanos qué app de IronLock y qué funciones necesitas — respuesta directa en menos de 24 h.",
 
                 subtitle_top: "TU PRIVACIDAD ANTE TODO. SEGURIDAD 100% OFFLINE.",
                 main_desc: "IronLock Vault es la bóveda digital y suite de seguridad de endpoints definitiva para Windows. Sin conexiones a internet, sin suscripciones, sin registros ocultos. Bloquea, cifra, destruye y protege tus puertos de hardware de forma 100% offline.",
@@ -1712,6 +1971,7 @@
                 nav_optimizer: "Optimizer",
                 nav_pricing: "Editions",
                 nav_roadmap: "Coming Soon",
+                nav_custom: "Custom Builds",
                 nav_faq: "FAQ",
                 nav_cta: "Get IronLock",
                 hero_get_btn: "View Editions",
@@ -1748,6 +2008,25 @@
                 rescue_f2: "100% offline Raw Recovery for deleted or formatted partitions",
                 rescue_f3: "Forensic bit-by-bit disk cloning to prevent further data loss",
                 rescue_f4: "Local TRIM damage telemetry for SSD health transparency",
+
+                custom_tag: "BESPOKE ENGINEERING",
+                custom_title: "Missing Features?",
+                custom_intro_1: "If any application in the <strong>IronLock Suite</strong> (Vault, Optimizer, NetGuard, or Rescue) is not an exact fit for your workflow, <strong>we can customize it to match your specific requirements</strong>. Building on top of our proven, 100% offline architecture lets you get a tailored security solution quickly and affordably.",
+                custom_intro_2: "Customizing an existing IronLock tool is <strong>significantly faster and more cost-effective</strong> than hiring an external developer or building software from scratch. You leverage our tested AES-256 encryption engines, native Windows ACLs, and zero-telemetry core as a rock-solid foundation for your custom functionality.",
+                custom_left_title: "Do you need customization?",
+                custom_q1: "Does the standard edition not cover an exact requirement of your team or PC?",
+                custom_q2: "Is there a specific security policy, rule, or action you would like to add?",
+                custom_q3: "Do you need corporate branding (white-label) or locked settings for workstations?",
+                custom_q4: "Would you like to combine features from multiple IronLock tools into a single build?",
+                custom_q5: "Do you need to integrate the tool with your existing local business workflow?",
+                custom_right_title: "Benefits of custom development",
+                custom_b1: "No programming knowledge required: we handle the entire engineering process for you.",
+                custom_b2: "Cost-effective professional development directly with the lead developer.",
+                custom_b3: "Fast turnaround by building directly on our tested, 100% offline IronLock codebase.",
+                custom_b4: "Clean, familiar native interface with your new features seamlessly integrated.",
+                custom_b5: "Flexible, royalty-free licensing with zero subscriptions and zero cloud lock-in.",
+                custom_cta_btn: "✉ Request a Custom Quote",
+                custom_cta_note: "Tell us which IronLock app and features you need — direct response in less than 24h.",
 
                 subtitle_top: "PRIVACY FIRST. 100% OFFLINE SECURITY.",
                 main_desc: "IronLock Vault is the ultimate digital vault and endpoint security suite for Windows. No internet connections, no subscriptions, no hidden tracking. Lock, encrypt, shred, and protect your hardware ports exclusively offline.",
